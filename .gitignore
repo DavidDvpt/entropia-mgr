@@ -9,7 +9,7 @@
 !.yarn/plugins
 !.yarn/releases
 !.yarn/versions
-
+prisma/memo.txt
 # testing
 /coverage
 
