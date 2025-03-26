@@ -1,11 +1,7 @@
-import styles from '../auth.module.scss';
+import styles from './login.module.scss';
 
 function layout({ children }: IChildren) {
-  return (
-    <main className={styles.main}>
-      <section className={styles.loginContent}>{children}</section>
-    </main>
-  );
+  return <main className={styles.loginPage}>{children}</main>;
 }
 
 export default layout;

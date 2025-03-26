@@ -1,14 +1,12 @@
 'use client';
 
+import HookFormInput from '@/shared/components/form/hookForm/HookFormInput';
+
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
-import styles from '../auth.module.scss';
-
-type LoginFormValues = { email: string; password: string };
-const intialLoginValues: LoginFormValues = {
-  email: '',
-  password: '',
-};
+import { FormProvider, useForm } from 'react-hook-form';
+import { intialLoginValues } from './constants';
+import styles from './login.module.scss';
 
 function Login(): React.ReactElement {
   const router = useRouter();
@@ -49,30 +47,23 @@ function Login(): React.ReactElement {
       });
   };
   return (
-    <FormProvider {...formOptions}>
-      <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-        <LabelForm
-          label="Email :"
-          formComponentRender={
-            <FieldSet name="email" formComponent={<HookFormInput />} />
-          }
-        />
+    <section className={styles.section}>
+      <FormProvider {...formOptions}>
+        <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
+          <HookFormInput name="email" label="Email :" />
 
-        <LabelForm
-          label="Mot de passe :"
-          formComponentRender={
-            <FieldSet
-              name="password"
-              formComponent={<HookFormInput type="password" />}
-            />
-          }
-        />
+          <HookFormInput
+            type="password"
+            name="password"
+            label="Mot de passe :"
+          />
 
-        <div className={styles.buttonContainer}>
-          <button type="submit">Se connecter</button>
-        </div>
-      </form>
-    </FormProvider>
+          <div className={styles.buttonContainer}>
+            <button type="submit">Se connecter</button>
+          </div>
+        </form>
+      </FormProvider>
+    </section>
   );
 }
 

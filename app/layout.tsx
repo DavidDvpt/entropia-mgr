@@ -1,3 +1,4 @@
+import { dosis } from '@/scss/fonts';
 import type { Metadata } from 'next';
 import '../scss/global.css';
 import '../scss/theme.scss';
@@ -14,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr">
+    <html lang="fr" style={dosis.style}>
       <body>
         <SessionProviderComponent>{children}</SessionProviderComponent>
       </body>
