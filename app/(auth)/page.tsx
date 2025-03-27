@@ -1,6 +1,6 @@
 'use client';
 
-import { SessionProvider, signIn, signOut, useSession } from 'next-auth/react';
+import { SessionProvider, signIn, useSession } from 'next-auth/react';
 
 export default function Home() {
   const { data, status, update } = useSession();
@@ -12,9 +12,7 @@ export default function Home() {
   // signOut();
   return (
     <SessionProvider>
-      <main>
-        <button onClick={() => signOut()}>logout</button>
-      </main>
+      <main></main>
     </SessionProvider>
   );
 }

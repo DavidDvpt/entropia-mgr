@@ -1,0 +1,116 @@
+@use '../../../../scss/main';
+
+@mixin sub-menu {
+  font-weight: normal;
+  display: block;
+  position: absolute;
+  padding-bottom: 20px;
+  width: 200px;
+  background-color: main.$color_grey_02;
+
+  ul {
+    li {
+      &:hover {
+        background-color: main.$color_grey_04;
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+.header {
+  width: 100%;
+  @include main.flex-center-center;
+  background-color: main.$color_grey_03;
+
+  .brand {
+    padding-left: 10px;
+    font-size: 2.5em;
+    font-weight: 800;
+    cursor: pointer;
+  }
+
+  .profile {
+    position: relative;
+    margin: 0 5px;
+    cursor: pointer;
+
+    .profileBtn {
+      @include main.flex-center-center;
+      font-size: 0.9rem;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: main.$color_grey_08;
+    }
+    .profileMenu {
+      display: none;
+      ul {
+        li {
+          padding: 5px 0 5px 5px;
+        }
+      }
+    }
+
+    &:hover {
+      .profileMenu {
+        @include sub-menu;
+        top: 51px;
+        right: -10px;
+      }
+    }
+  }
+
+  .navElement {
+    flex: 1;
+    li {
+      position: relative;
+      cursor: pointer;
+
+      .link {
+        display: block;
+        height: 100%;
+        width: 100%;
+        text-decoration: none;
+        color: inherit;
+      }
+    }
+
+    > ul {
+      @include main.flex-end;
+
+      > li {
+        width: 120px;
+        text-align: center;
+        line-height: 50px;
+        border-bottom: 2px solid main.$color_grey_03;
+
+        &.isActive {
+          border-bottom: 2px solid main.$nav_active;
+          font-weight: 700;
+        }
+
+        .tabMenu {
+          display: none;
+        }
+
+        &:hover {
+          border-bottom: 2px solid main.$color_primary;
+
+          .tabMenu {
+            @include sub-menu;
+            top: 52px;
+
+            ul {
+              li {
+                line-height: 25px;
+                text-align: left;
+                padding: 2px 0 2px 10px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
