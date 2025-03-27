@@ -1,4 +1,4 @@
-import Header from './_components/header/Header';
+import Header from './_header/Header';
 
 function layout({ children }: IChildren) {
   return (
