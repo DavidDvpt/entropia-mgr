@@ -19,7 +19,9 @@
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@prisma/client": "^6.5.0",
+    "@reduxjs/toolkit": "^2.6.1",
     "bcryptjs": "^3.0.2",
+    "lodash": "^4.17.21",
     "next": "15.2.1",
     "next-auth": "^4.24.11",
     "react": "^19.0.0",
@@ -29,6 +31,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@types/lodash": "^4.17.16",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
