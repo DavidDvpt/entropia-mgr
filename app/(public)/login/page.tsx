@@ -43,6 +43,7 @@ function Login(): React.ReactElement {
         // }
       })
       .catch((error: any) => {
+        console.log(error);
         alert(error.message);
       });
   };
@@ -50,17 +51,22 @@ function Login(): React.ReactElement {
     <section className={styles.section}>
       <FormProvider {...formOptions}>
         <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-          <HookFormInput name="email" label="Email :" />
+          <HookFormInput
+            name="email"
+            label="Email :"
+            inputContainerClassName={styles.input}
+          />
 
           <HookFormInput
             type="password"
             name="password"
             label="Mot de passe :"
+            inputContainerClassName={styles.input}
           />
 
-          <div className={styles.buttonContainer}>
-            <button type="submit">Se connecter</button>
-          </div>
+          {/* <div className={styles.buttonContainer}> */}
+          <button type="submit">Se connecter</button>
+          {/* </div> */}
         </form>
       </FormProvider>
     </section>

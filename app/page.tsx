@@ -1,18 +1,20 @@
 'use client';
 
-import { SessionProvider, signIn, useSession } from 'next-auth/react';
+import { SessionProvider, signIn, signOut, useSession } from 'next-auth/react';
 
 export default function Home() {
   const { data, status, update } = useSession();
-  console.log(data, status);
 
   if (status === 'unauthenticated') {
     signIn();
   }
 
+  // signOut();
   return (
     <SessionProvider>
-      <main>app</main>
+      <main>
+        <button onClick={() => signOut()}>logout</button>
+      </main>
     </SessionProvider>
   );
 }
