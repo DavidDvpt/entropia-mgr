@@ -1,25 +1,25 @@
-@import '../../../../scss/main';
+@use '../../../../scss/main';
 
 .inputComponent {
-  @include flex-between-center;
+  @include main.flex-between-center;
   margin-bottom: 20px;
+  width: 100%;
 
   &.flexColumn {
     flex-direction: column;
   }
   .inputWithErrorConainer {
     .inputContainer {
-      @include flex-start-center;
-      background-color: $color_white;
+      @include main.flex-start-center;
+      background-color: main.$color_white;
       padding: 5px;
       border-radius: 5px;
-      width: 260px;
-      border: 1px solid $color_grey_02;
+      border: 1px solid main.$color_grey_02;
 
       &.error {
-        background-color: $color_error_lighten_40;
+        background-color: main.$color_error_lighten_40;
         border-width: 2px;
-        border-color: $color_error;
+        border-color: main.$color_error;
       }
 
       input {
@@ -29,12 +29,12 @@
         height: 24px;
 
         &[aria-invalid='true'] {
-          background-color: $color_error_lighten_40;
+          background-color: main.$color_error_lighten_40;
         }
       }
 
       svg {
-        width: 25px;
+        width: 20px;
         height: 20px;
         margin-left: 5px;
       }

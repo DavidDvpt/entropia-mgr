@@ -2,9 +2,7 @@
 
 import { ChangeEvent } from 'react';
 import { useFormContext } from 'react-hook-form';
-import InputComponent, {
-  IInputComponentProps,
-} from '../inputComponent/InputComponent';
+import InputComponent from '../inputComponent/InputComponent';
 
 function HookFormInput(props: IInputComponentProps) {
   const {

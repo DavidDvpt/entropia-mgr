@@ -1,22 +1,18 @@
-@import '../../../scss/main';
+@use '../../../scss/main';
 
 .loginPage {
-  @include flex-center-center;
+  @include main.flex-center-center;
+
   .section {
     width: 400px;
     height: 200px;
+    padding: 20px;
+
     .form {
+      @include main.flex-center-center-column;
+      .input {
+        width: 240px;
+      }
     }
   }
 }
-// .loginPage {
-//   input {
-//     color: red;
-//     padding: 10px;
-//     margin: 5px 0;
-//     border: 1px solid whitesmoke;
-//     outline: none;
-//     border-radius: 5px;
-//     // box-shadow: 0 0 5px grey;
-//   }
-// }

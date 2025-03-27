@@ -9,21 +9,7 @@ interface IOnFocusProps {
   selectOnFocus?: boolean;
 }
 
-export interface IInputComponentProps {
-  isVertical?: boolean;
-  label?: string;
-  name?: string;
-  value?: string;
-  type?: 'text' | 'number' | 'password' | 'email';
-  placeholder?: string;
-  disabled?: boolean;
-  onInputChange?: (value: ChangeEvent<HTMLInputElement>, name: string) => void;
-  selectOnFocus?: boolean;
-  inputClassName?: string;
-  error?: string;
-}
-
-const InputComponent = forwardRef(
+export const InputComponent = forwardRef(
   (props: IInputComponentProps, ref: Ref<HTMLInputElement>) => {
     const [visible, setVisible] = useState(false);
 
@@ -54,13 +40,13 @@ const InputComponent = forwardRef(
             className={[
               styles.inputContainer,
               props.error ? styles.error : '',
+              props.inputContainerClassName ?? '',
             ].join(' ')}
           >
             <input
-              className={props.inputClassName}
               style={dosis.style}
               ref={ref}
-              type={props.type}
+              type={visible ? 'text' : props.type}
               name={props.name}
               value={props.value}
               placeholder={props.placeholder}

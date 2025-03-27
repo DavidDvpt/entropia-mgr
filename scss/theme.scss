@@ -1,4 +1,4 @@
-@import './main';
+@use './main';
 
 body {
   min-width: 600px;
@@ -42,8 +42,8 @@ section {
   padding: 10px;
   margin: 20px 5px;
   border-radius: 10px;
-  background-color: $color_grey_01;
-  box-shadow: 0 0 10px $color_grey_05;
+  background-color: main.$color_grey_01;
+  box-shadow: 0 0 10px main.$color_grey_05;
 }
 button {
   cursor: pointer;
@@ -56,59 +56,59 @@ button {
   font-size: 1em;
 
   &[type='reset'] {
-    background-color: $color_grey_03;
-    color: $color_black;
+    background-color: main.$color_grey_03;
+    color: main.$color_black;
   }
   &[type='submit'],
   &.info {
-    background-color: $btn_primary;
-    color: $color_white;
+    background-color: main.$btn_primary;
+    color: main.$color_white;
 
     &:hover {
-      box-shadow: 0 0 5px $btn_primary;
+      box-shadow: 0 0 5px main.$btn_primary;
     }
   }
   // &.info {
-  //   background-color: $btn_primary;
-  //   color: $color_white;
+  //   background-color: main.$btn_primary;
+  //   color: main.$color_white;
 
   //   &:hover {
-  //     box-shadow: 0 0 5px $btn_primary;
+  //     box-shadow: 0 0 5px main.$btn_primary;
   //   }
   // }
   &.error {
-    background-color: $color_error;
-    color: $color_white;
+    background-color: main.$color_error;
+    color: main.$color_white;
     &:hover {
-      box-shadow: 0 0 5px $color_error;
+      box-shadow: 0 0 5px main.$color_error;
     }
   }
   &.warning {
-    background-color: $color_warning;
-    color: $color_black;
+    background-color: main.$color_warning;
+    color: main.$color_black;
 
     &:hover {
-      box-shadow: 0 0 5px $color_warning;
+      box-shadow: 0 0 5px main.$color_warning;
     }
   }
   &.success {
-    background-color: $color_success;
+    background-color: main.$color_success;
 
     &:hover {
-      box-shadow: 0 0 5px $color_success;
+      box-shadow: 0 0 5px main.$color_success;
     }
   }
   &:hover {
     font-weight: 700;
-    box-shadow: 0 0 5px $color_black;
+    box-shadow: 0 0 5px main.$color_black;
   }
   &:active {
-    box-shadow: 0 0 5px $color_grey_10;
+    box-shadow: 0 0 5px main.$color_grey_10;
   }
 }
 
 .labelContainer {
-  @include flex-between-center;
+  @include main.flex-between-center;
 
   &.start {
     justify-content: flex-start;
@@ -142,21 +142,21 @@ input[type='checkbox'] {
 }
 
 // fieldset {
-//   @include flex-center-start-column;
+//   @include main.flex-center-start-column;
 //   padding: 5px;
 //   border-radius: 5px;
-//   background-color: $color_white;
-//   border: 1px solid $input_border_color;
+//   background-color: main.$color_white;
+//   border: 1px solid main.$input_border_color;
 //   margin: 5px;
 
 //   &:focus {
-//     outline-color: $input_border_color_focus;
-//     color: $color_black;
+//     outline-color: main.$input_border_color_focus;
+//     color: main.$color_black;
 //   }
 
 //   .inputContent {
 //     width: 100%;
-//     @include flex-center-center;
+//     @include main.flex-center-center;
 
 //     input {
 //       width: 100%;
@@ -185,7 +185,7 @@ input[type='checkbox'] {
 
 //   select {
 //     border: none;
-//     background-color: $color_white;
+//     background-color: main.$color_white;
 //     width: 100%;
 //     height: 30px;
 //     font-size: 1rem;
@@ -199,7 +199,7 @@ input[type='checkbox'] {
 //     }
 //   }
 //   .errorLine {
-//     color: $color_error;
+//     color: main.$color_error;
 //     font-style: italic;
 //     font-size: 0.8em;
 //   }
