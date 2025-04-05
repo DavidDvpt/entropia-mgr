@@ -20,6 +20,7 @@
 
 .header {
   width: 100%;
+  height: 50px;
   @include main.flex-center-center;
   background-color: main.$color_grey_03;
 

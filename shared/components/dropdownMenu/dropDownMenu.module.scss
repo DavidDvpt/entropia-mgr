@@ -1,0 +1,37 @@
+@use '../../../scss/main';
+
+.dropDownItem {
+  position: relative;
+  display: inline-block;
+  height: 100%;
+
+  p {
+    @include main.flex-center-center;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  .dropDown {
+    display: none;
+    // position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: white;
+    min-width: 200px; /* Plus large que le bouton */
+    border: 1px solid #ccc;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  &:hover .dropDown,
+  .dropDown:hover {
+    display: block;
+  }
+  //   &:hover {
+  //     p {
+  //       font-weight: 700;
+  //     }
+  //     .dropDown {
+  //       display: block;
+  //     }
+  //   }
+}

@@ -1,5 +1,5 @@
 import { signOut } from 'next-auth/react';
-import styles from '../../header.module.scss';
+import styles from '../header.module.scss';
 function ProfileMenu() {
   // handles
   const handleLogout = () => {
