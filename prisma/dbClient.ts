@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '@prisma/client';
 
 declare global {
   // eslint-disable-next-line no-var
@@ -6,6 +6,7 @@ declare global {
 }
 
 const dbClient = globalThis.prisma || new PrismaClient();
-if (process.env.NODE_ENV !== "production") globalThis.prisma = dbClient;
+if (process.env.NODE_ENV !== 'production') globalThis.prisma = dbClient;
 
 export default dbClient;
+export type { User } from '@generated/client';
