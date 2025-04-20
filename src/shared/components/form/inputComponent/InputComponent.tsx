@@ -1,8 +1,6 @@
-import { dosis } from '@/scss/fonts';
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ChangeEvent, FocusEvent, forwardRef, Ref, useState } from 'react';
-import styles from './inputComponent.module.scss';
 
 interface IOnFocusProps {
   e: FocusEvent<HTMLInputElement>;
@@ -28,23 +26,11 @@ export const InputComponent = forwardRef(
     );
 
     return (
-      <div
-        className={[
-          styles.inputComponent,
-          props.isVertical && props.label ? styles.flexColumn : '',
-        ].join('')}
-      >
+      <div className="">
         {props.label && <label>{props.label}</label>}
-        <div className={styles.inputWithErrorConainer}>
-          <div
-            className={[
-              styles.inputContainer,
-              props.error ? styles.error : '',
-              props.inputContainerClassName ?? '',
-            ].join(' ')}
-          >
+        <div>
+          <div className="">
             <input
-              style={dosis.style}
               ref={ref}
               type={visible ? 'text' : props.type}
               name={props.name}

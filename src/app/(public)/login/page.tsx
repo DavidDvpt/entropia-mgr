@@ -6,7 +6,7 @@ import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { FormProvider, useForm } from 'react-hook-form';
 import { intialLoginValues } from './constants';
-import styles from './login.module.scss';
+// import styles from './login.module.scss';
 
 function Login(): React.ReactElement {
   const router = useRouter();
@@ -48,20 +48,15 @@ function Login(): React.ReactElement {
       });
   };
   return (
-    <section className={styles.section}>
+    <section>
       <FormProvider {...formOptions}>
-        <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-          <HookFormInput
-            name="email"
-            label="Email :"
-            inputContainerClassName={styles.input}
-          />
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <HookFormInput name="email" label="Email :" />
 
           <HookFormInput
             type="password"
             name="password"
             label="Mot de passe :"
-            inputContainerClassName={styles.input}
           />
 
           {/* <div className={styles.buttonContainer}> */}
