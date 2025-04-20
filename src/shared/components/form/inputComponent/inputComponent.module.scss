@@ -1,0 +1,49 @@
+@use '../../../../scss/main';
+
+.inputComponent {
+  @include main.flex-between-center;
+  margin-bottom: 20px;
+  width: 100%;
+
+  &.flexColumn {
+    flex-direction: column;
+  }
+  .inputWithErrorConainer {
+    .inputContainer {
+      @include main.flex-start-center;
+      background-color: main.$color_white;
+      padding: 5px;
+      border-radius: 5px;
+      border: 1px solid main.$color_grey_02;
+
+      &.error {
+        background-color: main.$color_error_lighten_40;
+        border-width: 2px;
+        border-color: main.$color_error;
+      }
+
+      input {
+        border: none;
+        outline: none;
+        flex: 1;
+        height: 24px;
+
+        &[aria-invalid='true'] {
+          background-color: main.$color_error_lighten_40;
+        }
+      }
+
+      svg {
+        width: 20px;
+        height: 20px;
+        margin-left: 5px;
+      }
+    }
+
+    p {
+      color: red;
+      font-size: 14px;
+      font-style: italic;
+    }
+  }
+}

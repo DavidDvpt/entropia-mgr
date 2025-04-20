@@ -1,4 +1,4 @@
-import dbClient, { User } from '@prisma/dbClient';
+import dbClient, { User } from '@orm/dbClient';
 
 /**
  * Retrieves a user by their ID (in this case, the ID is the email).

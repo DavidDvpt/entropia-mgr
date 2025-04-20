@@ -147,6 +147,10 @@ const config = {
         "fromEnvVar": null,
         "value": "darwin-arm64",
         "native": true
+      },
+      {
+        "fromEnvVar": null,
+        "value": "linux-arm64-openssl-3.0.x"
       }
     ],
     "previewFeatures": [],
@@ -164,16 +168,17 @@ const config = {
     "db"
   ],
   "activeProvider": "postgresql",
+  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
         "fromEnvVar": "DATABASE_URL",
-        "value": "postgresql://19daVid69_admin:next_2025@localhost:5432/eu_trade_manager?schema=public"
+        "value": null
       }
     }
   },
-  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"../src/app/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nenum RoleEnum {\n  ADMIN\n  USER\n}\n\nmodel User {\n  id        String    @id @default(cuid())\n  firstname String?   @db.VarChar(50)\n  lastname  String?   @db.VarChar(50)\n  pseudo    String?   @db.VarChar(50)\n  email     String    @unique @db.VarChar(255)\n  createdAt DateTime  @default(now()) @map(\"created_at\")\n  updatedAt DateTime? @map(\"updated_at\")\n  isActive  Boolean   @default(true) @map(\"is_active\")\n  password  String    @db.VarChar(255)\n  role      RoleEnum  @default(USER)\n\n  @@map(\"user\")\n}\n",
-  "inlineSchemaHash": "f5a7f1c64483869a83cc0720ccd8f11092f7bffcda174fcaa738305d9c3f52a0",
+  "inlineSchema": "// This is your Prisma schema file,\n// learn more about it in the docs: https://pris.ly/d/prisma-schema\n\n// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?\n// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init\n\ngenerator client {\n  provider      = \"prisma-client-js\"\n  binaryTargets = [\"native\", \"linux-arm64-openssl-3.0.x\"]\n  output        = \"../src/app/generated/prisma\"\n}\n\ndatasource db {\n  provider = \"postgresql\"\n  url      = env(\"DATABASE_URL\")\n}\n\nenum RoleEnum {\n  ADMIN\n  USER\n}\n\nmodel User {\n  id        String    @id @default(cuid())\n  firstname String?   @db.VarChar(50)\n  lastname  String?   @db.VarChar(50)\n  pseudo    String?   @db.VarChar(50)\n  email     String    @unique @db.VarChar(255)\n  createdAt DateTime  @default(now()) @map(\"created_at\")\n  updatedAt DateTime? @map(\"updated_at\")\n  isActive  Boolean   @default(true) @map(\"is_active\")\n  password  String    @db.VarChar(255)\n  role      RoleEnum  @default(USER)\n\n  @@map(\"user\")\n}\n",
+  "inlineSchemaHash": "e20f08b0afcaa0586b046357d9f8adac836e9b58e7084ad23a19babc0ad5f9ff",
   "copyEngine": true
 }
 
@@ -214,6 +219,10 @@ Object.assign(exports, Prisma)
 // file annotations for bundling tools to include these files
 path.join(__dirname, "libquery_engine-darwin-arm64.dylib.node");
 path.join(process.cwd(), "src/app/generated/prisma/libquery_engine-darwin-arm64.dylib.node")
+
+// file annotations for bundling tools to include these files
+path.join(__dirname, "libquery_engine-linux-arm64-openssl-3.0.x.so.node");
+path.join(process.cwd(), "src/app/generated/prisma/libquery_engine-linux-arm64-openssl-3.0.x.so.node")
 // file annotations for bundling tools to include these files
 path.join(__dirname, "schema.prisma");
 path.join(process.cwd(), "src/app/generated/prisma/schema.prisma")

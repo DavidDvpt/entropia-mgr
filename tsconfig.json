@@ -21,7 +21,7 @@
     "baseUrl": "src",
     "paths": {
       "@/*": ["*"],
-      "@prisma/*": ["../prisma/*"],
+      "@orm/*": ["../prisma/*"],
       "@generated/*": ["app/generated/prisma"]
     }
   },
