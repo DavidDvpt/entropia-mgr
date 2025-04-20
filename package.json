@@ -6,7 +6,10 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "pg": "npx prisma generate",
+    "pm": "npx prisma migrate dev",
+    "pr": "npx prisma migrate reset"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
