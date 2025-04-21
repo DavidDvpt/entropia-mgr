@@ -60,7 +60,8 @@ function Login(): React.ReactElement {
           />
 
           {/* <div className={styles.buttonContainer}> */}
-          <button type="submit">Se connecter</button>
+          {/* <button type="submit">Se connecter</button> */}
+          <button>Secondaire</button>
           {/* </div> */}
         </form>
       </FormProvider>
