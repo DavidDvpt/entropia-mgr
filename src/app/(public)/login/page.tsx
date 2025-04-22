@@ -48,7 +48,7 @@ function Login(): React.ReactElement {
       });
   };
   return (
-    <section>
+    <section style={{ width: '100px', height: '100px', margin: '100px' }}>
       <FormProvider {...formOptions}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <HookFormInput name="email" label="Email :" />
