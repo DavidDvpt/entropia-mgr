@@ -1,8 +1,7 @@
 import type { Metadata } from 'next';
-
-import './globals.css';
+import { dosis } from '../styles/fonts.js';
+import '../styles/global.scss';
 import SessionProviderComponent from './SessionProviderComponent';
-
 // const geistSans = Geist({
 //   variable: '--font-geist-sans',
 //   subsets: ['latin'],
@@ -24,7 +23,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="fr">
+    <html lang="fr" style={dosis.style}>
       <body>
         <SessionProviderComponent>{children}</SessionProviderComponent>
       </body>
