@@ -48,7 +48,7 @@ function Login(): React.ReactElement {
       });
   };
   return (
-    <section style={{ width: '100px', height: '100px', margin: '100px' }}>
+    <section>
       <FormProvider {...formOptions}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <HookFormInput name="email" label="Email :" />
@@ -62,7 +62,6 @@ function Login(): React.ReactElement {
           {/* <div className={styles.buttonContainer}> */}
           {/* <button type="submit">Se connecter</button> */}
 
-          <button>Secondaire</button>
           {/* </div> */}
         </form>
       </FormProvider>
