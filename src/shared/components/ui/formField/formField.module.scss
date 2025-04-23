@@ -1,0 +1,36 @@
+@import '../../../../styles/theme';
+
+.formField {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+
+  .label {
+    margin-right: 10px;
+  }
+  &.top {
+    flex-direction: column;
+    align-items: start;
+  }
+  &.right {
+    flex-direction: row-reverse;
+
+    .label {
+      margin-left: 10px;
+    }
+  }
+  &.bottom {
+    flex-direction: column-reverse;
+    align-items: start;
+  }
+  .label {
+  }
+
+  .childrenContainer {
+    .errorText {
+      color: $error;
+      font-style: italic;
+      font-size: $fontSizeLower;
+    }
+  }
+}
