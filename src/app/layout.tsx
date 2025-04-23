@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { dosis } from '../styles/fonts.js';
-import '../styles/global.scss';
+import '../styles/global.css';
 import SessionProviderComponent from './SessionProviderComponent';
 // const geistSans = Geist({
 //   variable: '--font-geist-sans',

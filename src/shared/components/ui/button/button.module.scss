@@ -1,0 +1,55 @@
+@import '../../../../styles/theme';
+
+.button {
+  padding: 8px 15px;
+  border-radius: $borderRadius;
+
+  cursor: pointer;
+
+  &.primary {
+    background-color: $primary;
+    color: $primary-fg;
+  }
+  &.warning {
+    background-color: $warning;
+    color: $warning-fg;
+  }
+  &.error {
+    background-color: $error;
+    color: $error-fg;
+  }
+  &.success {
+    background-color: $success;
+    color: $success-fg;
+  }
+  &:hover {
+    &.primary {
+      background-color: $primary-dark;
+    }
+    &.warning {
+      background-color: $warning-dark;
+    }
+    &.error {
+      background-color: $error-dark;
+    }
+    &.success {
+      background-color: $success-dark;
+    }
+  }
+
+  &:active {
+    font-weight: 600;
+    &.primary {
+      box-shadow: $primary-shadow;
+    }
+    &.warning {
+      box-shadow: $warning-shadow;
+    }
+    &.error {
+      box-shadow: $error-shadow;
+    }
+    &.success {
+      box-shadow: $success-shadow;
+    }
+  }
+}

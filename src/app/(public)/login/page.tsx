@@ -2,6 +2,7 @@
 
 import HookFormInput from '@/shared/components/form/hookForm/HookFormInput';
 
+import Button from '@/shared/components/ui/button/Button';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { FormProvider, useForm } from 'react-hook-form';
@@ -52,16 +53,14 @@ function Login(): React.ReactElement {
       <FormProvider {...formOptions}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <HookFormInput name="email" label="Email :" />
-
           <HookFormInput
             type="password"
             name="password"
             label="Mot de passe :"
           />
-
+          <Button variant="primary">Bouton</Button>
           {/* <div className={styles.buttonContainer}> */}
           {/* <button type="submit">Se connecter</button> */}
-
           {/* </div> */}
         </form>
       </FormProvider>
