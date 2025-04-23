@@ -3,11 +3,12 @@
 import HookFormInput from '@/shared/components/form/hookForm/HookFormInput';
 
 import Button from '@/shared/components/ui/button/Button';
+import Section from '@/shared/components/ui/section/Section';
 import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { FormProvider, useForm } from 'react-hook-form';
 import { intialLoginValues } from './constants';
-// import styles from './login.module.scss';
+import styles from './login.module.scss';
 
 function Login(): React.ReactElement {
   const router = useRouter();
@@ -49,7 +50,7 @@ function Login(): React.ReactElement {
       });
   };
   return (
-    <section>
+    <Section className={styles.section}>
       <FormProvider {...formOptions}>
         <form onSubmit={handleSubmit(onSubmit)}>
           <HookFormInput name="email" label="Email :" />
@@ -64,7 +65,7 @@ function Login(): React.ReactElement {
           {/* </div> */}
         </form>
       </FormProvider>
-    </section>
+    </Section>
   );
 }
 

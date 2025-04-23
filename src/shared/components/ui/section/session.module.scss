@@ -1,0 +1,8 @@
+@import '../../../../styles/theme';
+
+.section {
+  background-color: $section-bg;
+  border-radius: $borderRadius;
+  padding: 10px;
+  box-shadow: $section-shadow;
+}

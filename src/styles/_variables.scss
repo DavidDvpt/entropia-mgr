@@ -6,15 +6,21 @@
   --color-primary: hsla(54, 89%, 56%, 1);
 }
 
+// hsla(hue, saturation, lightness, alpha)
+$prussian-blue: hsla(206, 97%, 15%, 1);
 $indigo-dye: hsla(205, 98%, 20%, 1);
 $indigo-dye-2: hsla(205, 98%, 25%, 1);
 $indigo-dye-3: hsla(205, 99%, 26%, 1);
 $ucla-blue: hsla(202, 56%, 38%, 1);
+$cerulean: hsla(198, 57%, 40%, 1);
 $air-force-blue: hsla(198, 43%, 48%, 1);
 $air-superiority-blue: hsla(198, 44%, 57%, 1);
 $sky-blue: hsla(197, 51%, 69%, 1);
 $light-blue: hsla(195, 54%, 78%, 1);
 
+// CONSTANTS
+$borderRadius: 4px;
+$shadowBlur: 6px;
 $white: hsl(0, 0, 100%);
 $black: hsl(0, 0, 1);
 
@@ -22,30 +28,31 @@ $primary: hsla(198, 57%, 40%, 1);
 $primary-fg: $white;
 $primary-light: hsla(198, 57%, 60%, 1);
 $primary-dark: hsla(198, 57%, 30%, 1);
-$primary-shadow: 0 0 5px 0 hsla(198, 57%, 30%, 1);
+$primary-shadow: 0 0 $shadowBlur 0 hsla(198, 57%, 30%, 1);
 
 $warning: hsla(26, 83%, 50%, 1);
 $warning-fg: $black;
 $warning-light: hsla(26, 83%, 60%, 1);
 $warning-dark: hsla(26, 83%, 40%, 1);
-$warning-shadow: 0 0 10px 0 hsla(26, 83%, 40%, 1);
+$warning-shadow: 0 0 $shadowBlur 0 hsla(26, 83%, 40%, 1);
 
 $error: hsla(353, 86%, 54%, 1);
 $error-fg: $black;
 $error-light: hsla(353, 86%, 64%, 1);
 $error-dark: hsla(353, 86%, 44%, 1);
-$error-shadow: 0 0 10px 0 hsla(353, 86%, 44%, 1);
+$error-shadow: 0 0 $shadowBlur 0 hsla(353, 86%, 44%, 1);
 
 $success: hsla(124, 67%, 69%, 1);
 $success-fg: hsl(0, 0, 1);
 $success-light: hsla(124, 67%, 79%, 1);
 $success-dark: hsla(124, 67%, 59%, 1);
-$success-shadow: 0 0 10px 0 hsla(124, 67%, 59%, 1);
+$success-shadow: 0 0 $shadowBlur 0 hsla(124, 67%, 59%, 1);
+
+$section-bg: hsla(205, 98%, 20%, 1);
+$section-shadow: 0 0 $shadowBlur 0 hsla(205, 98%, 20%, 1);
 
 $white: hsl(0, 0, 100%);
 $black: hsl(0, 0, 1);
-
-$borderRadius: 4px;
 
 /* SCSS Gradient */
 $gradient-top: linear-gradient(
