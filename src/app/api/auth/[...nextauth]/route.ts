@@ -1,3 +1,5 @@
+import { quickErrorAccess } from '@/lib/errorMgr/apiErrorMessages';
+import ErrorKeyEnum from '@/lib/errorMgr/ErrorKeyEnum';
 import { getUserByEmail } from '@/lib/prisma/user';
 import bcrypt from 'bcryptjs';
 import { randomBytes, randomUUID } from 'crypto';
@@ -19,18 +21,21 @@ const handler = NextAuth({
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials, req): Promise<User | null> {
+        const login = quickErrorAccess(401, ErrorKeyEnum.badLogin);
+        const pwd = quickErrorAccess(401, ErrorKeyEnum.badPwd);
+        const both = quickErrorAccess(401, ErrorKeyEnum.noCredentials);
         if (!credentials?.email || !credentials?.password) {
-          throw new Error('Email and password are required');
+          throw new Error(both.api);
         }
         const user = await getUserByEmail(credentials.email);
 
-        if (!user) throw new Error("This user don't exist");
+        if (!user) throw new Error(login.api);
         const pwdCorrect = await bcrypt.compare(
           credentials.password,
           user.password
         );
 
-        if (!pwdCorrect) throw new Error('Invalid password');
+        if (!pwdCorrect) throw new Error(pwd.api);
 
         return user;
       },
