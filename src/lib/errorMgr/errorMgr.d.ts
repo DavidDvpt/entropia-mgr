@@ -1,9 +1,12 @@
 type ErrorMessageObjectType = { api: string; user: string };
 
+type GenericErrorPropertyType = {
+  [errorKey in ErrorKeyEnum]?: ErrorMessageObjectType;
+};
+
 type ApiErrorMessagesType = {
-  [statusCode: number]: {
-    [errorKey in ErrorKeyEnum]?: ErrorMessageObjectType;
-  };
+  common: GenericErrorPropertyType;
+  login: GenericErrorPropertyType;
 };
 
 type ErrorStateType = { key: string; msg: string };

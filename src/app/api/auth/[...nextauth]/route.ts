@@ -21,9 +21,9 @@ const handler = NextAuth({
         password: { label: 'Password', type: 'password' },
       },
       async authorize(credentials, req): Promise<User | null> {
-        const login = quickErrorAccess(401, ErrorKeyEnum.badLogin);
-        const pwd = quickErrorAccess(401, ErrorKeyEnum.badPwd);
-        const both = quickErrorAccess(401, ErrorKeyEnum.noCredentials);
+        const login = quickErrorAccess('login', ErrorKeyEnum.badLogin);
+        const pwd = quickErrorAccess('login', ErrorKeyEnum.badPwd);
+        const both = quickErrorAccess('login', ErrorKeyEnum.noCredentials);
         if (!credentials?.email || !credentials?.password) {
           throw new Error(both.api);
         }

@@ -26,9 +26,9 @@ function Login(): React.ReactElement {
     })
       .then((response: any) => {
         if (response.status === 401 && response.error) {
-          const login = quickErrorAccess(401, ErrorKeyEnum.badLogin);
-          const pwd = quickErrorAccess(401, ErrorKeyEnum.badPwd);
-          const both = quickErrorAccess(401, ErrorKeyEnum.noCredentials);
+          const login = quickErrorAccess('login', ErrorKeyEnum.badLogin);
+          const pwd = quickErrorAccess('login', ErrorKeyEnum.badPwd);
+          const both = quickErrorAccess('login', ErrorKeyEnum.noCredentials);
 
           switch (response.error) {
             case login.api:

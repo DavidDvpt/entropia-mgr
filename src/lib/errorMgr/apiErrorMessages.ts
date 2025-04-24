@@ -1,7 +1,7 @@
 import ErrorKeyEnum from './ErrorKeyEnum';
 
 const apiErrorMessages: ApiErrorMessagesType = {
-  401: {
+  login: {
     [ErrorKeyEnum.badLogin]: {
       api: "This user don't exist",
       user: "Cet utilisateur n'existe pas",
@@ -19,7 +19,7 @@ const apiErrorMessages: ApiErrorMessagesType = {
       user: 'Accès non autorisé',
     },
   },
-  500: {
+  common: {
     [ErrorKeyEnum.internalServerError]: {
       api: 'Server error',
       user: 'Erreur du serveur, veuillez réessayer plus tard',
@@ -27,7 +27,10 @@ const apiErrorMessages: ApiErrorMessagesType = {
   },
 };
 
-function quickErrorAccess(code: number, errorKey: ErrorKeyEnum) {
+function quickErrorAccess(
+  code: keyof ApiErrorMessagesType,
+  errorKey: ErrorKeyEnum
+) {
   return (
     apiErrorMessages[code]?.[errorKey] ?? {
       api: 'unknown error',
