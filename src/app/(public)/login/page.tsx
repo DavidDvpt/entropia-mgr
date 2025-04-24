@@ -59,7 +59,9 @@ function Login(): React.ReactElement {
           children={<Input type="password" className={styles.fields} />}
         />
 
-        <Button variant="primary">Bouton</Button>
+        <Button variant="primary" type="submit" className={styles.submitBtn}>
+          Se connecter
+        </Button>
         {/* <div className={styles.buttonContainer}> */}
         {/* <button type="submit">Se connecter</button> */}
         {/* </div> */}

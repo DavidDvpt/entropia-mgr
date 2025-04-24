@@ -1,18 +1,25 @@
 @use '../../../styles/theme';
 
-.loginPage {
+.login {
   height: 100vh;
   width: 100vw;
   @include theme.flex-center-center;
 
   .section {
-    @include theme.flex-center-center;
-    width: 400px;
-    height: 200px;
-    padding: 20px;
+    form {
+      @include theme.flex-column-center-center;
+      width: 350px;
+      // height: 200px;
+      padding: 20px;
 
-    .fields {
-      width: 250px;
+      .fields {
+        width: 250px;
+      }
+
+      button {
+        margin-top: 10px;
+        width: 50%;
+      }
     }
   }
 }
