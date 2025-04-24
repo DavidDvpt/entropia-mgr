@@ -36,7 +36,7 @@
 
   .childrenContainer {
     .errorText {
-      color: $error;
+      color: var(--form-error-foreground);
       font-style: italic;
       font-size: $fontSizeLower;
     }
