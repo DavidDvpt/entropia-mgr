@@ -4,3 +4,11 @@ interface IChildren {
 type VariantType = 'primary' | 'warning' | 'error' | 'success';
 
 type PositionType = 'top' | 'right' | 'left' | 'bottom';
+
+type InputType = 'text' | 'number' | 'password' | 'email';
+
+interface IFormeElementType {
+  name: string;
+  id: string;
+  error?: boolean;
+}

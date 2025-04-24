@@ -7,7 +7,7 @@ interface IOnFocusProps {
   selectOnFocus?: boolean;
 }
 
-export const InputComponent = forwardRef(
+const InputComponent = forwardRef(
   (props: IInputComponentProps, ref: Ref<HTMLInputElement>) => {
     const [visible, setVisible] = useState(false);
 

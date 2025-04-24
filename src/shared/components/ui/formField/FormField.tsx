@@ -1,20 +1,18 @@
-import { cloneElement, isValidElement } from 'react';
+import React from 'react';
 import { useFormContext } from 'react-hook-form';
 
-import { mergeRefs } from '@/lib/RHFutils';
 import styles from './formField.module.scss';
 
-interface IFormFieldProps extends IChildren {
+interface IFormFieldProps {
   label?: string;
   name: string;
+  children: React.ReactElement<Partial<IFormeElementType>>;
   className?: string;
-  children: AllowedElements & React.RefAttributes<AllowedElements>;
   labelPosition?: PositionType;
 }
 
-const FormField = (props: IFormFieldProps) => {
+function FormField<T extends object>(props: IFormFieldProps) {
   const {
-    register,
     formState: { errors },
   } = useFormContext();
   const { labelPosition = 'top', name } = props;
@@ -24,14 +22,12 @@ const FormField = (props: IFormFieldProps) => {
 
   const css = [styles.formField, styles[labelPosition], props.className];
 
-  const { ref, ...rest } = register(name);
-
-  const mergedRef = mergeRefs(ref, props.children.ref);
-  const registeredChild = isValidElement(props.children)
-    ? cloneElement(props.children, {
-        ...rest,
-        ref: mergedRef,
-        id: name,
+  const cloned = React.isValidElement(props.children)
+    ? React.cloneElement(props.children, {
+        ...props.children.props,
+        id,
+        name,
+        error: Boolean(error),
       })
     : props.children;
 
@@ -43,12 +39,12 @@ const FormField = (props: IFormFieldProps) => {
         </label>
       )}
       <div className={styles.childrenContainer}>
-        {registeredChild}
+        {cloned}
 
         {error && <p className={styles.errorText}>{error}</p>}
       </div>
     </div>
   );
-};
+}
 
 export default FormField;

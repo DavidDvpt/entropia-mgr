@@ -47,12 +47,16 @@ function Login(): React.ReactElement {
   return (
     <Section className={styles.section}>
       <GenericForm defaultValues={intialLoginValues} onSubmit={onSubmit}>
-        <FormField name="email" label="Email :" children={<Input />} />
+        <FormField
+          name="email"
+          label="Email :"
+          children={<Input type="email" />}
+        />
 
         <FormField
           name="password"
           label="Mot de passe :"
-          children={<Input />}
+          children={<Input type="password" />}
         />
 
         <Button variant="primary">Bouton</Button>
