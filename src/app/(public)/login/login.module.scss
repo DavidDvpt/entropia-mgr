@@ -6,15 +6,13 @@
   @include theme.flex-center-center;
 
   .section {
+    @include theme.flex-center-center;
     width: 400px;
     height: 200px;
     padding: 20px;
 
-    // .form {
-    //   @include theme.flex-center-center;
-    //   .input {
-    //     width: 240px;
-    //   }
-    // }
+    .fields {
+      width: 250px;
+    }
   }
 }

@@ -19,8 +19,8 @@ $sky-blue: hsla(197, 51%, 69%, 1);
 $light-blue: hsla(195, 54%, 78%, 1);
 
 // CONSTANTS
-$borderRadius: 4px;
-$shadowBlur: 6px;
+$borderRadius: 6px;
+$shadowBlur: 10px;
 $white: hsl(0, 0, 100%);
 $black: hsl(0, 0, 1);
 
@@ -54,7 +54,7 @@ $success-dark: hsla(124, 67%, 59%, 1);
 $success-shadow: 0 0 $shadowBlur 0 hsla(124, 67%, 59%, 1);
 
 $section-bg: hsla(205, 98%, 20%, 1);
-$section-shadow: 0 0 $shadowBlur 0 hsla(205, 98%, 20%, 1);
+$section-shadow: 0 0 $shadowBlur 3px hsla(202, 56%, 38%, 1);
 
 $white: hsl(0, 0, 100%);
 $black: hsl(0, 0, 1);

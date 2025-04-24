@@ -20,7 +20,12 @@ function FormField<T extends object>(props: IFormFieldProps) {
   const id = `field-${name}`;
   const error = errors[name]?.message as string;
 
-  const css = [styles.formField, styles[labelPosition], props.className];
+  const css = [
+    styles.formField,
+    styles[labelPosition],
+    error && styles.error,
+    props.className,
+  ];
 
   const cloned = React.isValidElement(props.children)
     ? React.cloneElement(props.children, {

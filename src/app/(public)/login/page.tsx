@@ -50,13 +50,13 @@ function Login(): React.ReactElement {
         <FormField
           name="email"
           label="Email :"
-          children={<Input type="email" />}
+          children={<Input type="email" className={styles.fields} />}
         />
 
         <FormField
           name="password"
           label="Mot de passe :"
-          children={<Input type="password" />}
+          children={<Input type="password" className={styles.fields} />}
         />
 
         <Button variant="primary">Bouton</Button>

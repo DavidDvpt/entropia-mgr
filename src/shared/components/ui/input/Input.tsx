@@ -5,7 +5,6 @@ import { useFormContext } from 'react-hook-form';
 import styles from './input.module.scss';
 interface IInputProps {
   className?: string;
-
   type?: InputType;
   name?: string;
   id?: string;
@@ -21,6 +20,7 @@ function Input(props: IInputProps) {
 
   const css = [styles.inputContainer];
   props.className && css.push(props.className);
+  props.error && css.push(styles.error);
 
   const Eye = () => (
     <FontAwesomeIcon
