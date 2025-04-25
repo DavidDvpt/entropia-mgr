@@ -20,6 +20,18 @@ enum RoleEnum {
   USER
 }
 
+model Navigation {
+  id        String       @id @default(cuid())
+  label     String       @unique
+  url       String?
+  isActive  Boolean      @default(true) @map("is_active")
+  parentId  String?
+  parent    Navigation?  @relation("NavItemToChildren", fields: [parentId], references: [id])
+  children  Navigation[] @relation("NavItemToChildren")
+  createdAt DateTime     @default(now()) @map("created_at")
+  updatedAt DateTime     @updatedAt @map("updated_at")
+}
+
 model User {
   id        String    @id @default(cuid())
   firstname String?   @db.VarChar(50)
@@ -27,7 +39,7 @@ model User {
   pseudo    String?   @db.VarChar(50)
   email     String    @unique @db.VarChar(255)
   createdAt DateTime  @default(now()) @map("created_at")
-  updatedAt DateTime? @map("updated_at")
+  updatedAt DateTime? @updatedAt @map("updated_at")
   isActive  Boolean   @default(true) @map("is_active")
   password  String    @db.VarChar(255)
   role      RoleEnum  @default(USER)
