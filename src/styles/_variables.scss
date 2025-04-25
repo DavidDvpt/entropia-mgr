@@ -1,0 +1,193 @@
+/* SCSS HSL */
+// hsla(hue, saturation, lightness, alpha)
+:root {
+  --color-background: hsla(206, 97%, 15%, 1);
+  --color-foreground: hsla(0, 0%, 100%, 1);
+  --color-primary: hsla(54, 89%, 56%, 1);
+  --form-error-foreground: hsla(353, 86%, 84%, 1);
+}
+
+// hsla(hue, saturation, lightness, alpha)
+$prussian-blue: hsla(206, 97%, 15%, 1);
+$indigo-dye: hsla(205, 98%, 20%, 1);
+$indigo-dye-2: hsla(205, 98%, 25%, 1);
+$indigo-dye-3: hsla(205, 99%, 26%, 1);
+$ucla-blue: hsla(202, 56%, 38%, 1);
+$cerulean: hsla(198, 57%, 40%, 1);
+$air-force-blue: hsla(198, 43%, 48%, 1);
+$air-superiority-blue: hsla(198, 44%, 57%, 1);
+$sky-blue: hsla(197, 51%, 69%, 1);
+$light-blue: hsla(195, 54%, 78%, 1);
+
+// CONSTANTS
+$borderRadius: 6px;
+
+// shadow
+$shadowBlur: 8px;
+$shadowSpread: 2px;
+$shadowOffsetX: 0;
+$shadowOffsetY: 0;
+
+// FONTS
+$fontSize: 1rem;
+$fontSizeUpper: 1.2rem;
+$fontSizeLower: 0.8rem;
+
+// COLOR
+$white: hsl(0, 0, 100%);
+$black: hsl(0, 0, 1);
+
+$primary: hsla(198, 57%, 40%, 1);
+$primary-fg: $white;
+$primary-light: hsla(198, 57%, 60%, 1);
+$primary-dark: hsla(198, 57%, 30%, 1);
+$primary-shadow: $shadowOffsetX $shadowOffsetY $shadowBlur $shadowSpread
+  $primary-light;
+
+$warning: hsla(26, 83%, 50%, 1);
+$warning-fg: $black;
+$warning-light: hsla(26, 83%, 60%, 1);
+$warning-dark: hsla(26, 83%, 40%, 1);
+$warning-shadow: $shadowOffsetX $shadowOffsetY $shadowBlur $shadowSpread
+  $warning-light;
+
+$error: hsla(353, 86%, 54%, 1);
+$error-fg: $black;
+$error-light: hsla(353, 86%, 64%, 1);
+$error-dark: hsla(353, 86%, 44%, 1);
+$error-shadow: $shadowOffsetX $shadowOffsetY $shadowBlur $shadowSpread
+  $error-light;
+
+$success: hsla(124, 67%, 69%, 1);
+$success-fg: hsl(0, 0, 1);
+$success-light: hsla(124, 67%, 79%, 1);
+$success-dark: hsla(124, 67%, 59%, 1);
+$success-shadow: $shadowOffsetX $shadowOffsetY $shadowBlur $shadowSpread
+  $success-light;
+
+$section-bg: hsla(205, 98%, 20%, 1);
+$section-bg-light: hsla(205, 98%, 30%, 1);
+$section-bg-dark: hsla(205, 98%, 10%, 1);
+$section-shadow: $shadowOffsetX $shadowOffsetY $shadowBlur $shadowSpread
+  $section-bg-light;
+
+$white: hsl(0, 0, 100%);
+$black: hsl(0, 0, 1);
+
+/* SCSS Gradient */
+$gradient-top: linear-gradient(
+  0deg,
+  #012a4aff,
+  #013a63ff,
+  #01497cff,
+  #014f86ff,
+  #2a6f97ff,
+  #2c7da0ff,
+  #468fafff,
+  #61a5c2ff,
+  #89c2d9ff,
+  #a9d6e5ff
+);
+$gradient-right: linear-gradient(
+  90deg,
+  #012a4aff,
+  #013a63ff,
+  #01497cff,
+  #014f86ff,
+  #2a6f97ff,
+  #2c7da0ff,
+  #468fafff,
+  #61a5c2ff,
+  #89c2d9ff,
+  #a9d6e5ff
+);
+$gradient-bottom: linear-gradient(
+  180deg,
+  #012a4aff,
+  #013a63ff,
+  #01497cff,
+  #014f86ff,
+  #2a6f97ff,
+  #2c7da0ff,
+  #468fafff,
+  #61a5c2ff,
+  #89c2d9ff,
+  #a9d6e5ff
+);
+$gradient-left: linear-gradient(
+  270deg,
+  #012a4aff,
+  #013a63ff,
+  #01497cff,
+  #014f86ff,
+  #2a6f97ff,
+  #2c7da0ff,
+  #468fafff,
+  #61a5c2ff,
+  #89c2d9ff,
+  #a9d6e5ff
+);
+$gradient-top-right: linear-gradient(
+  45deg,
+  #012a4aff,
+  #013a63ff,
+  #01497cff,
+  #014f86ff,
+  #2a6f97ff,
+  #2c7da0ff,
+  #468fafff,
+  #61a5c2ff,
+  #89c2d9ff,
+  #a9d6e5ff
+);
+$gradient-bottom-right: linear-gradient(
+  135deg,
+  #012a4aff,
+  #013a63ff,
+  #01497cff,
+  #014f86ff,
+  #2a6f97ff,
+  #2c7da0ff,
+  #468fafff,
+  #61a5c2ff,
+  #89c2d9ff,
+  #a9d6e5ff
+);
+$gradient-top-left: linear-gradient(
+  225deg,
+  #012a4aff,
+  #013a63ff,
+  #01497cff,
+  #014f86ff,
+  #2a6f97ff,
+  #2c7da0ff,
+  #468fafff,
+  #61a5c2ff,
+  #89c2d9ff,
+  #a9d6e5ff
+);
+$gradient-bottom-left: linear-gradient(
+  315deg,
+  #012a4aff,
+  #013a63ff,
+  #01497cff,
+  #014f86ff,
+  #2a6f97ff,
+  #2c7da0ff,
+  #468fafff,
+  #61a5c2ff,
+  #89c2d9ff,
+  #a9d6e5ff
+);
+$gradient-radial: radial-gradient(
+  #012a4aff,
+  #013a63ff,
+  #01497cff,
+  #014f86ff,
+  #2a6f97ff,
+  #2c7da0ff,
+  #468fafff,
+  #61a5c2ff,
+  #89c2d9ff,
+  #a9d6e5ff
+);

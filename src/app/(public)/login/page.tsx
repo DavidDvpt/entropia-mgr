@@ -1,71 +1,67 @@
 'use client';
 
-import HookFormInput from '@/shared/components/form/hookForm/HookFormInput';
-
-import { signIn } from 'next-auth/react';
+import { signInRequest } from '@/lib/nextAuth/signInRequest';
+import GenericForm from '@/shared/components/form/GenericForm';
+import Button from '@/shared/components/ui/button/Button';
+import FormField from '@/shared/components/ui/formField/FormField';
+import Input from '@/shared/components/ui/input/Input';
+import Section from '@/shared/components/ui/section/Section';
 import { useRouter } from 'next/navigation';
-import { FormProvider, useForm } from 'react-hook-form';
+import { useState } from 'react';
 import { intialLoginValues } from './constants';
-// import styles from './login.module.scss';
+import styles from './login.module.scss';
+import { loginSchema } from './loginValidationSchema';
 
 function Login(): React.ReactElement {
+  const [error, setError] = useState<ErrorStatesType | null>(null);
   const router = useRouter();
-  const formOptions = useForm<LoginFormValues>({
-    defaultValues: intialLoginValues,
-  });
-
-  const { handleSubmit } = formOptions;
 
   const onSubmit = async (values: LoginFormValues) => {
-    signIn('credentials', {
-      email: values.email,
-      password: values.password,
-      redirect: false,
-      callbackUrl: '/',
-    })
-      .then((response: any) => {
-        console.log(response);
-
+    signInRequest({
+      type: 'credentials',
+      body: {
+        ...values,
+        redirect: false,
+        callbackUrl: '/',
+      },
+    }).then(
+      (response: any) => {
         if (response.status === 200) {
           router.push('/');
         }
-        // if (response.status === 401) {
-        //   switch (response.error) {
-        //     case 'bad email':
-        //       setError('email', { message: 'Mail inconnu' });
-        //       break;
-        //     case 'bad password':
-        //       setError('password', { message: 'Mauvais mot de passe' });
-        //       break;
-        //     default:
-        //       break;
-        //   }
-        // }
-      })
-      .catch((error: any) => {
-        console.log(error);
-        alert(error.message);
-      });
+        if (response.status === 401) {
+          setError(response.error);
+          console.log(response);
+        }
+      },
+      (err) => {}
+    );
   };
   return (
-    <section>
-      <FormProvider {...formOptions}>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <HookFormInput name="email" label="Email :" />
+    <Section className={styles.section}>
+      <GenericForm
+        externalError={error ?? null}
+        defaultValues={intialLoginValues}
+        onSubmit={onSubmit}
+        schema={loginSchema}
+      >
+        <FormField
+          name="email"
+          label="Email :"
+          children={<Input type="text" className={styles.fields} />}
+        />
 
-          <HookFormInput
-            type="password"
-            name="password"
-            label="Mot de passe :"
-          />
+        <FormField
+          name="password"
+          label="Mot de passe :"
+          children={<Input type="password" className={styles.fields} />}
+        />
 
-          {/* <div className={styles.buttonContainer}> */}
-          {/* <button type="submit">Se connecter</button> */}
-          <button>Secondaire</button>
-          {/* </div> */}
-        </form>
-      </FormProvider>
-    </section>
+        <Button variant="primary" type="submit" className={styles.submitBtn}>
+          Se connecter
+        </Button>
+      </GenericForm>
+    </Section>
   );
 }
 

@@ -1,0 +1,30 @@
+@import '../../../../styles/theme';
+
+.inputContainer {
+  @include flex-start-center;
+  background-color: $white;
+  border-radius: $borderRadius;
+  padding: 5px;
+
+  input {
+    flex: 1;
+    height: 24px;
+  }
+
+  svg {
+    height: 24px;
+    width: 24px;
+    cursor: pointer;
+    color: var(--color-background);
+  }
+
+  &.error {
+    border: 1px solid $error;
+    padding: 4px;
+    background-color: var(--form-error-foreground);
+
+    input {
+      background-color: var(--form-error-foreground);
+    }
+  }
+}
