@@ -1,13 +1,11 @@
 'use client';
 
-import { quickErrorAccess } from '@/lib/errorMgr/apiErrorMessages';
-import ErrorKeyEnum from '@/lib/errorMgr/ErrorKeyEnum';
+import { signInRequest } from '@/lib/nextAuth/signInRequest';
 import GenericForm from '@/shared/components/form/GenericForm';
 import Button from '@/shared/components/ui/button/Button';
 import FormField from '@/shared/components/ui/formField/FormField';
 import Input from '@/shared/components/ui/input/Input';
 import Section from '@/shared/components/ui/section/Section';
-import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { intialLoginValues } from './constants';
@@ -18,58 +16,25 @@ function Login(): React.ReactElement {
   const router = useRouter();
 
   const onSubmit = async (values: LoginFormValues) => {
-    signIn('credentials', {
-      email: values.email,
-      password: values.password,
-      redirect: false,
-      callbackUrl: '/',
-    })
-      .then((response: any) => {
-        if (response.status === 401 && response.error) {
-          const login = quickErrorAccess('login', ErrorKeyEnum.badLogin);
-          const pwd = quickErrorAccess('login', ErrorKeyEnum.badPwd);
-          const both = quickErrorAccess('login', ErrorKeyEnum.noCredentials);
-
-          switch (response.error) {
-            case login.api:
-              setError([
-                {
-                  key: 'email',
-                  msg: login.user,
-                },
-              ]);
-              break;
-            case pwd.api:
-              setError([
-                {
-                  key: 'password',
-                  msg: pwd.user,
-                },
-              ]);
-              break;
-            case both.api:
-            default:
-              setError([
-                {
-                  key: 'email',
-                  msg: login.user,
-                },
-                {
-                  key: 'password',
-                  msg: pwd.user,
-                },
-              ]);
-              break;
-          }
-        }
-
+    signInRequest({
+      type: 'credentials',
+      body: {
+        ...values,
+        redirect: false,
+        callbackUrl: '/',
+      },
+    }).then(
+      (response: any) => {
         if (response.status === 200) {
           router.push('/');
         }
-      })
-      .catch((error: any) => {
-        const err = quickErrorAccess(error.status, error.message);
-      });
+        if (response.status === 401) {
+          setError(response.error);
+          console.log(response);
+        }
+      },
+      (err) => {}
+    );
   };
   return (
     <Section className={styles.section}>

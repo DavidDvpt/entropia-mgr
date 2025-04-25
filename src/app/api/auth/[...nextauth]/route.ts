@@ -24,12 +24,13 @@ const handler = NextAuth({
         const login = quickErrorAccess('login', ErrorKeyEnum.badLogin);
         const pwd = quickErrorAccess('login', ErrorKeyEnum.badPwd);
         const both = quickErrorAccess('login', ErrorKeyEnum.noCredentials);
+
         if (!credentials?.email || !credentials?.password) {
           throw new Error(both.api);
         }
         const user = await getUserByEmail(credentials.email);
-
         if (!user) throw new Error(login.api);
+
         const pwdCorrect = await bcrypt.compare(
           credentials.password,
           user.password

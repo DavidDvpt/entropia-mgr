@@ -7,9 +7,11 @@ import {
   useForm,
   UseFormProps,
 } from 'react-hook-form';
+import useWatchFields from './useWatchFields';
 
 interface FormProps<TFormValues extends FieldValues> {
-  externalError?: ErrorStatesType | null;
+  externalError: ErrorStatesType | null;
+  resetExternalError?: () => void;
   defaultValues?: UseFormProps<TFormValues>['defaultValues'];
   onSubmit: SubmitHandler<TFormValues>;
   children: ReactNode;
@@ -17,12 +19,17 @@ interface FormProps<TFormValues extends FieldValues> {
 
 function GenericForm<TFormValues extends Record<string, any>>({
   externalError,
+  resetExternalError,
   defaultValues,
   onSubmit,
   children,
 }: FormProps<TFormValues>) {
   const methods = useForm<TFormValues>({ defaultValues });
-
+  useWatchFields({
+    control: methods.control,
+    errorState: externalError,
+    onFieldChange: () => resetExternalError?.(),
+  });
   useEffect(() => {
     if (externalError?.length) {
       externalError.forEach((e) =>
