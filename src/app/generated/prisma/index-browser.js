@@ -124,7 +124,8 @@ exports.Prisma.NavigationScalarFieldEnum = {
   isActive: 'isActive',
   parentId: 'parentId',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  order: 'order'
 };
 
 exports.Prisma.UserScalarFieldEnum = {

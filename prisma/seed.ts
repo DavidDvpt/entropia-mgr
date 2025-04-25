@@ -16,8 +16,6 @@ async function createUsers() {
     update: {},
     create: user,
   });
-
-  console.log(u);
 }
 async function createNavigation() {
   const nav = [
@@ -75,10 +73,8 @@ async function createNavigation() {
 
 async function seedDatas() {
   try {
-    const users = await createUsers();
-    console.log(users);
-    const navigation = await createNavigation();
-    console.log(navigation);
+    await createUsers();
+    await createNavigation();
   } catch (error) {
     console.log(error);
   }

@@ -1013,8 +1013,18 @@ export namespace Prisma {
 
   export type AggregateNavigation = {
     _count: NavigationCountAggregateOutputType | null
+    _avg: NavigationAvgAggregateOutputType | null
+    _sum: NavigationSumAggregateOutputType | null
     _min: NavigationMinAggregateOutputType | null
     _max: NavigationMaxAggregateOutputType | null
+  }
+
+  export type NavigationAvgAggregateOutputType = {
+    order: number | null
+  }
+
+  export type NavigationSumAggregateOutputType = {
+    order: number | null
   }
 
   export type NavigationMinAggregateOutputType = {
@@ -1025,6 +1035,7 @@ export namespace Prisma {
     parentId: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    order: number | null
   }
 
   export type NavigationMaxAggregateOutputType = {
@@ -1035,6 +1046,7 @@ export namespace Prisma {
     parentId: string | null
     createdAt: Date | null
     updatedAt: Date | null
+    order: number | null
   }
 
   export type NavigationCountAggregateOutputType = {
@@ -1045,9 +1057,18 @@ export namespace Prisma {
     parentId: number
     createdAt: number
     updatedAt: number
+    order: number
     _all: number
   }
 
+
+  export type NavigationAvgAggregateInputType = {
+    order?: true
+  }
+
+  export type NavigationSumAggregateInputType = {
+    order?: true
+  }
 
   export type NavigationMinAggregateInputType = {
     id?: true
@@ -1057,6 +1078,7 @@ export namespace Prisma {
     parentId?: true
     createdAt?: true
     updatedAt?: true
+    order?: true
   }
 
   export type NavigationMaxAggregateInputType = {
@@ -1067,6 +1089,7 @@ export namespace Prisma {
     parentId?: true
     createdAt?: true
     updatedAt?: true
+    order?: true
   }
 
   export type NavigationCountAggregateInputType = {
@@ -1077,6 +1100,7 @@ export namespace Prisma {
     parentId?: true
     createdAt?: true
     updatedAt?: true
+    order?: true
     _all?: true
   }
 
@@ -1118,6 +1142,18 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
+     * Select which fields to average
+    **/
+    _avg?: NavigationAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: NavigationSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
      * Select which fields to find the minimum value
     **/
     _min?: NavigationMinAggregateInputType
@@ -1148,6 +1184,8 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: NavigationCountAggregateInputType | true
+    _avg?: NavigationAvgAggregateInputType
+    _sum?: NavigationSumAggregateInputType
     _min?: NavigationMinAggregateInputType
     _max?: NavigationMaxAggregateInputType
   }
@@ -1160,7 +1198,10 @@ export namespace Prisma {
     parentId: string | null
     createdAt: Date
     updatedAt: Date
+    order: number
     _count: NavigationCountAggregateOutputType | null
+    _avg: NavigationAvgAggregateOutputType | null
+    _sum: NavigationSumAggregateOutputType | null
     _min: NavigationMinAggregateOutputType | null
     _max: NavigationMaxAggregateOutputType | null
   }
@@ -1187,6 +1228,7 @@ export namespace Prisma {
     parentId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    order?: boolean
     parent?: boolean | Navigation$parentArgs<ExtArgs>
     children?: boolean | Navigation$childrenArgs<ExtArgs>
     _count?: boolean | NavigationCountOutputTypeDefaultArgs<ExtArgs>
@@ -1200,6 +1242,7 @@ export namespace Prisma {
     parentId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    order?: boolean
     parent?: boolean | Navigation$parentArgs<ExtArgs>
   }, ExtArgs["result"]["navigation"]>
 
@@ -1211,6 +1254,7 @@ export namespace Prisma {
     parentId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    order?: boolean
     parent?: boolean | Navigation$parentArgs<ExtArgs>
   }, ExtArgs["result"]["navigation"]>
 
@@ -1222,9 +1266,10 @@ export namespace Prisma {
     parentId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
+    order?: boolean
   }
 
-  export type NavigationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "label" | "url" | "isActive" | "parentId" | "createdAt" | "updatedAt", ExtArgs["result"]["navigation"]>
+  export type NavigationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "label" | "url" | "isActive" | "parentId" | "createdAt" | "updatedAt" | "order", ExtArgs["result"]["navigation"]>
   export type NavigationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     parent?: boolean | Navigation$parentArgs<ExtArgs>
     children?: boolean | Navigation$childrenArgs<ExtArgs>
@@ -1251,6 +1296,7 @@ export namespace Prisma {
       parentId: string | null
       createdAt: Date
       updatedAt: Date
+      order: number
     }, ExtArgs["result"]["navigation"]>
     composites: {}
   }
@@ -1683,6 +1729,7 @@ export namespace Prisma {
     readonly parentId: FieldRef<"Navigation", 'String'>
     readonly createdAt: FieldRef<"Navigation", 'DateTime'>
     readonly updatedAt: FieldRef<"Navigation", 'DateTime'>
+    readonly order: FieldRef<"Navigation", 'Int'>
   }
     
 
@@ -3221,7 +3268,8 @@ export namespace Prisma {
     isActive: 'isActive',
     parentId: 'parentId',
     createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    updatedAt: 'updatedAt',
+    order: 'order'
   };
 
   export type NavigationScalarFieldEnum = (typeof NavigationScalarFieldEnum)[keyof typeof NavigationScalarFieldEnum]
@@ -3308,6 +3356,20 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Int'
+   */
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int[]'
+   */
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
    * Reference to a field of type 'RoleEnum'
    */
   export type EnumRoleEnumFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'RoleEnum'>
@@ -3322,16 +3384,16 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Int'
+   * Reference to a field of type 'Float'
    */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
     
 
 
   /**
-   * Reference to a field of type 'Int[]'
+   * Reference to a field of type 'Float[]'
    */
-  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
   /**
    * Deep Input Types
@@ -3349,6 +3411,7 @@ export namespace Prisma {
     parentId?: StringNullableFilter<"Navigation"> | string | null
     createdAt?: DateTimeFilter<"Navigation"> | Date | string
     updatedAt?: DateTimeFilter<"Navigation"> | Date | string
+    order?: IntFilter<"Navigation"> | number
     parent?: XOR<NavigationNullableScalarRelationFilter, NavigationWhereInput> | null
     children?: NavigationListRelationFilter
   }
@@ -3361,6 +3424,7 @@ export namespace Prisma {
     parentId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    order?: SortOrder
     parent?: NavigationOrderByWithRelationInput
     children?: NavigationOrderByRelationAggregateInput
   }
@@ -3376,6 +3440,7 @@ export namespace Prisma {
     parentId?: StringNullableFilter<"Navigation"> | string | null
     createdAt?: DateTimeFilter<"Navigation"> | Date | string
     updatedAt?: DateTimeFilter<"Navigation"> | Date | string
+    order?: IntFilter<"Navigation"> | number
     parent?: XOR<NavigationNullableScalarRelationFilter, NavigationWhereInput> | null
     children?: NavigationListRelationFilter
   }, "id" | "label">
@@ -3388,9 +3453,12 @@ export namespace Prisma {
     parentId?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    order?: SortOrder
     _count?: NavigationCountOrderByAggregateInput
+    _avg?: NavigationAvgOrderByAggregateInput
     _max?: NavigationMaxOrderByAggregateInput
     _min?: NavigationMinOrderByAggregateInput
+    _sum?: NavigationSumOrderByAggregateInput
   }
 
   export type NavigationScalarWhereWithAggregatesInput = {
@@ -3404,6 +3472,7 @@ export namespace Prisma {
     parentId?: StringNullableWithAggregatesFilter<"Navigation"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Navigation"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Navigation"> | Date | string
+    order?: IntWithAggregatesFilter<"Navigation"> | number
   }
 
   export type UserWhereInput = {
@@ -3490,6 +3559,7 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    order?: number
     parent?: NavigationCreateNestedOneWithoutChildrenInput
     children?: NavigationCreateNestedManyWithoutParentInput
   }
@@ -3502,6 +3572,7 @@ export namespace Prisma {
     parentId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    order?: number
     children?: NavigationUncheckedCreateNestedManyWithoutParentInput
   }
 
@@ -3512,6 +3583,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    order?: IntFieldUpdateOperationsInput | number
     parent?: NavigationUpdateOneWithoutChildrenNestedInput
     children?: NavigationUpdateManyWithoutParentNestedInput
   }
@@ -3524,6 +3596,7 @@ export namespace Prisma {
     parentId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    order?: IntFieldUpdateOperationsInput | number
     children?: NavigationUncheckedUpdateManyWithoutParentNestedInput
   }
 
@@ -3535,6 +3608,7 @@ export namespace Prisma {
     parentId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    order?: number
   }
 
   export type NavigationUpdateManyMutationInput = {
@@ -3544,6 +3618,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    order?: IntFieldUpdateOperationsInput | number
   }
 
   export type NavigationUncheckedUpdateManyInput = {
@@ -3554,6 +3629,7 @@ export namespace Prisma {
     parentId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    order?: IntFieldUpdateOperationsInput | number
   }
 
   export type UserCreateInput = {
@@ -3693,6 +3769,17 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
   export type NavigationNullableScalarRelationFilter = {
     is?: NavigationWhereInput | null
     isNot?: NavigationWhereInput | null
@@ -3721,6 +3808,11 @@ export namespace Prisma {
     parentId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    order?: SortOrder
+  }
+
+  export type NavigationAvgOrderByAggregateInput = {
+    order?: SortOrder
   }
 
   export type NavigationMaxOrderByAggregateInput = {
@@ -3731,6 +3823,7 @@ export namespace Prisma {
     parentId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    order?: SortOrder
   }
 
   export type NavigationMinOrderByAggregateInput = {
@@ -3741,6 +3834,11 @@ export namespace Prisma {
     parentId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+    order?: SortOrder
+  }
+
+  export type NavigationSumOrderByAggregateInput = {
+    order?: SortOrder
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -3799,6 +3897,22 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type DateTimeNullableFilter<$PrismaModel = never> = {
@@ -3918,6 +4032,14 @@ export namespace Prisma {
     set?: Date | string
   }
 
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type NavigationUpdateOneWithoutChildrenNestedInput = {
     create?: XOR<NavigationCreateWithoutChildrenInput, NavigationUncheckedCreateWithoutChildrenInput>
     connectOrCreate?: NavigationCreateOrConnectWithoutChildrenInput
@@ -4008,6 +4130,17 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -4023,17 +4156,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
-  }
-
-  export type NestedIntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -4086,6 +4208,33 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
   export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -4135,6 +4284,7 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    order?: number
     parent?: NavigationCreateNestedOneWithoutChildrenInput
   }
 
@@ -4146,6 +4296,7 @@ export namespace Prisma {
     parentId?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+    order?: number
   }
 
   export type NavigationCreateOrConnectWithoutChildrenInput = {
@@ -4160,6 +4311,7 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    order?: number
     children?: NavigationCreateNestedManyWithoutParentInput
   }
 
@@ -4170,6 +4322,7 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    order?: number
     children?: NavigationUncheckedCreateNestedManyWithoutParentInput
   }
 
@@ -4201,6 +4354,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    order?: IntFieldUpdateOperationsInput | number
     parent?: NavigationUpdateOneWithoutChildrenNestedInput
   }
 
@@ -4212,6 +4366,7 @@ export namespace Prisma {
     parentId?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    order?: IntFieldUpdateOperationsInput | number
   }
 
   export type NavigationUpsertWithWhereUniqueWithoutParentInput = {
@@ -4241,6 +4396,7 @@ export namespace Prisma {
     parentId?: StringNullableFilter<"Navigation"> | string | null
     createdAt?: DateTimeFilter<"Navigation"> | Date | string
     updatedAt?: DateTimeFilter<"Navigation"> | Date | string
+    order?: IntFilter<"Navigation"> | number
   }
 
   export type NavigationCreateManyParentInput = {
@@ -4250,6 +4406,7 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
+    order?: number
   }
 
   export type NavigationUpdateWithoutParentInput = {
@@ -4259,6 +4416,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    order?: IntFieldUpdateOperationsInput | number
     children?: NavigationUpdateManyWithoutParentNestedInput
   }
 
@@ -4269,6 +4427,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    order?: IntFieldUpdateOperationsInput | number
     children?: NavigationUncheckedUpdateManyWithoutParentNestedInput
   }
 
@@ -4279,6 +4438,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    order?: IntFieldUpdateOperationsInput | number
   }
 
 
