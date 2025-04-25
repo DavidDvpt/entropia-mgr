@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { dosis } from '../styles/fonts.js';
 import '../styles/global.css';
+import ReactQueryProvider from './ReactQueryProvider';
 import SessionProviderComponent from './SessionProviderComponent';
 // const geistSans = Geist({
 //   variable: '--font-geist-sans',
@@ -25,7 +26,9 @@ export default function RootLayout({
   return (
     <html lang="fr" style={dosis.style}>
       <body>
-        <SessionProviderComponent>{children}</SessionProviderComponent>
+        <SessionProviderComponent>
+          <ReactQueryProvider>{children}</ReactQueryProvider>
+        </SessionProviderComponent>
       </body>
     </html>
   );

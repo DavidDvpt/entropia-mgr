@@ -1,16 +1,10 @@
-import DropdownElement from './DropDownElement';
+import DropdownElement from './DropdownElement';
 
 interface IDropdownListProps {
-  list: DropDownElementsType;
+  list?: DropDownElementsType;
 }
 function DropdownList({ list }: IDropdownListProps) {
-  return (
-    <ul>
-      {list.map((m) => (
-        <DropdownElement {...m} />
-      ))}
-    </ul>
-  );
+  return <ul>{list?.map((m) => <DropdownElement {...m} />)}</ul>;
 }
 
 export default DropdownList;
