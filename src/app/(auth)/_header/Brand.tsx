@@ -1,7 +1,6 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-
 function Brand() {
   const router = useRouter();
 
@@ -9,7 +8,7 @@ function Brand() {
     router.push('/');
   };
 
-  return <div onClick={handleClick}>EU Trade Manager</div>;
+  return <h1 onClick={handleClick}>EU Trade Manager</h1>;
 }
 
 export default Brand;

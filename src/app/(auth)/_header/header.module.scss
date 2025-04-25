@@ -1,0 +1,7 @@
+@import '../../../styles/main';
+
+.header {
+  @include flex-start-center;
+
+  height: 50px;
+}
