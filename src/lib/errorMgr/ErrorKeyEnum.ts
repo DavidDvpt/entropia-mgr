@@ -1,4 +1,7 @@
 enum ErrorKeyEnum {
+  invalidEmail = 'invalidEmail',
+  emailRequired = 'emailRequired',
+  passwordRequired = 'passwordRequired',
   badLogin = 'badLogin',
   badPwd = 'badPwd',
   noCredentials = 'noCredentials',

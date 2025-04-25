@@ -10,6 +10,7 @@ import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { intialLoginValues } from './constants';
 import styles from './login.module.scss';
+import { loginSchema } from './loginValidationSchema';
 
 function Login(): React.ReactElement {
   const [error, setError] = useState<ErrorStatesType | null>(null);
@@ -42,11 +43,12 @@ function Login(): React.ReactElement {
         externalError={error ?? null}
         defaultValues={intialLoginValues}
         onSubmit={onSubmit}
+        schema={loginSchema}
       >
         <FormField
           name="email"
           label="Email :"
-          children={<Input type="email" className={styles.fields} />}
+          children={<Input type="text" className={styles.fields} />}
         />
 
         <FormField

@@ -1,3 +1,4 @@
+import { zodResolver } from '@hookform/resolvers/zod';
 import { ReactNode, useEffect } from 'react';
 import {
   FieldValues,
@@ -7,6 +8,7 @@ import {
   useForm,
   UseFormProps,
 } from 'react-hook-form';
+import { ZodSchema } from 'zod';
 import useWatchFields from './useWatchFields';
 
 interface FormProps<TFormValues extends FieldValues> {
@@ -15,6 +17,7 @@ interface FormProps<TFormValues extends FieldValues> {
   defaultValues?: UseFormProps<TFormValues>['defaultValues'];
   onSubmit: SubmitHandler<TFormValues>;
   children: ReactNode;
+  schema?: ZodSchema<TFormValues>;
 }
 
 function GenericForm<TFormValues extends Record<string, any>>({
@@ -23,8 +26,12 @@ function GenericForm<TFormValues extends Record<string, any>>({
   defaultValues,
   onSubmit,
   children,
+  schema,
 }: FormProps<TFormValues>) {
-  const methods = useForm<TFormValues>({ defaultValues });
+  const methods = useForm<TFormValues>({
+    defaultValues,
+    resolver: schema ? zodResolver(schema) : undefined,
+  });
   useWatchFields({
     control: methods.control,
     errorState: externalError,

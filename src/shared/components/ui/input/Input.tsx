@@ -35,7 +35,6 @@ function Input(props: IInputProps) {
         id={props.id}
         type={visible ? 'text' : props.type}
         {...register(props.name)}
-        aria-invalid={error}
       />
       {props.type === 'password' && <Eye />}
     </div>
