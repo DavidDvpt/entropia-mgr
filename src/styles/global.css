@@ -1,8 +1,18 @@
+:root {
+  --color-background: hsla(206, 97%, 15%, 1);
+  --color-foreground: hsla(54, 89%, 56%, 1);
+  --color-primary: hsla(54, 89%, 56%, 1);
+  --form-error-foreground: hsla(353, 86%, 84%, 1);
+  --font-size: 1rem;
+}
+
 * {
   box-sizing: border-box;
 }
 p,
-button {
+button,
+ul,
+li {
   padding: 0;
   margin: 0;
   border: none;
@@ -15,4 +25,33 @@ input {
 
 form {
   width: 100%;
+}
+
+html {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-size: var(--font-size);
+}
+
+ul {
+  list-style: none;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+h2 {
+  font-size: 2rem;
+}
+h3 {
+  font-size: 1.75rem;
+}
+h4 {
+  font-size: 1.5rem;
+}
+h5 {
+  font-size: 1.25rem;
+}
+h6 {
+  font-size: 1rem;
 }

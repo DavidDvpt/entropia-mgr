@@ -1,0 +1,50 @@
+@import '../../../../styles/main';
+
+.dropdownMenu {
+  position: relative;
+  height: $headerHeight;
+}
+
+.dropdownElement {
+  min-width: 100px;
+  height: 100%;
+
+  .label {
+    @include flex-center-center;
+    cursor: pointer;
+    height: $headerHeight;
+    padding: 5px;
+
+    &:not(.subElement) {
+      font-weight: 600;
+    }
+
+    &.subElement {
+      @include flex-column-start-start;
+      height: unset;
+    }
+  }
+
+  > ul {
+    position: absolute;
+    display: none;
+  }
+
+  &:hover {
+    .label {
+      &:not(.subElement) {
+        border-bottom: 1px red solid;
+        background-color: $dorpdownHover;
+      }
+
+      &.subElement:hover {
+        background-color: $dorpdownHover;
+      }
+    }
+
+    > ul {
+      @include flex-column-start-start;
+      box-shadow: $dropdownShadow;
+    }
+  }
+}

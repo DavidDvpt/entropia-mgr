@@ -1,17 +1,19 @@
 'use client';
 
 import { signIn, useSession } from 'next-auth/react';
+import Header from './_header/Header';
 
 function layout({ children }: IChildren) {
   const { status } = useSession();
-  console.log(status);
+
   if (status === 'unauthenticated') {
     signIn();
   }
 
   return (
     <main>
-      {/* <Header /> */}
+      <Header />
+
       {children}
     </main>
   );

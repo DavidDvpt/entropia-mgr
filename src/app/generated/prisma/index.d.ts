@@ -14,6 +14,11 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
+ * Model Navigation
+ * 
+ */
+export type Navigation = $Result.DefaultSelection<Prisma.$NavigationPayload>
+/**
  * Model User
  * 
  */
@@ -43,8 +48,8 @@ export const RoleEnum: typeof $Enums.RoleEnum
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Users
- * const users = await prisma.user.findMany()
+ * // Fetch zero or more Navigations
+ * const navigations = await prisma.navigation.findMany()
  * ```
  *
  *
@@ -64,8 +69,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Users
-   * const users = await prisma.user.findMany()
+   * // Fetch zero or more Navigations
+   * const navigations = await prisma.navigation.findMany()
    * ```
    *
    *
@@ -162,6 +167,16 @@ export class PrismaClient<
   }>>
 
       /**
+   * `prisma.navigation`: Exposes CRUD operations for the **Navigation** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Navigations
+    * const navigations = await prisma.navigation.findMany()
+    * ```
+    */
+  get navigation(): Prisma.NavigationDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.user`: Exposes CRUD operations for the **User** model.
     * Example usage:
     * ```ts
@@ -610,6 +625,7 @@ export namespace Prisma {
 
 
   export const ModelName: {
+    Navigation: 'Navigation',
     User: 'User'
   };
 
@@ -629,10 +645,84 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user"
+      modelProps: "navigation" | "user"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
+      Navigation: {
+        payload: Prisma.$NavigationPayload<ExtArgs>
+        fields: Prisma.NavigationFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.NavigationFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NavigationPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.NavigationFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NavigationPayload>
+          }
+          findFirst: {
+            args: Prisma.NavigationFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NavigationPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.NavigationFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NavigationPayload>
+          }
+          findMany: {
+            args: Prisma.NavigationFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NavigationPayload>[]
+          }
+          create: {
+            args: Prisma.NavigationCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NavigationPayload>
+          }
+          createMany: {
+            args: Prisma.NavigationCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.NavigationCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NavigationPayload>[]
+          }
+          delete: {
+            args: Prisma.NavigationDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NavigationPayload>
+          }
+          update: {
+            args: Prisma.NavigationUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NavigationPayload>
+          }
+          deleteMany: {
+            args: Prisma.NavigationDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.NavigationUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.NavigationUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NavigationPayload>[]
+          }
+          upsert: {
+            args: Prisma.NavigationUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$NavigationPayload>
+          }
+          aggregate: {
+            args: Prisma.NavigationAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateNavigation>
+          }
+          groupBy: {
+            args: Prisma.NavigationGroupByArgs<ExtArgs>
+            result: $Utils.Optional<NavigationGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.NavigationCountArgs<ExtArgs>
+            result: $Utils.Optional<NavigationCountAggregateOutputType> | number
+          }
+        }
+      }
       User: {
         payload: Prisma.$UserPayload<ExtArgs>
         fields: Prisma.UserFieldRefs
@@ -791,6 +881,7 @@ export namespace Prisma {
     omit?: Prisma.GlobalOmitConfig
   }
   export type GlobalOmitConfig = {
+    navigation?: NavigationOmit
     user?: UserOmit
   }
 
@@ -881,10 +972,1220 @@ export namespace Prisma {
    */
 
 
+  /**
+   * Count Type NavigationCountOutputType
+   */
+
+  export type NavigationCountOutputType = {
+    children: number
+  }
+
+  export type NavigationCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    children?: boolean | NavigationCountOutputTypeCountChildrenArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * NavigationCountOutputType without action
+   */
+  export type NavigationCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the NavigationCountOutputType
+     */
+    select?: NavigationCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * NavigationCountOutputType without action
+   */
+  export type NavigationCountOutputTypeCountChildrenArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: NavigationWhereInput
+  }
+
 
   /**
    * Models
    */
+
+  /**
+   * Model Navigation
+   */
+
+  export type AggregateNavigation = {
+    _count: NavigationCountAggregateOutputType | null
+    _avg: NavigationAvgAggregateOutputType | null
+    _sum: NavigationSumAggregateOutputType | null
+    _min: NavigationMinAggregateOutputType | null
+    _max: NavigationMaxAggregateOutputType | null
+  }
+
+  export type NavigationAvgAggregateOutputType = {
+    order: number | null
+  }
+
+  export type NavigationSumAggregateOutputType = {
+    order: number | null
+  }
+
+  export type NavigationMinAggregateOutputType = {
+    id: string | null
+    label: string | null
+    url: string | null
+    isActive: boolean | null
+    parentId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    order: number | null
+  }
+
+  export type NavigationMaxAggregateOutputType = {
+    id: string | null
+    label: string | null
+    url: string | null
+    isActive: boolean | null
+    parentId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+    order: number | null
+  }
+
+  export type NavigationCountAggregateOutputType = {
+    id: number
+    label: number
+    url: number
+    isActive: number
+    parentId: number
+    createdAt: number
+    updatedAt: number
+    order: number
+    _all: number
+  }
+
+
+  export type NavigationAvgAggregateInputType = {
+    order?: true
+  }
+
+  export type NavigationSumAggregateInputType = {
+    order?: true
+  }
+
+  export type NavigationMinAggregateInputType = {
+    id?: true
+    label?: true
+    url?: true
+    isActive?: true
+    parentId?: true
+    createdAt?: true
+    updatedAt?: true
+    order?: true
+  }
+
+  export type NavigationMaxAggregateInputType = {
+    id?: true
+    label?: true
+    url?: true
+    isActive?: true
+    parentId?: true
+    createdAt?: true
+    updatedAt?: true
+    order?: true
+  }
+
+  export type NavigationCountAggregateInputType = {
+    id?: true
+    label?: true
+    url?: true
+    isActive?: true
+    parentId?: true
+    createdAt?: true
+    updatedAt?: true
+    order?: true
+    _all?: true
+  }
+
+  export type NavigationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Navigation to aggregate.
+     */
+    where?: NavigationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Navigations to fetch.
+     */
+    orderBy?: NavigationOrderByWithRelationInput | NavigationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: NavigationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Navigations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Navigations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Navigations
+    **/
+    _count?: true | NavigationCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: NavigationAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: NavigationSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: NavigationMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: NavigationMaxAggregateInputType
+  }
+
+  export type GetNavigationAggregateType<T extends NavigationAggregateArgs> = {
+        [P in keyof T & keyof AggregateNavigation]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateNavigation[P]>
+      : GetScalarType<T[P], AggregateNavigation[P]>
+  }
+
+
+
+
+  export type NavigationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: NavigationWhereInput
+    orderBy?: NavigationOrderByWithAggregationInput | NavigationOrderByWithAggregationInput[]
+    by: NavigationScalarFieldEnum[] | NavigationScalarFieldEnum
+    having?: NavigationScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: NavigationCountAggregateInputType | true
+    _avg?: NavigationAvgAggregateInputType
+    _sum?: NavigationSumAggregateInputType
+    _min?: NavigationMinAggregateInputType
+    _max?: NavigationMaxAggregateInputType
+  }
+
+  export type NavigationGroupByOutputType = {
+    id: string
+    label: string
+    url: string | null
+    isActive: boolean
+    parentId: string | null
+    createdAt: Date
+    updatedAt: Date
+    order: number
+    _count: NavigationCountAggregateOutputType | null
+    _avg: NavigationAvgAggregateOutputType | null
+    _sum: NavigationSumAggregateOutputType | null
+    _min: NavigationMinAggregateOutputType | null
+    _max: NavigationMaxAggregateOutputType | null
+  }
+
+  type GetNavigationGroupByPayload<T extends NavigationGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<NavigationGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof NavigationGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], NavigationGroupByOutputType[P]>
+            : GetScalarType<T[P], NavigationGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type NavigationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    label?: boolean
+    url?: boolean
+    isActive?: boolean
+    parentId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    order?: boolean
+    parent?: boolean | Navigation$parentArgs<ExtArgs>
+    children?: boolean | Navigation$childrenArgs<ExtArgs>
+    _count?: boolean | NavigationCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["navigation"]>
+
+  export type NavigationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    label?: boolean
+    url?: boolean
+    isActive?: boolean
+    parentId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    order?: boolean
+    parent?: boolean | Navigation$parentArgs<ExtArgs>
+  }, ExtArgs["result"]["navigation"]>
+
+  export type NavigationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    label?: boolean
+    url?: boolean
+    isActive?: boolean
+    parentId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    order?: boolean
+    parent?: boolean | Navigation$parentArgs<ExtArgs>
+  }, ExtArgs["result"]["navigation"]>
+
+  export type NavigationSelectScalar = {
+    id?: boolean
+    label?: boolean
+    url?: boolean
+    isActive?: boolean
+    parentId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    order?: boolean
+  }
+
+  export type NavigationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "label" | "url" | "isActive" | "parentId" | "createdAt" | "updatedAt" | "order", ExtArgs["result"]["navigation"]>
+  export type NavigationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    parent?: boolean | Navigation$parentArgs<ExtArgs>
+    children?: boolean | Navigation$childrenArgs<ExtArgs>
+    _count?: boolean | NavigationCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type NavigationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    parent?: boolean | Navigation$parentArgs<ExtArgs>
+  }
+  export type NavigationIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    parent?: boolean | Navigation$parentArgs<ExtArgs>
+  }
+
+  export type $NavigationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Navigation"
+    objects: {
+      parent: Prisma.$NavigationPayload<ExtArgs> | null
+      children: Prisma.$NavigationPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      label: string
+      url: string | null
+      isActive: boolean
+      parentId: string | null
+      createdAt: Date
+      updatedAt: Date
+      order: number
+    }, ExtArgs["result"]["navigation"]>
+    composites: {}
+  }
+
+  type NavigationGetPayload<S extends boolean | null | undefined | NavigationDefaultArgs> = $Result.GetResult<Prisma.$NavigationPayload, S>
+
+  type NavigationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<NavigationFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: NavigationCountAggregateInputType | true
+    }
+
+  export interface NavigationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Navigation'], meta: { name: 'Navigation' } }
+    /**
+     * Find zero or one Navigation that matches the filter.
+     * @param {NavigationFindUniqueArgs} args - Arguments to find a Navigation
+     * @example
+     * // Get one Navigation
+     * const navigation = await prisma.navigation.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends NavigationFindUniqueArgs>(args: SelectSubset<T, NavigationFindUniqueArgs<ExtArgs>>): Prisma__NavigationClient<$Result.GetResult<Prisma.$NavigationPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Navigation that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {NavigationFindUniqueOrThrowArgs} args - Arguments to find a Navigation
+     * @example
+     * // Get one Navigation
+     * const navigation = await prisma.navigation.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends NavigationFindUniqueOrThrowArgs>(args: SelectSubset<T, NavigationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__NavigationClient<$Result.GetResult<Prisma.$NavigationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Navigation that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NavigationFindFirstArgs} args - Arguments to find a Navigation
+     * @example
+     * // Get one Navigation
+     * const navigation = await prisma.navigation.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends NavigationFindFirstArgs>(args?: SelectSubset<T, NavigationFindFirstArgs<ExtArgs>>): Prisma__NavigationClient<$Result.GetResult<Prisma.$NavigationPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Navigation that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NavigationFindFirstOrThrowArgs} args - Arguments to find a Navigation
+     * @example
+     * // Get one Navigation
+     * const navigation = await prisma.navigation.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends NavigationFindFirstOrThrowArgs>(args?: SelectSubset<T, NavigationFindFirstOrThrowArgs<ExtArgs>>): Prisma__NavigationClient<$Result.GetResult<Prisma.$NavigationPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Navigations that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NavigationFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Navigations
+     * const navigations = await prisma.navigation.findMany()
+     * 
+     * // Get first 10 Navigations
+     * const navigations = await prisma.navigation.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const navigationWithIdOnly = await prisma.navigation.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends NavigationFindManyArgs>(args?: SelectSubset<T, NavigationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NavigationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Navigation.
+     * @param {NavigationCreateArgs} args - Arguments to create a Navigation.
+     * @example
+     * // Create one Navigation
+     * const Navigation = await prisma.navigation.create({
+     *   data: {
+     *     // ... data to create a Navigation
+     *   }
+     * })
+     * 
+     */
+    create<T extends NavigationCreateArgs>(args: SelectSubset<T, NavigationCreateArgs<ExtArgs>>): Prisma__NavigationClient<$Result.GetResult<Prisma.$NavigationPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Navigations.
+     * @param {NavigationCreateManyArgs} args - Arguments to create many Navigations.
+     * @example
+     * // Create many Navigations
+     * const navigation = await prisma.navigation.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends NavigationCreateManyArgs>(args?: SelectSubset<T, NavigationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Navigations and returns the data saved in the database.
+     * @param {NavigationCreateManyAndReturnArgs} args - Arguments to create many Navigations.
+     * @example
+     * // Create many Navigations
+     * const navigation = await prisma.navigation.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Navigations and only return the `id`
+     * const navigationWithIdOnly = await prisma.navigation.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends NavigationCreateManyAndReturnArgs>(args?: SelectSubset<T, NavigationCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NavigationPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Navigation.
+     * @param {NavigationDeleteArgs} args - Arguments to delete one Navigation.
+     * @example
+     * // Delete one Navigation
+     * const Navigation = await prisma.navigation.delete({
+     *   where: {
+     *     // ... filter to delete one Navigation
+     *   }
+     * })
+     * 
+     */
+    delete<T extends NavigationDeleteArgs>(args: SelectSubset<T, NavigationDeleteArgs<ExtArgs>>): Prisma__NavigationClient<$Result.GetResult<Prisma.$NavigationPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Navigation.
+     * @param {NavigationUpdateArgs} args - Arguments to update one Navigation.
+     * @example
+     * // Update one Navigation
+     * const navigation = await prisma.navigation.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends NavigationUpdateArgs>(args: SelectSubset<T, NavigationUpdateArgs<ExtArgs>>): Prisma__NavigationClient<$Result.GetResult<Prisma.$NavigationPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Navigations.
+     * @param {NavigationDeleteManyArgs} args - Arguments to filter Navigations to delete.
+     * @example
+     * // Delete a few Navigations
+     * const { count } = await prisma.navigation.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends NavigationDeleteManyArgs>(args?: SelectSubset<T, NavigationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Navigations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NavigationUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Navigations
+     * const navigation = await prisma.navigation.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends NavigationUpdateManyArgs>(args: SelectSubset<T, NavigationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Navigations and returns the data updated in the database.
+     * @param {NavigationUpdateManyAndReturnArgs} args - Arguments to update many Navigations.
+     * @example
+     * // Update many Navigations
+     * const navigation = await prisma.navigation.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Navigations and only return the `id`
+     * const navigationWithIdOnly = await prisma.navigation.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends NavigationUpdateManyAndReturnArgs>(args: SelectSubset<T, NavigationUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NavigationPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Navigation.
+     * @param {NavigationUpsertArgs} args - Arguments to update or create a Navigation.
+     * @example
+     * // Update or create a Navigation
+     * const navigation = await prisma.navigation.upsert({
+     *   create: {
+     *     // ... data to create a Navigation
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Navigation we want to update
+     *   }
+     * })
+     */
+    upsert<T extends NavigationUpsertArgs>(args: SelectSubset<T, NavigationUpsertArgs<ExtArgs>>): Prisma__NavigationClient<$Result.GetResult<Prisma.$NavigationPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Navigations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NavigationCountArgs} args - Arguments to filter Navigations to count.
+     * @example
+     * // Count the number of Navigations
+     * const count = await prisma.navigation.count({
+     *   where: {
+     *     // ... the filter for the Navigations we want to count
+     *   }
+     * })
+    **/
+    count<T extends NavigationCountArgs>(
+      args?: Subset<T, NavigationCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], NavigationCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Navigation.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NavigationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends NavigationAggregateArgs>(args: Subset<T, NavigationAggregateArgs>): Prisma.PrismaPromise<GetNavigationAggregateType<T>>
+
+    /**
+     * Group by Navigation.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {NavigationGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends NavigationGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: NavigationGroupByArgs['orderBy'] }
+        : { orderBy?: NavigationGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, NavigationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetNavigationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Navigation model
+   */
+  readonly fields: NavigationFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Navigation.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__NavigationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    parent<T extends Navigation$parentArgs<ExtArgs> = {}>(args?: Subset<T, Navigation$parentArgs<ExtArgs>>): Prisma__NavigationClient<$Result.GetResult<Prisma.$NavigationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    children<T extends Navigation$childrenArgs<ExtArgs> = {}>(args?: Subset<T, Navigation$childrenArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NavigationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Navigation model
+   */
+  interface NavigationFieldRefs {
+    readonly id: FieldRef<"Navigation", 'String'>
+    readonly label: FieldRef<"Navigation", 'String'>
+    readonly url: FieldRef<"Navigation", 'String'>
+    readonly isActive: FieldRef<"Navigation", 'Boolean'>
+    readonly parentId: FieldRef<"Navigation", 'String'>
+    readonly createdAt: FieldRef<"Navigation", 'DateTime'>
+    readonly updatedAt: FieldRef<"Navigation", 'DateTime'>
+    readonly order: FieldRef<"Navigation", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Navigation findUnique
+   */
+  export type NavigationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Navigation
+     */
+    select?: NavigationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Navigation
+     */
+    omit?: NavigationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NavigationInclude<ExtArgs> | null
+    /**
+     * Filter, which Navigation to fetch.
+     */
+    where: NavigationWhereUniqueInput
+  }
+
+  /**
+   * Navigation findUniqueOrThrow
+   */
+  export type NavigationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Navigation
+     */
+    select?: NavigationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Navigation
+     */
+    omit?: NavigationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NavigationInclude<ExtArgs> | null
+    /**
+     * Filter, which Navigation to fetch.
+     */
+    where: NavigationWhereUniqueInput
+  }
+
+  /**
+   * Navigation findFirst
+   */
+  export type NavigationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Navigation
+     */
+    select?: NavigationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Navigation
+     */
+    omit?: NavigationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NavigationInclude<ExtArgs> | null
+    /**
+     * Filter, which Navigation to fetch.
+     */
+    where?: NavigationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Navigations to fetch.
+     */
+    orderBy?: NavigationOrderByWithRelationInput | NavigationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Navigations.
+     */
+    cursor?: NavigationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Navigations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Navigations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Navigations.
+     */
+    distinct?: NavigationScalarFieldEnum | NavigationScalarFieldEnum[]
+  }
+
+  /**
+   * Navigation findFirstOrThrow
+   */
+  export type NavigationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Navigation
+     */
+    select?: NavigationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Navigation
+     */
+    omit?: NavigationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NavigationInclude<ExtArgs> | null
+    /**
+     * Filter, which Navigation to fetch.
+     */
+    where?: NavigationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Navigations to fetch.
+     */
+    orderBy?: NavigationOrderByWithRelationInput | NavigationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Navigations.
+     */
+    cursor?: NavigationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Navigations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Navigations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Navigations.
+     */
+    distinct?: NavigationScalarFieldEnum | NavigationScalarFieldEnum[]
+  }
+
+  /**
+   * Navigation findMany
+   */
+  export type NavigationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Navigation
+     */
+    select?: NavigationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Navigation
+     */
+    omit?: NavigationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NavigationInclude<ExtArgs> | null
+    /**
+     * Filter, which Navigations to fetch.
+     */
+    where?: NavigationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Navigations to fetch.
+     */
+    orderBy?: NavigationOrderByWithRelationInput | NavigationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Navigations.
+     */
+    cursor?: NavigationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Navigations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Navigations.
+     */
+    skip?: number
+    distinct?: NavigationScalarFieldEnum | NavigationScalarFieldEnum[]
+  }
+
+  /**
+   * Navigation create
+   */
+  export type NavigationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Navigation
+     */
+    select?: NavigationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Navigation
+     */
+    omit?: NavigationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NavigationInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Navigation.
+     */
+    data: XOR<NavigationCreateInput, NavigationUncheckedCreateInput>
+  }
+
+  /**
+   * Navigation createMany
+   */
+  export type NavigationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Navigations.
+     */
+    data: NavigationCreateManyInput | NavigationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Navigation createManyAndReturn
+   */
+  export type NavigationCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Navigation
+     */
+    select?: NavigationSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Navigation
+     */
+    omit?: NavigationOmit<ExtArgs> | null
+    /**
+     * The data used to create many Navigations.
+     */
+    data: NavigationCreateManyInput | NavigationCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NavigationIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Navigation update
+   */
+  export type NavigationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Navigation
+     */
+    select?: NavigationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Navigation
+     */
+    omit?: NavigationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NavigationInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Navigation.
+     */
+    data: XOR<NavigationUpdateInput, NavigationUncheckedUpdateInput>
+    /**
+     * Choose, which Navigation to update.
+     */
+    where: NavigationWhereUniqueInput
+  }
+
+  /**
+   * Navigation updateMany
+   */
+  export type NavigationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Navigations.
+     */
+    data: XOR<NavigationUpdateManyMutationInput, NavigationUncheckedUpdateManyInput>
+    /**
+     * Filter which Navigations to update
+     */
+    where?: NavigationWhereInput
+    /**
+     * Limit how many Navigations to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Navigation updateManyAndReturn
+   */
+  export type NavigationUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Navigation
+     */
+    select?: NavigationSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Navigation
+     */
+    omit?: NavigationOmit<ExtArgs> | null
+    /**
+     * The data used to update Navigations.
+     */
+    data: XOR<NavigationUpdateManyMutationInput, NavigationUncheckedUpdateManyInput>
+    /**
+     * Filter which Navigations to update
+     */
+    where?: NavigationWhereInput
+    /**
+     * Limit how many Navigations to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NavigationIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Navigation upsert
+   */
+  export type NavigationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Navigation
+     */
+    select?: NavigationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Navigation
+     */
+    omit?: NavigationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NavigationInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Navigation to update in case it exists.
+     */
+    where: NavigationWhereUniqueInput
+    /**
+     * In case the Navigation found by the `where` argument doesn't exist, create a new Navigation with this data.
+     */
+    create: XOR<NavigationCreateInput, NavigationUncheckedCreateInput>
+    /**
+     * In case the Navigation was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<NavigationUpdateInput, NavigationUncheckedUpdateInput>
+  }
+
+  /**
+   * Navigation delete
+   */
+  export type NavigationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Navigation
+     */
+    select?: NavigationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Navigation
+     */
+    omit?: NavigationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NavigationInclude<ExtArgs> | null
+    /**
+     * Filter which Navigation to delete.
+     */
+    where: NavigationWhereUniqueInput
+  }
+
+  /**
+   * Navigation deleteMany
+   */
+  export type NavigationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Navigations to delete
+     */
+    where?: NavigationWhereInput
+    /**
+     * Limit how many Navigations to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Navigation.parent
+   */
+  export type Navigation$parentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Navigation
+     */
+    select?: NavigationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Navigation
+     */
+    omit?: NavigationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NavigationInclude<ExtArgs> | null
+    where?: NavigationWhereInput
+  }
+
+  /**
+   * Navigation.children
+   */
+  export type Navigation$childrenArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Navigation
+     */
+    select?: NavigationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Navigation
+     */
+    omit?: NavigationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NavigationInclude<ExtArgs> | null
+    where?: NavigationWhereInput
+    orderBy?: NavigationOrderByWithRelationInput | NavigationOrderByWithRelationInput[]
+    cursor?: NavigationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: NavigationScalarFieldEnum | NavigationScalarFieldEnum[]
+  }
+
+  /**
+   * Navigation without action
+   */
+  export type NavigationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Navigation
+     */
+    select?: NavigationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Navigation
+     */
+    omit?: NavigationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: NavigationInclude<ExtArgs> | null
+  }
+
 
   /**
    * Model User
@@ -1960,6 +3261,20 @@ export namespace Prisma {
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
+  export const NavigationScalarFieldEnum: {
+    id: 'id',
+    label: 'label',
+    url: 'url',
+    isActive: 'isActive',
+    parentId: 'parentId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt',
+    order: 'order'
+  };
+
+  export type NavigationScalarFieldEnum = (typeof NavigationScalarFieldEnum)[keyof typeof NavigationScalarFieldEnum]
+
+
   export const UserScalarFieldEnum: {
     id: 'id',
     firstname: 'firstname',
@@ -2020,6 +3335,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+    
+
+
+  /**
    * Reference to a field of type 'DateTime'
    */
   export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
@@ -2034,9 +3356,16 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Boolean'
+   * Reference to a field of type 'Int'
    */
-  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int[]'
+   */
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
 
 
@@ -2055,21 +3384,96 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Int'
+   * Reference to a field of type 'Float'
    */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+  export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
     
 
 
   /**
-   * Reference to a field of type 'Int[]'
+   * Reference to a field of type 'Float[]'
    */
-  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+  export type ListFloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float[]'>
     
   /**
    * Deep Input Types
    */
 
+
+  export type NavigationWhereInput = {
+    AND?: NavigationWhereInput | NavigationWhereInput[]
+    OR?: NavigationWhereInput[]
+    NOT?: NavigationWhereInput | NavigationWhereInput[]
+    id?: StringFilter<"Navigation"> | string
+    label?: StringFilter<"Navigation"> | string
+    url?: StringNullableFilter<"Navigation"> | string | null
+    isActive?: BoolFilter<"Navigation"> | boolean
+    parentId?: StringNullableFilter<"Navigation"> | string | null
+    createdAt?: DateTimeFilter<"Navigation"> | Date | string
+    updatedAt?: DateTimeFilter<"Navigation"> | Date | string
+    order?: IntFilter<"Navigation"> | number
+    parent?: XOR<NavigationNullableScalarRelationFilter, NavigationWhereInput> | null
+    children?: NavigationListRelationFilter
+  }
+
+  export type NavigationOrderByWithRelationInput = {
+    id?: SortOrder
+    label?: SortOrder
+    url?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    parentId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    order?: SortOrder
+    parent?: NavigationOrderByWithRelationInput
+    children?: NavigationOrderByRelationAggregateInput
+  }
+
+  export type NavigationWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    label?: string
+    AND?: NavigationWhereInput | NavigationWhereInput[]
+    OR?: NavigationWhereInput[]
+    NOT?: NavigationWhereInput | NavigationWhereInput[]
+    url?: StringNullableFilter<"Navigation"> | string | null
+    isActive?: BoolFilter<"Navigation"> | boolean
+    parentId?: StringNullableFilter<"Navigation"> | string | null
+    createdAt?: DateTimeFilter<"Navigation"> | Date | string
+    updatedAt?: DateTimeFilter<"Navigation"> | Date | string
+    order?: IntFilter<"Navigation"> | number
+    parent?: XOR<NavigationNullableScalarRelationFilter, NavigationWhereInput> | null
+    children?: NavigationListRelationFilter
+  }, "id" | "label">
+
+  export type NavigationOrderByWithAggregationInput = {
+    id?: SortOrder
+    label?: SortOrder
+    url?: SortOrderInput | SortOrder
+    isActive?: SortOrder
+    parentId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    order?: SortOrder
+    _count?: NavigationCountOrderByAggregateInput
+    _avg?: NavigationAvgOrderByAggregateInput
+    _max?: NavigationMaxOrderByAggregateInput
+    _min?: NavigationMinOrderByAggregateInput
+    _sum?: NavigationSumOrderByAggregateInput
+  }
+
+  export type NavigationScalarWhereWithAggregatesInput = {
+    AND?: NavigationScalarWhereWithAggregatesInput | NavigationScalarWhereWithAggregatesInput[]
+    OR?: NavigationScalarWhereWithAggregatesInput[]
+    NOT?: NavigationScalarWhereWithAggregatesInput | NavigationScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Navigation"> | string
+    label?: StringWithAggregatesFilter<"Navigation"> | string
+    url?: StringNullableWithAggregatesFilter<"Navigation"> | string | null
+    isActive?: BoolWithAggregatesFilter<"Navigation"> | boolean
+    parentId?: StringNullableWithAggregatesFilter<"Navigation"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Navigation"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Navigation"> | Date | string
+    order?: IntWithAggregatesFilter<"Navigation"> | number
+  }
 
   export type UserWhereInput = {
     AND?: UserWhereInput | UserWhereInput[]
@@ -2146,6 +3550,86 @@ export namespace Prisma {
     isActive?: BoolWithAggregatesFilter<"User"> | boolean
     password?: StringWithAggregatesFilter<"User"> | string
     role?: EnumRoleEnumWithAggregatesFilter<"User"> | $Enums.RoleEnum
+  }
+
+  export type NavigationCreateInput = {
+    id?: string
+    label: string
+    url?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    order?: number
+    parent?: NavigationCreateNestedOneWithoutChildrenInput
+    children?: NavigationCreateNestedManyWithoutParentInput
+  }
+
+  export type NavigationUncheckedCreateInput = {
+    id?: string
+    label: string
+    url?: string | null
+    isActive?: boolean
+    parentId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    order?: number
+    children?: NavigationUncheckedCreateNestedManyWithoutParentInput
+  }
+
+  export type NavigationUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    order?: IntFieldUpdateOperationsInput | number
+    parent?: NavigationUpdateOneWithoutChildrenNestedInput
+    children?: NavigationUpdateManyWithoutParentNestedInput
+  }
+
+  export type NavigationUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    parentId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    order?: IntFieldUpdateOperationsInput | number
+    children?: NavigationUncheckedUpdateManyWithoutParentNestedInput
+  }
+
+  export type NavigationCreateManyInput = {
+    id?: string
+    label: string
+    url?: string | null
+    isActive?: boolean
+    parentId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    order?: number
+  }
+
+  export type NavigationUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    order?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type NavigationUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    parentId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    order?: IntFieldUpdateOperationsInput | number
   }
 
   export type UserCreateInput = {
@@ -2269,6 +3753,11 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type DateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -2278,6 +3767,152 @@ export namespace Prisma {
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type NavigationNullableScalarRelationFilter = {
+    is?: NavigationWhereInput | null
+    isNot?: NavigationWhereInput | null
+  }
+
+  export type NavigationListRelationFilter = {
+    every?: NavigationWhereInput
+    some?: NavigationWhereInput
+    none?: NavigationWhereInput
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
+  export type NavigationOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type NavigationCountOrderByAggregateInput = {
+    id?: SortOrder
+    label?: SortOrder
+    url?: SortOrder
+    isActive?: SortOrder
+    parentId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    order?: SortOrder
+  }
+
+  export type NavigationAvgOrderByAggregateInput = {
+    order?: SortOrder
+  }
+
+  export type NavigationMaxOrderByAggregateInput = {
+    id?: SortOrder
+    label?: SortOrder
+    url?: SortOrder
+    isActive?: SortOrder
+    parentId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    order?: SortOrder
+  }
+
+  export type NavigationMinOrderByAggregateInput = {
+    id?: SortOrder
+    label?: SortOrder
+    url?: SortOrder
+    isActive?: SortOrder
+    parentId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    order?: SortOrder
+  }
+
+  export type NavigationSumOrderByAggregateInput = {
+    order?: SortOrder
+  }
+
+  export type StringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[] | ListStringFieldRefInput<$PrismaModel>
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type DateTimeNullableFilter<$PrismaModel = never> = {
@@ -2291,21 +3926,11 @@ export namespace Prisma {
     not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
-  export type BoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
   export type EnumRoleEnumFilter<$PrismaModel = never> = {
     equals?: $Enums.RoleEnum | EnumRoleEnumFieldRefInput<$PrismaModel>
     in?: $Enums.RoleEnum[] | ListEnumRoleEnumFieldRefInput<$PrismaModel>
     notIn?: $Enums.RoleEnum[] | ListEnumRoleEnumFieldRefInput<$PrismaModel>
     not?: NestedEnumRoleEnumFilter<$PrismaModel> | $Enums.RoleEnum
-  }
-
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
   }
 
   export type UserCountOrderByAggregateInput = {
@@ -2347,56 +3972,6 @@ export namespace Prisma {
     role?: SortOrder
   }
 
-  export type StringWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[] | ListStringFieldRefInput<$PrismaModel>
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel>
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedStringFilter<$PrismaModel>
-    _max?: NestedStringFilter<$PrismaModel>
-  }
-
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
   export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
@@ -2411,14 +3986,6 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
-  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
-  }
-
   export type EnumRoleEnumWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.RoleEnum | EnumRoleEnumFieldRefInput<$PrismaModel>
     in?: $Enums.RoleEnum[] | ListEnumRoleEnumFieldRefInput<$PrismaModel>
@@ -2429,6 +3996,26 @@ export namespace Prisma {
     _max?: NestedEnumRoleEnumFilter<$PrismaModel>
   }
 
+  export type NavigationCreateNestedOneWithoutChildrenInput = {
+    create?: XOR<NavigationCreateWithoutChildrenInput, NavigationUncheckedCreateWithoutChildrenInput>
+    connectOrCreate?: NavigationCreateOrConnectWithoutChildrenInput
+    connect?: NavigationWhereUniqueInput
+  }
+
+  export type NavigationCreateNestedManyWithoutParentInput = {
+    create?: XOR<NavigationCreateWithoutParentInput, NavigationUncheckedCreateWithoutParentInput> | NavigationCreateWithoutParentInput[] | NavigationUncheckedCreateWithoutParentInput[]
+    connectOrCreate?: NavigationCreateOrConnectWithoutParentInput | NavigationCreateOrConnectWithoutParentInput[]
+    createMany?: NavigationCreateManyParentInputEnvelope
+    connect?: NavigationWhereUniqueInput | NavigationWhereUniqueInput[]
+  }
+
+  export type NavigationUncheckedCreateNestedManyWithoutParentInput = {
+    create?: XOR<NavigationCreateWithoutParentInput, NavigationUncheckedCreateWithoutParentInput> | NavigationCreateWithoutParentInput[] | NavigationUncheckedCreateWithoutParentInput[]
+    connectOrCreate?: NavigationCreateOrConnectWithoutParentInput | NavigationCreateOrConnectWithoutParentInput[]
+    createMany?: NavigationCreateManyParentInputEnvelope
+    connect?: NavigationWhereUniqueInput | NavigationWhereUniqueInput[]
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -2437,16 +4024,62 @@ export namespace Prisma {
     set?: string | null
   }
 
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
   }
 
-  export type NullableDateTimeFieldUpdateOperationsInput = {
-    set?: Date | string | null
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
-  export type BoolFieldUpdateOperationsInput = {
-    set?: boolean
+  export type NavigationUpdateOneWithoutChildrenNestedInput = {
+    create?: XOR<NavigationCreateWithoutChildrenInput, NavigationUncheckedCreateWithoutChildrenInput>
+    connectOrCreate?: NavigationCreateOrConnectWithoutChildrenInput
+    upsert?: NavigationUpsertWithoutChildrenInput
+    disconnect?: NavigationWhereInput | boolean
+    delete?: NavigationWhereInput | boolean
+    connect?: NavigationWhereUniqueInput
+    update?: XOR<XOR<NavigationUpdateToOneWithWhereWithoutChildrenInput, NavigationUpdateWithoutChildrenInput>, NavigationUncheckedUpdateWithoutChildrenInput>
+  }
+
+  export type NavigationUpdateManyWithoutParentNestedInput = {
+    create?: XOR<NavigationCreateWithoutParentInput, NavigationUncheckedCreateWithoutParentInput> | NavigationCreateWithoutParentInput[] | NavigationUncheckedCreateWithoutParentInput[]
+    connectOrCreate?: NavigationCreateOrConnectWithoutParentInput | NavigationCreateOrConnectWithoutParentInput[]
+    upsert?: NavigationUpsertWithWhereUniqueWithoutParentInput | NavigationUpsertWithWhereUniqueWithoutParentInput[]
+    createMany?: NavigationCreateManyParentInputEnvelope
+    set?: NavigationWhereUniqueInput | NavigationWhereUniqueInput[]
+    disconnect?: NavigationWhereUniqueInput | NavigationWhereUniqueInput[]
+    delete?: NavigationWhereUniqueInput | NavigationWhereUniqueInput[]
+    connect?: NavigationWhereUniqueInput | NavigationWhereUniqueInput[]
+    update?: NavigationUpdateWithWhereUniqueWithoutParentInput | NavigationUpdateWithWhereUniqueWithoutParentInput[]
+    updateMany?: NavigationUpdateManyWithWhereWithoutParentInput | NavigationUpdateManyWithWhereWithoutParentInput[]
+    deleteMany?: NavigationScalarWhereInput | NavigationScalarWhereInput[]
+  }
+
+  export type NavigationUncheckedUpdateManyWithoutParentNestedInput = {
+    create?: XOR<NavigationCreateWithoutParentInput, NavigationUncheckedCreateWithoutParentInput> | NavigationCreateWithoutParentInput[] | NavigationUncheckedCreateWithoutParentInput[]
+    connectOrCreate?: NavigationCreateOrConnectWithoutParentInput | NavigationCreateOrConnectWithoutParentInput[]
+    upsert?: NavigationUpsertWithWhereUniqueWithoutParentInput | NavigationUpsertWithWhereUniqueWithoutParentInput[]
+    createMany?: NavigationCreateManyParentInputEnvelope
+    set?: NavigationWhereUniqueInput | NavigationWhereUniqueInput[]
+    disconnect?: NavigationWhereUniqueInput | NavigationWhereUniqueInput[]
+    delete?: NavigationWhereUniqueInput | NavigationWhereUniqueInput[]
+    connect?: NavigationWhereUniqueInput | NavigationWhereUniqueInput[]
+    update?: NavigationUpdateWithWhereUniqueWithoutParentInput | NavigationUpdateWithWhereUniqueWithoutParentInput[]
+    updateMany?: NavigationUpdateManyWithWhereWithoutParentInput | NavigationUpdateManyWithWhereWithoutParentInput[]
+    deleteMany?: NavigationScalarWhereInput | NavigationScalarWhereInput[]
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
   }
 
   export type EnumRoleEnumFieldUpdateOperationsInput = {
@@ -2481,6 +4114,11 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type NestedDateTimeFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -2492,27 +4130,15 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-  }
-
-  export type NestedBoolFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
-  export type NestedEnumRoleEnumFilter<$PrismaModel = never> = {
-    equals?: $Enums.RoleEnum | EnumRoleEnumFieldRefInput<$PrismaModel>
-    in?: $Enums.RoleEnum[] | ListEnumRoleEnumFieldRefInput<$PrismaModel>
-    notIn?: $Enums.RoleEnum[] | ListEnumRoleEnumFieldRefInput<$PrismaModel>
-    not?: NestedEnumRoleEnumFilter<$PrismaModel> | $Enums.RoleEnum
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
@@ -2530,17 +4156,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
-  }
-
-  export type NestedIntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -2571,6 +4186,14 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
@@ -2583,6 +4206,51 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  }
+
+  export type NestedEnumRoleEnumFilter<$PrismaModel = never> = {
+    equals?: $Enums.RoleEnum | EnumRoleEnumFieldRefInput<$PrismaModel>
+    in?: $Enums.RoleEnum[] | ListEnumRoleEnumFieldRefInput<$PrismaModel>
+    notIn?: $Enums.RoleEnum[] | ListEnumRoleEnumFieldRefInput<$PrismaModel>
+    not?: NestedEnumRoleEnumFilter<$PrismaModel> | $Enums.RoleEnum
   }
 
   export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -2599,14 +4267,6 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
-  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
-    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedBoolFilter<$PrismaModel>
-    _max?: NestedBoolFilter<$PrismaModel>
-  }
-
   export type NestedEnumRoleEnumWithAggregatesFilter<$PrismaModel = never> = {
     equals?: $Enums.RoleEnum | EnumRoleEnumFieldRefInput<$PrismaModel>
     in?: $Enums.RoleEnum[] | ListEnumRoleEnumFieldRefInput<$PrismaModel>
@@ -2615,6 +4275,170 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumRoleEnumFilter<$PrismaModel>
     _max?: NestedEnumRoleEnumFilter<$PrismaModel>
+  }
+
+  export type NavigationCreateWithoutChildrenInput = {
+    id?: string
+    label: string
+    url?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    order?: number
+    parent?: NavigationCreateNestedOneWithoutChildrenInput
+  }
+
+  export type NavigationUncheckedCreateWithoutChildrenInput = {
+    id?: string
+    label: string
+    url?: string | null
+    isActive?: boolean
+    parentId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    order?: number
+  }
+
+  export type NavigationCreateOrConnectWithoutChildrenInput = {
+    where: NavigationWhereUniqueInput
+    create: XOR<NavigationCreateWithoutChildrenInput, NavigationUncheckedCreateWithoutChildrenInput>
+  }
+
+  export type NavigationCreateWithoutParentInput = {
+    id?: string
+    label: string
+    url?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    order?: number
+    children?: NavigationCreateNestedManyWithoutParentInput
+  }
+
+  export type NavigationUncheckedCreateWithoutParentInput = {
+    id?: string
+    label: string
+    url?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    order?: number
+    children?: NavigationUncheckedCreateNestedManyWithoutParentInput
+  }
+
+  export type NavigationCreateOrConnectWithoutParentInput = {
+    where: NavigationWhereUniqueInput
+    create: XOR<NavigationCreateWithoutParentInput, NavigationUncheckedCreateWithoutParentInput>
+  }
+
+  export type NavigationCreateManyParentInputEnvelope = {
+    data: NavigationCreateManyParentInput | NavigationCreateManyParentInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type NavigationUpsertWithoutChildrenInput = {
+    update: XOR<NavigationUpdateWithoutChildrenInput, NavigationUncheckedUpdateWithoutChildrenInput>
+    create: XOR<NavigationCreateWithoutChildrenInput, NavigationUncheckedCreateWithoutChildrenInput>
+    where?: NavigationWhereInput
+  }
+
+  export type NavigationUpdateToOneWithWhereWithoutChildrenInput = {
+    where?: NavigationWhereInput
+    data: XOR<NavigationUpdateWithoutChildrenInput, NavigationUncheckedUpdateWithoutChildrenInput>
+  }
+
+  export type NavigationUpdateWithoutChildrenInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    order?: IntFieldUpdateOperationsInput | number
+    parent?: NavigationUpdateOneWithoutChildrenNestedInput
+  }
+
+  export type NavigationUncheckedUpdateWithoutChildrenInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    parentId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    order?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type NavigationUpsertWithWhereUniqueWithoutParentInput = {
+    where: NavigationWhereUniqueInput
+    update: XOR<NavigationUpdateWithoutParentInput, NavigationUncheckedUpdateWithoutParentInput>
+    create: XOR<NavigationCreateWithoutParentInput, NavigationUncheckedCreateWithoutParentInput>
+  }
+
+  export type NavigationUpdateWithWhereUniqueWithoutParentInput = {
+    where: NavigationWhereUniqueInput
+    data: XOR<NavigationUpdateWithoutParentInput, NavigationUncheckedUpdateWithoutParentInput>
+  }
+
+  export type NavigationUpdateManyWithWhereWithoutParentInput = {
+    where: NavigationScalarWhereInput
+    data: XOR<NavigationUpdateManyMutationInput, NavigationUncheckedUpdateManyWithoutParentInput>
+  }
+
+  export type NavigationScalarWhereInput = {
+    AND?: NavigationScalarWhereInput | NavigationScalarWhereInput[]
+    OR?: NavigationScalarWhereInput[]
+    NOT?: NavigationScalarWhereInput | NavigationScalarWhereInput[]
+    id?: StringFilter<"Navigation"> | string
+    label?: StringFilter<"Navigation"> | string
+    url?: StringNullableFilter<"Navigation"> | string | null
+    isActive?: BoolFilter<"Navigation"> | boolean
+    parentId?: StringNullableFilter<"Navigation"> | string | null
+    createdAt?: DateTimeFilter<"Navigation"> | Date | string
+    updatedAt?: DateTimeFilter<"Navigation"> | Date | string
+    order?: IntFilter<"Navigation"> | number
+  }
+
+  export type NavigationCreateManyParentInput = {
+    id?: string
+    label: string
+    url?: string | null
+    isActive?: boolean
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    order?: number
+  }
+
+  export type NavigationUpdateWithoutParentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    order?: IntFieldUpdateOperationsInput | number
+    children?: NavigationUpdateManyWithoutParentNestedInput
+  }
+
+  export type NavigationUncheckedUpdateWithoutParentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    order?: IntFieldUpdateOperationsInput | number
+    children?: NavigationUncheckedUpdateManyWithoutParentNestedInput
+  }
+
+  export type NavigationUncheckedUpdateManyWithoutParentInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    label?: StringFieldUpdateOperationsInput | string
+    url?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    order?: IntFieldUpdateOperationsInput | number
   }
 
 

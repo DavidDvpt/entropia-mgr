@@ -1,0 +1,11 @@
+@import '../../../styles/main';
+
+.header {
+  @include flex-start-center;
+
+  height: $headerHeight;
+
+  > h1 {
+    cursor: pointer;
+  }
+}

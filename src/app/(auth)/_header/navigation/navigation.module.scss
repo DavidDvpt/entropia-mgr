@@ -1,0 +1,10 @@
+@import '../../../../styles/main';
+
+.navigation {
+  flex: 1;
+  height: $headerHeight;
+
+  > ul {
+    @include flex-end-center;
+  }
+}

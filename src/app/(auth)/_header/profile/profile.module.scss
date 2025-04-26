@@ -1,0 +1,6 @@
+@import '../../../../styles/main';
+
+.profile {
+  width: 50px;
+  @include flex-center-center;
+}
