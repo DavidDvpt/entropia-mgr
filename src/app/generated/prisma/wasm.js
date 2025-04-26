@@ -141,6 +141,36 @@ exports.Prisma.UserScalarFieldEnum = {
   role: 'role'
 };
 
+exports.Prisma.ItemCategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ItemTypeScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  isActive: 'isActive',
+  isStackable: 'isStackable',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  itemCategoryId: 'itemCategoryId'
+};
+
+exports.Prisma.ItemScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  value: 'value',
+  imageUrlId: 'imageUrlId',
+  isActive: 'isActive',
+  isLimied: 'isLimied',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  itemTypeId: 'itemTypeId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -162,7 +192,10 @@ exports.RoleEnum = exports.$Enums.RoleEnum = {
 
 exports.Prisma.ModelName = {
   Navigation: 'Navigation',
-  User: 'User'
+  User: 'User',
+  ItemCategory: 'ItemCategory',
+  ItemType: 'ItemType',
+  Item: 'Item'
 };
 
 /**

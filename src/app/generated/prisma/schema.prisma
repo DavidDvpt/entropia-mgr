@@ -31,6 +31,8 @@ model Navigation {
   createdAt DateTime     @default(now()) @map("created_at")
   updatedAt DateTime     @updatedAt @map("updated_at")
   order     Int          @default(autoincrement())
+
+  @@map("navigation")
 }
 
 model User {
@@ -46,4 +48,44 @@ model User {
   role      RoleEnum  @default(USER)
 
   @@map("user")
+}
+
+model ItemCategory {
+  id        String     @id @default(cuid())
+  name      String     @unique
+  isActive  Boolean    @default(true)
+  createdAt DateTime   @default(now()) @map("created_at")
+  updatedAt DateTime?  @updatedAt @map("updated_at")
+  ItemType  ItemType[]
+
+  @@map("item_category")
+}
+
+model ItemType {
+  id             String       @id @default(cuid())
+  name           String       @unique
+  isActive       Boolean      @default(true)
+  isStackable    Boolean      @default(true)
+  createdAt      DateTime     @default(now()) @map("created_at")
+  updatedAt      DateTime?    @updatedAt @map("updated_at")
+  itemCategoryId String
+  itemCategory   ItemCategory @relation(fields: [itemCategoryId], references: [id])
+  items          Item[]
+
+  @@map("item_type")
+}
+
+model Item {
+  id         String    @id @default(cuid())
+  name       String    @unique
+  value      Float     @default(0)
+  imageUrlId String?
+  isActive   Boolean   @default(true)
+  isLimied   Boolean   @default(false)
+  createdAt  DateTime  @default(now()) @map("created_at")
+  updatedAt  DateTime? @updatedAt @map("updated_at")
+  itemTypeId String
+  ItemType   ItemType  @relation(fields: [itemTypeId], references: [id])
+
+  @@map("item")
 }
