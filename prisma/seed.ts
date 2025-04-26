@@ -1,46 +1,22 @@
-import { RoleEnum } from '@/app/generated/prisma';
-import { encodeFnc } from '@/lib/jwt/encodeFunc';
 import dbClient from './dbClient';
+import {
+  itemCategoryDatas,
+  itemTypeDatas,
+  navDatas,
+  userDatas,
+} from './seedDatas';
 
 async function createUsers() {
-  const user = {
-    firstname: 'test',
-    lastname: 'test',
-    email: 'test@test.com',
-    password: encodeFnc('test'),
-    role: RoleEnum.USER,
-  };
-
-  const u = await dbClient.user.upsert({
-    where: { email: user.email },
-    update: {},
-    create: user,
-  });
+  for (const user of userDatas) {
+    const u = await dbClient.user.upsert({
+      where: { email: user.email },
+      update: {},
+      create: user,
+    });
+  }
 }
 async function createNavigation() {
-  const nav = [
-    {
-      label: 'Achat',
-      url: '/transaction/buy',
-      childs: [{ label: '', url: '' }],
-    },
-    {
-      label: 'Vente',
-      url: '/transaction/sell',
-      childs: [{ label: '', url: '' }],
-    },
-    {
-      label: 'Manage',
-      childs: [
-        { url: '/manage/categories', label: 'Catégories' },
-        { url: '/manage/types', label: 'Types' },
-        { url: '/manage/items', label: 'Items' },
-        { url: '/manage/transactions', label: 'Transactions' },
-      ],
-    },
-  ];
-
-  for (const item of nav) {
+  for (const item of navDatas) {
     // upsert du parent
     const parent = await dbClient.navigation.upsert({
       where: { label: item.label },
@@ -70,11 +46,30 @@ async function createNavigation() {
     }
   }
 }
-
+async function createCategories() {
+  for (const cat of itemCategoryDatas) {
+    await dbClient.itemCategory.upsert({
+      where: { name: cat.name },
+      update: {},
+      create: cat,
+    });
+  }
+}
+async function createTypes() {
+  for (const type of itemTypeDatas) {
+    await dbClient.itemType.upsert({
+      where: { name: type.name },
+      update: {},
+      create: type,
+    });
+  }
+}
 async function seedDatas() {
   try {
     await createUsers();
     await createNavigation();
+    await createCategories();
+    await createTypes();
   } catch (error) {
     console.log(error);
   }
