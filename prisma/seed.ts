@@ -69,7 +69,13 @@ async function createItems() {
   for (const item of itemDatas) {
     await dbClient.item.upsert({
       where: { name: item.name },
-      update: {},
+      update: {
+        name: item.name,
+        value: item.value,
+        imageUrlId: item.imageUrlId,
+        isActive: item.isActive,
+        isLimied: item.isLimied,
+      },
       create: item,
     });
   }
