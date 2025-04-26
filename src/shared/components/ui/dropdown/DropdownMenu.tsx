@@ -1,5 +1,4 @@
 import DropdownElement from './DropdownElement';
-import styles from './dropdown.module.scss';
 interface IDropdownListProps {
   list?: DropDownElementsType;
   isSubMenu?: boolean;
@@ -7,11 +6,7 @@ interface IDropdownListProps {
 
 function DropdownMenu({ list, isSubMenu }: IDropdownListProps) {
   return (
-    <ul
-      className={[styles.dropdownMenu, isSubMenu ? styles.subMenu : ''].join(
-        ' '
-      )}
-    >
+    <ul className={''}>
       {list?.map((m) => <DropdownElement key={m.label} {...m} />)}
     </ul>
   );

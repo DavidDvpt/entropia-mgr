@@ -15,6 +15,10 @@
     height: $headerHeight;
     padding: 5px;
 
+    &:not(.subElement) {
+      font-weight: 600;
+    }
+
     &.subElement {
       @include flex-column-start-start;
       height: unset;
@@ -28,11 +32,19 @@
 
   &:hover {
     .label {
-      background-color: $dorpdownHover;
+      &:not(.subElement) {
+        border-bottom: 1px red solid;
+        background-color: $dorpdownHover;
+      }
+
+      &.subElement:hover {
+        background-color: $dorpdownHover;
+      }
     }
 
     > ul {
       @include flex-column-start-start;
+      box-shadow: $dropdownShadow;
     }
   }
 }

@@ -2,4 +2,5 @@
 
 .profile {
   width: 50px;
+  @include flex-center-center;
 }
