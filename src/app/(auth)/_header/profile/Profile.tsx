@@ -1,7 +1,7 @@
 'use client';
 
 import { useSession } from 'next-auth/react';
-import styles from '../header.module.scss';
+import styles from './profile.module.scss';
 function Profile() {
   const { data } = useSession();
 
