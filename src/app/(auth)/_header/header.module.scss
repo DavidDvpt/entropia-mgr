@@ -4,4 +4,8 @@
   @include flex-start-center;
 
   height: $headerHeight;
+
+  > h1 {
+    cursor: pointer;
+  }
 }
