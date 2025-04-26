@@ -1,6 +1,7 @@
 import dbClient from './dbClient';
 import {
   itemCategoryDatas,
+  itemDatas,
   itemTypeDatas,
   navDatas,
   userDatas,
@@ -64,12 +65,22 @@ async function createTypes() {
     });
   }
 }
+async function createItems() {
+  for (const item of itemDatas) {
+    await dbClient.item.upsert({
+      where: { name: item.name },
+      update: {},
+      create: item,
+    });
+  }
+}
 async function seedDatas() {
   try {
     await createUsers();
     await createNavigation();
     await createCategories();
     await createTypes();
+    await createItems();
   } catch (error) {
     console.log(error);
   }
