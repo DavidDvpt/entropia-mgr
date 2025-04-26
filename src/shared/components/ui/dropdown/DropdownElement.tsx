@@ -1,10 +1,19 @@
-import DropdownList from './DropdownList';
+import DropdownMenu from './DropdownMenu';
+import styles from './dropdown.module.scss';
 
 function DropdownElement(props: DropDownElementType) {
   return (
-    <li>
-      <p>{props.label}</p>
-      {props.childs && <DropdownList list={props.childs} />}
+    <li className={styles.dropdownElement}>
+      <div
+        className={[
+          styles.label,
+          props.isSubElement ? styles.subElement : '',
+        ].join(' ')}
+      >
+        {props.label}
+      </div>
+
+      {props.childs && <DropdownMenu list={props.childs} isSubMenu />}
     </li>
   );
 }

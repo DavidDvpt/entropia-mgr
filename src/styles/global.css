@@ -10,7 +10,9 @@
   box-sizing: border-box;
 }
 p,
-button {
+button,
+ul,
+li {
   padding: 0;
   margin: 0;
   border: none;
@@ -29,6 +31,10 @@ html {
   background-color: var(--color-background);
   color: var(--color-foreground);
   font-size: var(--font-size);
+}
+
+ul {
+  list-style: none;
 }
 
 h1 {

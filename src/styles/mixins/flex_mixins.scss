@@ -1,16 +1,29 @@
+@mixin flex-start-start {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
 @mixin flex-start-center {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   align-items: center;
 }
-
 @mixin flex-center-center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+@mixin flex-end-center {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
 
 @mixin flex-column-center-center {
   @include flex-center-center;
+  flex-direction: column;
+}
+@mixin flex-column-start-start {
+  @include flex-start-start;
   flex-direction: column;
 }

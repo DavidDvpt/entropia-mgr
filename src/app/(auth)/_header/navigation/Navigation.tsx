@@ -1,19 +1,15 @@
 'use client';
 
 import useNavigation from '@/features/navigation/useNavigation';
-import DropdownList from '@/shared/components/ui/dropdown/DropdownList';
+import DropdownMenu from '@/shared/components/ui/dropdown/DropdownMenu';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import styles from './navigation.module.scss';
 
 function Navigation() {
-  const { data, isLoading, error } = useNavigation();
-
-  if (isLoading) return null;
-  if (error) return null;
-
-  const path = usePathname();
   const [isActive, setIsActive] = useState<string | null>('');
+  const path = usePathname();
+  const { data, isLoading, error } = useNavigation();
 
   useEffect(() => {
     if (isActive !== path) {
@@ -21,9 +17,12 @@ function Navigation() {
     }
   }, [path]);
 
+  if (isLoading) return null;
+  if (error) return null;
+
   return (
     <nav className={styles.navigation}>
-      <DropdownList list={data} />
+      <DropdownMenu list={data} />
     </nav>
   );
 }
