@@ -1,4 +1,4 @@
-import { getNavigation } from '@/lib/prisma/navigation';
+import { getNavigation } from '@/modules/navigation/dbNavigation';
 import { NextResponse } from 'next/server';
 
 async function GET() {

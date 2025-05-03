@@ -1,6 +1,6 @@
 import { quickErrorAccess } from '@/lib/errorMgr/apiErrorMessages';
 import ErrorKeyEnum from '@/lib/errorMgr/ErrorKeyEnum';
-import { getUserByEmail } from '@/lib/prisma/user';
+import { getUserByEmail } from '@/modules/user/dbUser';
 import bcrypt from 'bcryptjs';
 import { randomBytes, randomUUID } from 'crypto';
 import NextAuth, { User } from 'next-auth';

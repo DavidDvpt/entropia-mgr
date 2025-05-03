@@ -1,6 +1,6 @@
 'use client';
 
-import useNavigation from '@/features/navigation/useNavigation';
+import useNavigation from '@/modules/navigation/useNavigation';
 import DropdownMenu from '@/shared/components/ui/dropdown/DropdownMenu';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
