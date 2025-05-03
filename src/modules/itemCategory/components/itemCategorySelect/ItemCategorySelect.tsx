@@ -5,16 +5,29 @@ import Select from '@/shared/components/ui/select/Select';
 import useItemCategory from '../../useItemCategory';
 import styles from './itemCategorySelect.module.scss';
 
-function ItemCategorySelect() {
+interface IItemCategorySelectProps {
+  className?: string;
+  value?: string;
+}
+function ItemCategorySelect(props: IItemCategorySelectProps) {
   const { data, isError, isLoading } = useItemCategory();
 
   const options = data?.map((m) => ({ value: m.id, display: m.name }));
   if (isLoading || isError || !options) return null;
 
+  const css = [styles.itemCategorySelect];
+  props.className && css.push(props.className);
+
   return (
     <FormField
-      className={styles.itemCategorySelect}
-      children={<Select options={options} noValueDisplay="Catégories" />}
+      children={
+        <Select
+          options={options}
+          className={css.join(' ')}
+          noValueDisplay="Catégories"
+          value={props.value ?? ''}
+        />
+      }
       name="category"
       label="Catégorie"
     />

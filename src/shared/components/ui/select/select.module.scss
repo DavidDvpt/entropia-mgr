@@ -1,4 +1,7 @@
-@import '../../../../styles/';
+@import '../../../../styles/main';
 
 .select {
+  min-width: 100px;
+  height: 34px;
+  border-radius: $borderRadius;
 }

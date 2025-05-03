@@ -1,14 +1,23 @@
-import { ImgHTMLAttributes } from 'react';
+import { SelectHTMLAttributes } from 'react';
 import SelectOption from './SelectOption';
-
-interface ISelectProps extends ImgHTMLAttributes<HTMLSelectElement> {
+import styles from './select.module.scss';
+interface ISelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
   options: SelectOptionsType;
   noValueDisplay?: string;
+  className?: string;
 }
 
-function Select({ options = [], noValueDisplay }: ISelectProps) {
+function Select({
+  options = [],
+  noValueDisplay,
+  className,
+  value,
+}: ISelectProps) {
+  const css = [styles.select];
+  className && css.push(className);
+
   return (
-    <select>
+    <select className={css.join(' ')} value={value}>
       {noValueDisplay && (
         <option value="" disabled>
           {noValueDisplay}
