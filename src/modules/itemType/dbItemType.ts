@@ -1,8 +1,8 @@
 import dbClient from '@orm/dbClient';
 
-async function getDbItemCategories() {
+async function getDbItemTypes() {
   try {
-    const result = await dbClient.itemCategory.findMany({
+    const result = await dbClient.itemType.findMany({
       orderBy: [{ name: 'asc' }],
     });
 
@@ -12,4 +12,4 @@ async function getDbItemCategories() {
   }
 }
 
-export { getDbItemCategories };
+export { getDbItemTypes };
