@@ -1,24 +1,22 @@
 async function navigationParser(data: any): Promise<DropDownElementType> {
-  return new Promise((res, rej) => {
-    try {
-      const childs = data.children.map((m: any) => ({
-        label: m.label,
-        url: m.url,
-        isSubElement: true,
-      }));
+  try {
+    const childs = data.children.map((m: any) => ({
+      label: m.label,
+      url: m.url,
+      isSubElement: true,
+    }));
 
-      const parsed: DropDownElementType = {
-        label: data.label,
-        url: data.url,
-        isSubElement: false,
-        childs,
-      };
+    const parsed: DropDownElementType = {
+      label: data.label,
+      url: data.url,
+      isSubElement: false,
+      childs,
+    };
 
-      return res(parsed);
-    } catch (error) {
-      rej(error);
-    }
-  });
+    return parsed;
+  } catch (error) {
+    return Promise.reject(error);
+  }
 }
 
 export { navigationParser };
