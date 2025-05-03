@@ -1,4 +1,4 @@
-import SearchItemEngine from '@/features/searchItemEngine/SearchItemEngine';
+import SearchItemEngine from '@/modules/searchItemEngine/SearchItemEngine';
 
 function layout({ children }: IChildren) {
   return (

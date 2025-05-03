@@ -1,5 +1,6 @@
 async function itemCategoryParser(data: any): Promise<AppItemCategory> {
   try {
+    console.log(data);
     const itemCategory: AppItemCategory = {
       id: data.id,
       isActive: data.isActive,
