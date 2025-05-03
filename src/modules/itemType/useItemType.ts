@@ -4,15 +4,25 @@ import { axiosInstance } from '@/lib/axios/axios';
 import { useQuery } from '@tanstack/react-query';
 import { itemTypeParser } from './itemTypeParser';
 
-function useItemType() {
+interface IUseItemTypeProps {
+  itemCategoryId?: string;
+  loadAll?: boolean;
+}
+function useItemType({ itemCategoryId, loadAll = false }: IUseItemTypeProps) {
   return useQuery<AppItemTypes>({
-    queryKey: ['itemTypes'],
+    queryKey: ['itemTypes', { itemCategoryId, loadAll }],
     queryFn: async () => {
-      const { data } = await axiosInstance().get<any[]>('/api/itemTypes');
+      if (loadAll || itemCategoryId) {
+        const { data } = await axiosInstance().get<any[]>('/api/itemTypes', {
+          params: itemCategoryId ? { itemCategoryId } : undefined,
+        });
 
-      const parsed = await Promise.all(data.map((m) => itemTypeParser(m)));
+        const parsed = await Promise.all(data.map((m) => itemTypeParser(m)));
 
-      return parsed;
+        return parsed;
+      } else {
+        return [];
+      }
     },
   });
 }

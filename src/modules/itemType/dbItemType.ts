@@ -6,10 +6,26 @@ async function getDbItemTypes() {
       orderBy: [{ name: 'asc' }],
     });
 
-    return result as AppItemCatgories;
+    return result;
+  } catch (error) {
+    return Promise.reject(error);
+  }
+}
+async function getDbItemTypesByCategoryId(itemCategoryId: string) {
+  try {
+    if (!itemCategoryId) throw new Error('category id missing');
+
+    const result = await dbClient.itemType.findMany({
+      where: {
+        itemCategoryId,
+      },
+      orderBy: [{ name: 'asc' }],
+    });
+
+    return result;
   } catch (error) {
     return Promise.reject(error);
   }
 }
 
-export { getDbItemTypes };
+export { getDbItemTypes, getDbItemTypesByCategoryId };

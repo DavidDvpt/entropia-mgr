@@ -9,9 +9,12 @@ import styles from './itemTypeSelect.module.scss';
 interface IItemCategorySelectProps {
   className?: string;
   value?: string;
+  itemCategoryId?: string;
 }
 function ItemTypeSelect(props: IItemCategorySelectProps) {
-  const { data, isError, isLoading } = useItemType();
+  const { data, isError, isLoading } = useItemType({
+    itemCategoryId: props.itemCategoryId,
+  });
 
   const options = data?.map((m) => ({ value: m.id, display: m.name }));
   if (isLoading || isError || !options) return null;
