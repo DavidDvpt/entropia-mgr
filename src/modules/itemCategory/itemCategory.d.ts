@@ -1,5 +1,3 @@
-interface AppItemCategory extends IName {
-  isActive: boolean;
-}
+interface AppItemCategory extends IObjectBase {}
 
 type AppItemCatgories = AppItemCategory[];

@@ -1,3 +1,5 @@
+'use client';
+
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ReactNode, useEffect } from 'react';
 import {
@@ -9,7 +11,7 @@ import {
   UseFormProps,
 } from 'react-hook-form';
 import { ZodSchema } from 'zod';
-import useWatchFields from './useWatchFields';
+import useWatchFields from './hookForm/useWatchFields';
 
 interface FormProps<TFormValues extends FieldValues> {
   externalError: ErrorStatesType | null;

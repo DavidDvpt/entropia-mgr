@@ -1,9 +1,9 @@
-import { getDbNavigation } from '@/modules/navigation/dbNavigation';
+import { getDbItemCategories } from '@/modules/itemCategory/dbItemCategory';
 import { NextResponse } from 'next/server';
 
 async function GET() {
   try {
-    const response = await getDbNavigation();
+    const response = await getDbItemCategories();
 
     return NextResponse.json(response, { status: 200 });
   } catch (error) {

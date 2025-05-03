@@ -1,6 +1,8 @@
-import React from 'react';
-import { useFormContext } from 'react-hook-form';
+'use client';
 
+import React from 'react';
+
+import useSafeFormContext from '../../form/hookForm/useSafeFormContext';
 import styles from './formField.module.scss';
 
 interface IFormFieldProps {
@@ -11,21 +13,21 @@ interface IFormFieldProps {
   labelPosition?: PositionType;
 }
 
-function FormField<T extends object>(props: IFormFieldProps) {
-  const {
-    formState: { errors },
-  } = useFormContext();
+function FormField(props: IFormFieldProps) {
+  const form = useSafeFormContext();
   const { labelPosition = 'top', name } = props;
 
   const id = `field-${name}`;
-  const error = errors[name]?.message as string;
+  const error = form?.errors?.[name]?.message as string | undefined;
 
   const css = [
     styles.formField,
     styles[labelPosition],
     error && styles.error,
     props.className,
-  ];
+  ]
+    .filter(Boolean)
+    .join(' ');
 
   const cloned = React.isValidElement(props.children)
     ? React.cloneElement(props.children, {
@@ -37,7 +39,7 @@ function FormField<T extends object>(props: IFormFieldProps) {
     : props.children;
 
   return (
-    <div className={css.join(' ')}>
+    <div className={css}>
       {props.label && (
         <label htmlFor={id} className={styles.label}>
           {props.label}
@@ -45,7 +47,6 @@ function FormField<T extends object>(props: IFormFieldProps) {
       )}
       <div className={styles.childrenContainer}>
         {cloned}
-
         {error && <p className={styles.errorText}>{error}</p>}
       </div>
     </div>

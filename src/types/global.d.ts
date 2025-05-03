@@ -21,7 +21,8 @@ interface IId {
 interface IName {
   name: string;
 }
-
 interface IIsActive {
   isActive: boolean;
 }
+
+interface IObjectBase extends IId, IName, IIsActive {}

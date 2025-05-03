@@ -1,6 +1,6 @@
 import dbClient from '@orm/dbClient';
 
-async function getNavigation() {
+async function getDbNavigation() {
   try {
     const response = await dbClient.navigation.findMany({
       where: {
@@ -28,4 +28,4 @@ async function getNavigation() {
   }
 }
 
-export { getNavigation };
+export { getDbNavigation };
