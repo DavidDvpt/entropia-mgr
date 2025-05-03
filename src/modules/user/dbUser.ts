@@ -1,5 +1,4 @@
 import dbClient, { User } from '@orm/dbClient';
-import { userParser } from './userParser';
 
 /**
  * Retrieves a user by their ID (in this case, the ID is the email).
@@ -13,7 +12,7 @@ import { userParser } from './userParser';
  * or `null` if no user is found with that id.
  * @throws {Error} If an error occurs during the database query.
  */
-async function getUserById(id: string | null): Promise<AppUser | null> {
+async function getUserById(id: string | null): Promise<User | null> {
   try {
     // check parameters
     if (!id) throw new Error('email parameter missing');
@@ -23,9 +22,9 @@ async function getUserById(id: string | null): Promise<AppUser | null> {
       where: { id },
     });
 
-    const parsed = await userParser(result);
+    // const parsed = await userParser(result);
     // Return the found user or null if no user exists with the provided id
-    return parsed;
+    return result;
   } catch (error) {
     // Reject the promise if an error occurs
     return Promise.reject(error);
@@ -43,7 +42,7 @@ async function getUserById(id: string | null): Promise<AppUser | null> {
  * or `null` if no user is found with that email.
  * @throws {Error} If an error occurs during the database query.
  */
-async function getUserByEmail(email: string | null): Promise<AppUser | null> {
+async function getUserByEmail(email: string | null): Promise<User | null> {
   try {
     // check parameters
     if (!email) throw new Error('email parameter missing');
@@ -53,10 +52,10 @@ async function getUserByEmail(email: string | null): Promise<AppUser | null> {
       where: { email },
     });
 
-    const parsed = await userParser(result);
+    // const parsed = await userParser(result);
     // Return the found user or null if no user exists with the provided id
     // Return the found user or null if no user exists with the provided email
-    return parsed;
+    return result;
   } catch (error) {
     // Reject the promise if an error occurs
     return Promise.reject(error);
