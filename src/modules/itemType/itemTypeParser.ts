@@ -5,6 +5,7 @@ async function itemTypeParser(data: any): Promise<IAppItemType> {
       isActive: data.isActive,
       name: data.name,
       itemCategoryId: data.itemCategoryId,
+      isStackable: data.isStackable,
     };
 
     return itemType;
