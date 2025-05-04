@@ -26,3 +26,4 @@ interface IIsActive {
 }
 
 interface IObjectBase extends IId, IName, IIsActive {}
+type ObjectsBase = IObjectBase[];

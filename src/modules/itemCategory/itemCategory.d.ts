@@ -1,3 +1,3 @@
 interface IAppItemCategory extends IObjectBase {}
 
-type AppItemCatgories = IAppItemCategory[];
+type AppItemCategories = IAppItemCategory[];

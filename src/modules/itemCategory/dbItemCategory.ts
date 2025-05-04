@@ -6,7 +6,7 @@ async function getDbItemCategories() {
       orderBy: [{ name: 'asc' }],
     });
 
-    return result as AppItemCatgories;
+    return result as AppItemCategories;
   } catch (error) {
     return Promise.reject(error);
   }

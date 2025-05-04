@@ -1,6 +1,7 @@
 'use client';
 
 import { axiosInstance } from '@/lib/axios/axios';
+import { genericArrayParser } from '@/shared/tools/parserTool';
 import { useQuery } from '@tanstack/react-query';
 import { itemTypeParser } from './itemTypeParser';
 
@@ -17,7 +18,10 @@ function useItemType({ itemCategoryId, loadAll = false }: IUseItemTypeProps) {
           params: itemCategoryId ? { itemCategoryId } : undefined,
         });
 
-        const parsed = await Promise.all(data.map((m) => itemTypeParser(m)));
+        const parsed = await genericArrayParser<IAppItemType>(
+          data,
+          itemTypeParser
+        );
 
         return parsed;
       } else {
