@@ -12,12 +12,13 @@ function Select({
   noValueDisplay,
   className,
   value,
+  onChange,
 }: ISelectProps) {
   const css = [styles.select];
   className && css.push(className);
 
   return (
-    <select className={css.join(' ')} value={value}>
+    <select className={css.join(' ')} value={value} onChange={onChange}>
       {noValueDisplay && (
         <option value="" disabled>
           {noValueDisplay}
