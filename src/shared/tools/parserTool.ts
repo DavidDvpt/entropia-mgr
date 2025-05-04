@@ -1,6 +1,14 @@
 async function objectBaseParser(data: any) {
   try {
     if (!data.id || !data.name) throw new Error('No required param to parse');
+
+    const parsed: IObjectBase = {
+      id: data.id,
+      isActive: Boolean(data.isActive),
+      name: data.name,
+    };
+
+    return parsed;
   } catch (error) {
     return Promise.reject(error);
   }

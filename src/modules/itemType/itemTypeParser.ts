@@ -1,9 +1,11 @@
+import { objectBaseParser } from '@/shared/tools/parserTool';
+
 async function itemTypeParser(data: any): Promise<IAppItemType> {
   try {
+    const parsed = await objectBaseParser(data);
+
     const itemType: IAppItemType = {
-      id: data.id,
-      isActive: data.isActive,
-      name: data.name,
+      ...parsed,
       itemCategoryId: data.itemCategoryId,
       isStackable: data.isStackable,
     };
