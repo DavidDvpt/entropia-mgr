@@ -18,6 +18,17 @@ li {
   border: none;
 }
 
+h1,
+H2,
+H3,
+H4,
+H5,
+H6 {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
 input {
   border: none;
   outline: none;

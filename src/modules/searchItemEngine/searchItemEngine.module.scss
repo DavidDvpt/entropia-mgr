@@ -1,10 +1,17 @@
 @import '../../styles/main';
 
 .searchItemEngine {
-  @include flex-around-center;
-  height: 150px;
-
-  // > div {
-  //   margin-right: 10%;
-  // }
+  .itemDetail {
+    @include flex-center-center;
+    height: 80px;
+    width: 100%;
+  }
+  .cardDetail {
+    height: 80px;
+    width: 50%;
+  }
+  .selectContainer {
+    @include flex-around-center;
+    width: 100%;
+  }
 }

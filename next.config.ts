@@ -1,7 +1,19 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  env: {
+    NEXTAUTH_SECRET: 'olympique lyonnais',
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'http',
+        hostname: 'www.entropiawiki.com',
+        port: '',
+        pathname: '/images/gallery/**',
+      },
+    ],
+  },
 };
 
 export default nextConfig;

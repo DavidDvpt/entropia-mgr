@@ -1,0 +1,16 @@
+@import '../../../styles/main';
+
+.cardList {
+  display: flex;
+  align-items: center;
+
+  .card {
+    &.wrap {
+      flex-wrap: wrap;
+    }
+    &.fullWidth {
+      width: 100%;
+      @include flex-center-center;
+    }
+  }
+}

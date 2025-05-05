@@ -1,0 +1,39 @@
+@import '../../../../styles/main';
+
+.itemCard {
+  @include flex-center-center;
+
+  .imageContainer {
+    width: 20%;
+    @include flex-center-center;
+
+    img {
+      height: 60px;
+      width: auto;
+      margin-right: 10px;
+    }
+  }
+
+  .cardContent {
+    @include flex-column-start-center;
+    width: 80%;
+    height: 100%;
+
+    h4 {
+      width: 100%;
+      margin-bottom: 5px;
+      text-align: left;
+    }
+    .cardContentBody {
+      width: 100%;
+      @include flex-start-start;
+      > div {
+        width: 50%;
+        p {
+          span {
+          }
+        }
+      }
+    }
+  }
+}
