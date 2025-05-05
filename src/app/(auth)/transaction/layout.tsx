@@ -20,11 +20,11 @@ export const sellBuyContext = ctx;
 function layout({ children }: IChildren) {
   useEffect(() => {
     return () => {
-      // Cleanup à l'unmount
       queryClient.removeQueries({ queryKey: ['itemTypes'] });
       queryClient.removeQueries({ queryKey: ['items'] });
     };
   }, []);
+
   return (
     <div>
       <SellBuyProvider>

@@ -1,6 +1,10 @@
 @import '../../styles/main';
 
 .searchItemEngine {
-  @include flex-center-center;
+  @include flex-around-center;
   height: 150px;
+
+  // > div {
+  //   margin-right: 10%;
+  // }
 }

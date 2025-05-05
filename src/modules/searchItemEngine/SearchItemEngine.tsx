@@ -12,6 +12,7 @@ interface ISearchItemEnginePrps {
 }
 function SearchItemEngine({ className }: ISearchItemEnginePrps) {
   const { ctxState, setCtxState } = useGenericStateContext(sellBuyContext);
+
   const css = [styles.searchItemEngine];
   className && css.push(className);
 
