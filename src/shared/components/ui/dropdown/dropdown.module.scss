@@ -1,9 +1,9 @@
 @import '../../../../styles/main';
 
-.dropdownMenu {
-  position: relative;
-  height: $headerHeight;
-}
+// .dropdownMenu {
+//   position: relative;
+//   height: $headerHeight;
+// }
 
 .dropdownElement {
   min-width: 100px;
@@ -26,6 +26,7 @@
   }
 
   > ul {
+    background-color: $dropdownHover;
     position: absolute;
     display: none;
   }
@@ -34,11 +35,11 @@
     .label {
       &:not(.subElement) {
         border-bottom: 1px red solid;
-        background-color: $dorpdownHover;
+        background-color: $dropdownHover;
       }
 
       &.subElement:hover {
-        background-color: $dorpdownHover;
+        background-color: $dropdownSubMenu;
       }
     }
 
