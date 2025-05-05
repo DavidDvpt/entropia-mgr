@@ -22,24 +22,21 @@ function ItemCard({ item, className }: IItemCardProps) {
           height={50}
         />
       </div>
-      <div className={styles.cardContent}>
-        <h4>{item.name}</h4>
-        <div className={styles.cardContentBody}>
-          <div className={styles.bloc}>
-            <p>
-              Valeur: <span>{item.value + ' ped(s)'}</span>
-            </p>
-            <p>
-              Actif: <span>{item.isActive ? 'Oui' : 'Non'}</span>
-            </p>
-          </div>
-          <div className={styles.rightBloc}>
-            <p>
-              limited: <span>{item.isLimited ? 'Oui' : 'Non'}</span>
-            </p>
-          </div>
-        </div>
-      </div>
+      <h4>{item.name}</h4>
+      <p>
+        Valeur : <span>{item.value + ' ped(s)'}</span>
+      </p>
+      <p>
+        Actif : <span>{item.isActive ? 'Oui' : 'Non'}</span>
+      </p>
+      <p>
+        limited : <span>{item.isLimited ? 'Oui' : 'Non'}</span>
+      </p>
+      {item.itemType && (
+        <p>
+          Type : <span>{item.itemType?.name}</span>
+        </p>
+      )}
     </div>
   );
 }

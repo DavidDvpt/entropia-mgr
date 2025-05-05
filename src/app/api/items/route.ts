@@ -6,7 +6,7 @@ async function GET(req: NextRequest) {
     const { searchParams } = req.nextUrl;
     const itemTypeId = searchParams.get('itemTypeId') ?? undefined;
     const id = searchParams.get('id') ?? undefined;
-
+    console.log(id, itemTypeId);
     const response = await getDbItems({ itemTypeId, id });
 
     return NextResponse.json(response, { status: 200 });

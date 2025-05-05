@@ -19,7 +19,24 @@ function SearchItemEngine({ className }: ISearchItemEnginePrps) {
   className && css.push(className);
 
   const handleChange = (key: string, value: IObjectBase) => {
-    setCtxState({ ...ctxState, [key]: value });
+    const v = { ...ctxState };
+    switch (key) {
+      case 'itemCategory':
+        v.itemCategory = value as IAppItemCategory;
+        v.itemType = null;
+        v.item = null;
+        break;
+      case 'itemType':
+        v.itemType = value as IAppItemType;
+        v.item = null;
+        break;
+      case 'item':
+        v.item = value as IAppItem;
+        break;
+      default:
+        break;
+    }
+    setCtxState(v);
   };
 
   return (

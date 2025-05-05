@@ -11,6 +11,7 @@ async function getDbItemTypes({ id, itemCategoryId }: IGetItemTypesProps) {
         itemCategoryId,
         id,
       },
+      include: { itemCategory: true },
       orderBy: [{ name: 'asc' }],
     });
 

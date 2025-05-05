@@ -9,26 +9,15 @@ async function getDbItems({ id, itemTypeId }: IGetItemsProps) {
   try {
     const result = await dbClient.item.findMany({
       where: { itemTypeId, id },
+      include: { itemType: true },
       orderBy: [{ name: 'asc' }],
     });
-
-    return result as AppItemCategories;
+    console.log(result);
+    return result;
   } catch (error) {
+    console.log(error);
     return Promise.reject(error);
   }
 }
 
-async function getDbItemsByTypeId(itemTypeId: string) {
-  try {
-    const result = await dbClient.item.findMany({
-      where: { itemTypeId },
-      orderBy: [{ name: 'asc' }],
-    });
-
-    return result as AppItemCategories;
-  } catch (error) {
-    return Promise.reject(error);
-  }
-}
-
-export { getDbItems, getDbItemsByTypeId };
+export { getDbItems };

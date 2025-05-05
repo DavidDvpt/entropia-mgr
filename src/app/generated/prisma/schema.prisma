@@ -56,7 +56,7 @@ model ItemCategory {
   isActive  Boolean    @default(true)
   createdAt DateTime   @default(now()) @map("created_at")
   updatedAt DateTime?  @updatedAt @map("updated_at")
-  ItemType  ItemType[]
+  itemType  ItemType[]
 
   @@map("item_category")
 }
@@ -85,7 +85,7 @@ model Item {
   createdAt  DateTime  @default(now()) @map("created_at")
   updatedAt  DateTime? @updatedAt @map("updated_at")
   itemTypeId String
-  ItemType   ItemType  @relation(fields: [itemTypeId], references: [id])
+  itemType   ItemType  @relation(fields: [itemTypeId], references: [id])
 
   @@map("item")
 }

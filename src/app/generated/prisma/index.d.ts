@@ -1281,11 +1281,11 @@ export namespace Prisma {
    */
 
   export type ItemCategoryCountOutputType = {
-    ItemType: number
+    itemType: number
   }
 
   export type ItemCategoryCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    ItemType?: boolean | ItemCategoryCountOutputTypeCountItemTypeArgs
+    itemType?: boolean | ItemCategoryCountOutputTypeCountItemTypeArgs
   }
 
   // Custom InputTypes
@@ -3746,7 +3746,7 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    ItemType?: boolean | ItemCategory$ItemTypeArgs<ExtArgs>
+    itemType?: boolean | ItemCategory$itemTypeArgs<ExtArgs>
     _count?: boolean | ItemCategoryCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["itemCategory"]>
 
@@ -3776,7 +3776,7 @@ export namespace Prisma {
 
   export type ItemCategoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "isActive" | "createdAt" | "updatedAt", ExtArgs["result"]["itemCategory"]>
   export type ItemCategoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    ItemType?: boolean | ItemCategory$ItemTypeArgs<ExtArgs>
+    itemType?: boolean | ItemCategory$itemTypeArgs<ExtArgs>
     _count?: boolean | ItemCategoryCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ItemCategoryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -3785,7 +3785,7 @@ export namespace Prisma {
   export type $ItemCategoryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "ItemCategory"
     objects: {
-      ItemType: Prisma.$ItemTypePayload<ExtArgs>[]
+      itemType: Prisma.$ItemTypePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -4187,7 +4187,7 @@ export namespace Prisma {
    */
   export interface Prisma__ItemCategoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    ItemType<T extends ItemCategory$ItemTypeArgs<ExtArgs> = {}>(args?: Subset<T, ItemCategory$ItemTypeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ItemTypePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    itemType<T extends ItemCategory$itemTypeArgs<ExtArgs> = {}>(args?: Subset<T, ItemCategory$itemTypeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ItemTypePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4610,9 +4610,9 @@ export namespace Prisma {
   }
 
   /**
-   * ItemCategory.ItemType
+   * ItemCategory.itemType
    */
-  export type ItemCategory$ItemTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type ItemCategory$itemTypeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the ItemType
      */
@@ -5996,7 +5996,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     itemTypeId?: boolean
-    ItemType?: boolean | ItemTypeDefaultArgs<ExtArgs>
+    itemType?: boolean | ItemTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["item"]>
 
   export type ItemSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6009,7 +6009,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     itemTypeId?: boolean
-    ItemType?: boolean | ItemTypeDefaultArgs<ExtArgs>
+    itemType?: boolean | ItemTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["item"]>
 
   export type ItemSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6022,7 +6022,7 @@ export namespace Prisma {
     createdAt?: boolean
     updatedAt?: boolean
     itemTypeId?: boolean
-    ItemType?: boolean | ItemTypeDefaultArgs<ExtArgs>
+    itemType?: boolean | ItemTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["item"]>
 
   export type ItemSelectScalar = {
@@ -6039,19 +6039,19 @@ export namespace Prisma {
 
   export type ItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "value" | "imageUrlId" | "isActive" | "isLimied" | "createdAt" | "updatedAt" | "itemTypeId", ExtArgs["result"]["item"]>
   export type ItemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    ItemType?: boolean | ItemTypeDefaultArgs<ExtArgs>
+    itemType?: boolean | ItemTypeDefaultArgs<ExtArgs>
   }
   export type ItemIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    ItemType?: boolean | ItemTypeDefaultArgs<ExtArgs>
+    itemType?: boolean | ItemTypeDefaultArgs<ExtArgs>
   }
   export type ItemIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    ItemType?: boolean | ItemTypeDefaultArgs<ExtArgs>
+    itemType?: boolean | ItemTypeDefaultArgs<ExtArgs>
   }
 
   export type $ItemPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Item"
     objects: {
-      ItemType: Prisma.$ItemTypePayload<ExtArgs>
+      itemType: Prisma.$ItemTypePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -6457,7 +6457,7 @@ export namespace Prisma {
    */
   export interface Prisma__ItemClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    ItemType<T extends ItemTypeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ItemTypeDefaultArgs<ExtArgs>>): Prisma__ItemTypeClient<$Result.GetResult<Prisma.$ItemTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    itemType<T extends ItemTypeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ItemTypeDefaultArgs<ExtArgs>>): Prisma__ItemTypeClient<$Result.GetResult<Prisma.$ItemTypePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7263,7 +7263,7 @@ export namespace Prisma {
     isActive?: BoolFilter<"ItemCategory"> | boolean
     createdAt?: DateTimeFilter<"ItemCategory"> | Date | string
     updatedAt?: DateTimeNullableFilter<"ItemCategory"> | Date | string | null
-    ItemType?: ItemTypeListRelationFilter
+    itemType?: ItemTypeListRelationFilter
   }
 
   export type ItemCategoryOrderByWithRelationInput = {
@@ -7272,7 +7272,7 @@ export namespace Prisma {
     isActive?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
-    ItemType?: ItemTypeOrderByRelationAggregateInput
+    itemType?: ItemTypeOrderByRelationAggregateInput
   }
 
   export type ItemCategoryWhereUniqueInput = Prisma.AtLeast<{
@@ -7284,7 +7284,7 @@ export namespace Prisma {
     isActive?: BoolFilter<"ItemCategory"> | boolean
     createdAt?: DateTimeFilter<"ItemCategory"> | Date | string
     updatedAt?: DateTimeNullableFilter<"ItemCategory"> | Date | string | null
-    ItemType?: ItemTypeListRelationFilter
+    itemType?: ItemTypeListRelationFilter
   }, "id" | "name">
 
   export type ItemCategoryOrderByWithAggregationInput = {
@@ -7390,7 +7390,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Item"> | Date | string
     updatedAt?: DateTimeNullableFilter<"Item"> | Date | string | null
     itemTypeId?: StringFilter<"Item"> | string
-    ItemType?: XOR<ItemTypeScalarRelationFilter, ItemTypeWhereInput>
+    itemType?: XOR<ItemTypeScalarRelationFilter, ItemTypeWhereInput>
   }
 
   export type ItemOrderByWithRelationInput = {
@@ -7403,7 +7403,7 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
     itemTypeId?: SortOrder
-    ItemType?: ItemTypeOrderByWithRelationInput
+    itemType?: ItemTypeOrderByWithRelationInput
   }
 
   export type ItemWhereUniqueInput = Prisma.AtLeast<{
@@ -7419,7 +7419,7 @@ export namespace Prisma {
     createdAt?: DateTimeFilter<"Item"> | Date | string
     updatedAt?: DateTimeNullableFilter<"Item"> | Date | string | null
     itemTypeId?: StringFilter<"Item"> | string
-    ItemType?: XOR<ItemTypeScalarRelationFilter, ItemTypeWhereInput>
+    itemType?: XOR<ItemTypeScalarRelationFilter, ItemTypeWhereInput>
   }, "id" | "name">
 
   export type ItemOrderByWithAggregationInput = {
@@ -7631,7 +7631,7 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string | null
-    ItemType?: ItemTypeCreateNestedManyWithoutItemCategoryInput
+    itemType?: ItemTypeCreateNestedManyWithoutItemCategoryInput
   }
 
   export type ItemCategoryUncheckedCreateInput = {
@@ -7640,7 +7640,7 @@ export namespace Prisma {
     isActive?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string | null
-    ItemType?: ItemTypeUncheckedCreateNestedManyWithoutItemCategoryInput
+    itemType?: ItemTypeUncheckedCreateNestedManyWithoutItemCategoryInput
   }
 
   export type ItemCategoryUpdateInput = {
@@ -7649,7 +7649,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    ItemType?: ItemTypeUpdateManyWithoutItemCategoryNestedInput
+    itemType?: ItemTypeUpdateManyWithoutItemCategoryNestedInput
   }
 
   export type ItemCategoryUncheckedUpdateInput = {
@@ -7658,7 +7658,7 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    ItemType?: ItemTypeUncheckedUpdateManyWithoutItemCategoryNestedInput
+    itemType?: ItemTypeUncheckedUpdateManyWithoutItemCategoryNestedInput
   }
 
   export type ItemCategoryCreateManyInput = {
@@ -7767,7 +7767,7 @@ export namespace Prisma {
     isLimied?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string | null
-    ItemType: ItemTypeCreateNestedOneWithoutItemsInput
+    itemType: ItemTypeCreateNestedOneWithoutItemsInput
   }
 
   export type ItemUncheckedCreateInput = {
@@ -7791,7 +7791,7 @@ export namespace Prisma {
     isLimied?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    ItemType?: ItemTypeUpdateOneRequiredWithoutItemsNestedInput
+    itemType?: ItemTypeUpdateOneRequiredWithoutItemsNestedInput
   }
 
   export type ItemUncheckedUpdateInput = {

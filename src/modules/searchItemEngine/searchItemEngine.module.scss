@@ -7,8 +7,9 @@
     width: 100%;
   }
   .cardDetail {
+    @include flex-between-center;
     height: 80px;
-    width: 50%;
+    width: 80%;
   }
   .selectContainer {
     @include flex-around-center;
