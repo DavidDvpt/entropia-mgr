@@ -1,9 +1,13 @@
 import { getDbItemTypes } from '@/modules/itemType/dbItemType';
-import { NextResponse } from 'next/server';
+import { NextRequest, NextResponse } from 'next/server';
 
-async function GET() {
+async function GET(req: NextRequest) {
   try {
-    const response = await getDbItemTypes();
+    const { searchParams } = req.nextUrl;
+    const itemCategoryId = searchParams.get('itemTypeId') ?? undefined;
+    const id = searchParams.get('id') ?? undefined;
+
+    const response = await getDbItemTypes({ itemCategoryId, id });
 
     return NextResponse.json(response, { status: 200 });
   } catch (error) {

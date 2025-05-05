@@ -10,6 +10,8 @@ interface IUseItemProps {
   loadAll?: boolean;
 }
 function useItem({ itemTypeId, loadAll = false }: IUseItemProps) {
+  console.log(itemTypeId);
+
   return useQuery<AppItems>({
     queryKey: ['items', { itemTypeId, loadAll }],
     queryFn: async () => {

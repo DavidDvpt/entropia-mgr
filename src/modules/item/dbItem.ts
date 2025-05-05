@@ -1,8 +1,14 @@
 import dbClient from '@orm/dbClient';
 
-async function getDbItems() {
+interface IGetItemsProps {
+  id?: string;
+  itemTypeId?: string;
+}
+
+async function getDbItems({ id, itemTypeId }: IGetItemsProps) {
   try {
     const result = await dbClient.item.findMany({
+      where: { itemTypeId, id },
       orderBy: [{ name: 'asc' }],
     });
 
@@ -12,4 +18,17 @@ async function getDbItems() {
   }
 }
 
-export { getDbItems };
+async function getDbItemsByTypeId(itemTypeId: string) {
+  try {
+    const result = await dbClient.item.findMany({
+      where: { itemTypeId },
+      orderBy: [{ name: 'asc' }],
+    });
+
+    return result as AppItemCategories;
+  } catch (error) {
+    return Promise.reject(error);
+  }
+}
+
+export { getDbItems, getDbItemsByTypeId };

@@ -1,23 +1,15 @@
 import dbClient from '@orm/dbClient';
 
-async function getDbItemTypes() {
-  try {
-    const result = await dbClient.itemType.findMany({
-      orderBy: [{ name: 'asc' }],
-    });
-
-    return result;
-  } catch (error) {
-    return Promise.reject(error);
-  }
+interface IGetItemTypesProps {
+  id?: string;
+  itemCategoryId?: string;
 }
-async function getDbItemTypesByCategoryId(itemCategoryId: string) {
+async function getDbItemTypes({ id, itemCategoryId }: IGetItemTypesProps) {
   try {
-    if (!itemCategoryId) throw new Error('category id missing');
-
     const result = await dbClient.itemType.findMany({
       where: {
         itemCategoryId,
+        id,
       },
       orderBy: [{ name: 'asc' }],
     });
@@ -28,4 +20,4 @@ async function getDbItemTypesByCategoryId(itemCategoryId: string) {
   }
 }
 
-export { getDbItemTypes, getDbItemTypesByCategoryId };
+export { getDbItemTypes };
