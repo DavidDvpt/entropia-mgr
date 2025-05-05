@@ -11,11 +11,9 @@ interface IItemCategorySelectProps {
   value?: string;
   onChange?: (cat: IAppItemCategory) => void;
 }
+
 function ItemCategorySelect(props: IItemCategorySelectProps) {
   const { data, isError, isLoading } = useItemCategory();
-
-  const options = data?.map((m) => ({ value: m.id, display: m.name }));
-  if (isLoading || isError || !options) return null;
 
   const css = [styles.itemCategorySelect];
   props.className && css.push(props.className);
@@ -31,7 +29,7 @@ function ItemCategorySelect(props: IItemCategorySelectProps) {
     <FormField
       children={
         <Select
-          options={options}
+          options={data ?? []}
           className={css.join(' ')}
           noValueDisplay="Catégories"
           value={props.value ?? ''}

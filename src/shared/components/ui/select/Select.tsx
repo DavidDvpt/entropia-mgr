@@ -2,7 +2,7 @@ import { SelectHTMLAttributes } from 'react';
 import SelectOption from './SelectOption';
 import styles from './select.module.scss';
 interface ISelectProps extends SelectHTMLAttributes<HTMLSelectElement> {
-  options: SelectOptionsType;
+  options?: SelectOptionsType;
   noValueDisplay?: string;
   className?: string;
 }
@@ -25,7 +25,7 @@ function Select({
         </option>
       )}
       {options.map((m) => (
-        <SelectOption key={m.value} {...m} />
+        <SelectOption key={m.id} {...m} />
       ))}
     </select>
   );

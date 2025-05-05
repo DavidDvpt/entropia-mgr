@@ -13,7 +13,6 @@ async function objectBaseParser(data: any) {
     return Promise.reject(error);
   }
 }
-
 async function genericArrayParser<T>(
   data: any[],
   singleParser: (data: any) => Promise<T>
