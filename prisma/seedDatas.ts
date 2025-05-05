@@ -14,12 +14,12 @@ const navDatas = [
   {
     label: 'Achat',
     url: '/transaction/buy',
-    childs: [{ label: '', url: '' }],
+    childs: [],
   },
   {
     label: 'Vente',
     url: '/transaction/sell',
-    childs: [{ label: '', url: '' }],
+    childs: [],
   },
   {
     label: 'Manage',
