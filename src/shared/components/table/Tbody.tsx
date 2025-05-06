@@ -13,6 +13,7 @@ function Tbody<T extends Record<string, any>>({
   const handleCkick = (line: T) => {
     console.log(line);
   };
+
   return (
     <tbody>
       <tr>
