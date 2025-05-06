@@ -1,8 +1,8 @@
 import { useRouter } from 'next/navigation';
-import DropdownMenu from './DropdownMenu';
-import styles from './dropdown.module.scss';
+import styles from './navigation.module.scss';
+import NavigationSubMenu from './NavigationSubMenu';
 
-function DropdownElement(props: DropDownElementType) {
+function NavigationElement(props: NavigationElementType) {
   const router = useRouter();
   const handleClick = () => {
     props.url && router.push(props.url);
@@ -19,9 +19,9 @@ function DropdownElement(props: DropDownElementType) {
         {props.label}
       </div>
 
-      {props.childs && <DropdownMenu list={props.childs} isSubMenu />}
+      {props.childs && <NavigationSubMenu list={props.childs} isSubMenu />}
     </li>
   );
 }
 
-export default DropdownElement;
+export default NavigationElement;

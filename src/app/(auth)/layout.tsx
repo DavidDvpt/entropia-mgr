@@ -1,7 +1,7 @@
 'use client';
-
 import { signIn, useSession } from 'next-auth/react';
 import Header from './_header/Header';
+import styles from './auth.module.scss';
 
 function layout({ children }: IChildren) {
   const { status } = useSession();
@@ -11,10 +11,9 @@ function layout({ children }: IChildren) {
   }
 
   return (
-    <main>
+    <main className={styles.auth}>
       <Header />
-
-      {children}
+      <div className={styles.mainContent}>{children}</div>
     </main>
   );
 }

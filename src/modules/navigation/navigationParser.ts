@@ -1,4 +1,4 @@
-async function navigationParser(data: any): Promise<DropDownElementType> {
+async function navigationParser(data: any): Promise<NavigationElementType> {
   try {
     const childs = data.children.map((m: any) => ({
       label: m.label,
@@ -6,7 +6,7 @@ async function navigationParser(data: any): Promise<DropDownElementType> {
       isSubElement: true,
     }));
 
-    const parsed: DropDownElementType = {
+    const parsed: NavigationElementType = {
       label: data.label,
       url: data.url,
       isSubElement: false,

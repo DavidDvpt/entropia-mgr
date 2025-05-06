@@ -1,9 +1,7 @@
-'use client';
-
-import useNavigation from '@/modules/navigation/useNavigation';
-import DropdownMenu from '@/shared/components/ui/dropdown/DropdownMenu';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import useNavigation from '../useNavigation';
+import NavigationElement from './NavigationElement';
 import styles from './navigation.module.scss';
 
 function Navigation() {
@@ -22,7 +20,7 @@ function Navigation() {
 
   return (
     <nav className={styles.navigation}>
-      <DropdownMenu list={data} />
+      <ul>{data?.map((m) => <NavigationElement key={m.label} {...m} />)}</ul>
     </nav>
   );
 }

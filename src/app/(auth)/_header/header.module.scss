@@ -4,6 +4,7 @@
   @include flex-start-center;
 
   height: $headerHeight;
+  padding: 0 10px;
 
   > h1 {
     cursor: pointer;

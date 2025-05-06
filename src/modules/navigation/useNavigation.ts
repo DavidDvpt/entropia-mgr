@@ -3,7 +3,7 @@ import { useQuery } from '@tanstack/react-query';
 import { navigationParser } from './navigationParser';
 
 function useNavigation() {
-  return useQuery<DropDownElementsType>({
+  return useQuery<NavigationElementsType>({
     queryKey: ['navigation'],
     queryFn: async () => {
       const { data } = await axiosInstance().get<any[]>('/api/navigation');
