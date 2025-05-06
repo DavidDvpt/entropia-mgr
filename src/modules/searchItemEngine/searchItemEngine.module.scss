@@ -14,5 +14,12 @@
   .selectContainer {
     @include flex-around-center;
     width: 100%;
+
+    .selects {
+      width: 30%;
+      select {
+        width: 100%;
+      }
+    }
   }
 }

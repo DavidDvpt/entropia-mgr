@@ -4,18 +4,17 @@ import FormField from '@/shared/components/ui/formField/FormField';
 import Select from '@/shared/components/ui/select/Select';
 
 import { ChangeEvent } from 'react';
-import useItemType from '../../useItemType';
-import styles from './itemTypeSelect.module.scss';
+import useItem from '../useItem';
 
-interface IItemCategorySelectProps {
+interface IItemSelectProps {
   className?: string;
   value?: string;
-  itemCategoryId?: string;
-  onChange?: (type: IAppItemType) => void;
+  itemTypeId?: string;
+  onChange?: (type: IAppItem) => void;
 }
-function ItemTypeSelect(props: IItemCategorySelectProps) {
-  const { data, isError, isLoading } = useItemType({
-    itemCategoryId: props.itemCategoryId,
+function ItemSelect(props: IItemSelectProps) {
+  const { data, isError, isLoading } = useItem({
+    itemTypeId: props.itemTypeId,
   });
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -25,16 +24,13 @@ function ItemTypeSelect(props: IItemCategorySelectProps) {
     cat && props.onChange?.(cat);
   };
 
-  const css = [styles.itemTypeSelect];
-  props.className && css.push(props.className);
-
   return (
     <FormField
+      className={props.className}
       children={
         <Select
           options={data}
-          className={css.join(' ')}
-          noValueDisplay="Types"
+          noValueDisplay="Items"
           value={props.value ?? ''}
           onChange={handleChange}
         />
@@ -45,4 +41,4 @@ function ItemTypeSelect(props: IItemCategorySelectProps) {
   );
 }
 
-export default ItemTypeSelect;
+export default ItemSelect;

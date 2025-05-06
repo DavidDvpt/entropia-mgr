@@ -1,13 +1,13 @@
 'use client';
 
 import { sellBuyContext } from '@/app/(auth)/transaction/layout';
-import ItemCategorySelect from '@/modules/itemCategory/components/itemCategorySelect/ItemCategorySelect';
+import ItemCategorySelect from '@/modules/itemCategory/components/ItemCategorySelect';
 import CardList from '@/shared/components/cardList/CardList';
 import Section from '@/shared/components/ui/section/Section';
 import { useGenericStateContext } from '@/shared/contexts/GenericContext';
 import ItemCard from '../item/components/itemCard/ItemCard';
-import ItemSelect from '../item/components/itemSelect/ItemSelect';
-import ItemTypeSelect from '../itemType/components/itemTypeSelect/ItemTypeSelect';
+import ItemSelect from '../item/components/ItemSelect';
+import ItemTypeSelect from '../itemType/components/ItemTypeSelect';
 import styles from './searchItemEngine.module.scss';
 interface ISearchItemEnginePrps {
   className?: string;
@@ -47,16 +47,19 @@ function SearchItemEngine({ className }: ISearchItemEnginePrps) {
         <ItemCategorySelect
           onChange={(e) => handleChange('itemCategory', e)}
           value={ctxState.itemCategory?.id}
+          className={styles.selects}
         />
         <ItemTypeSelect
           onChange={(e) => handleChange('itemType', e)}
           itemCategoryId={ctxState.itemCategory?.id}
           value={ctxState.itemType?.id}
+          className={styles.selects}
         />
         <ItemSelect
           onChange={(e) => handleChange('item', e)}
           itemTypeId={ctxState.itemType?.id}
           value={ctxState.item?.id}
+          className={styles.selects}
         />
       </div>
 
