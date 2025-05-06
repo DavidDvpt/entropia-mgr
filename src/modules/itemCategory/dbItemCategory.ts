@@ -1,4 +1,6 @@
+import { genericArrayParser } from '@/shared/tools/parserTool';
 import dbClient from '@orm/dbClient';
+import { itemCategoryParser } from './itemCategoryParser';
 
 async function getDbItemCategories() {
   try {
@@ -12,4 +14,15 @@ async function getDbItemCategories() {
   }
 }
 
-export { getDbItemCategories };
+async function getDbItemCategoriesWithParser() {
+  try {
+    const result = await getDbItemCategories();
+    const parsed = genericArrayParser(result, itemCategoryParser);
+
+    return parsed;
+  } catch (error) {
+    return Promise.reject(error);
+  }
+}
+
+export { getDbItemCategories, getDbItemCategoriesWithParser };

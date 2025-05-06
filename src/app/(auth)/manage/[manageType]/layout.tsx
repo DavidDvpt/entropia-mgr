@@ -6,8 +6,9 @@ const TITLES: Record<string, string> = {
   items: 'Gestion des Objets',
 };
 
-async function ManageLayout(props: IManageLayoutProps) {
+function ManageLayout(props: IManageLayoutProps) {
   const { manageType } = use(props.params);
+
   return (
     <div>
       <h1>{TITLES[manageType]}</h1>

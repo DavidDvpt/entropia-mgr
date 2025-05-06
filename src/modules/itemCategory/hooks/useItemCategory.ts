@@ -5,7 +5,10 @@ import { genericArrayParser } from '@/shared/tools/parserTool';
 import { useQuery } from '@tanstack/react-query';
 import { itemCategoryParser } from '../itemCategoryParser';
 
-function useItemCategory() {
+interface IInitDataProps {
+  initDatas?: AppItemCategories;
+}
+function useItemCategory({ initDatas }: IInitDataProps) {
   return useQuery<AppItemCategories>({
     queryKey: ['itemCategories'],
     queryFn: async () => {
@@ -17,6 +20,8 @@ function useItemCategory() {
 
       return parsed;
     },
+    initialData: initDatas,
+    refetchOnMount: !Boolean(initDatas),
   });
 }
 
