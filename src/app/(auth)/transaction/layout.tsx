@@ -11,7 +11,7 @@ const [ctx, SellBuyProvider] = createGenericCtx<SearchItemEngineCtxType>(
 );
 export const sellBuyContext = ctx;
 
-function layout({ children }: IChildren) {
+function TransactionLayout({ children }: IChildren) {
   useEffect(() => {
     return () => {
       queryClient.removeQueries({ queryKey: ['itemTypes'] });
@@ -29,4 +29,4 @@ function layout({ children }: IChildren) {
   );
 }
 
-export default layout;
+export default TransactionLayout;

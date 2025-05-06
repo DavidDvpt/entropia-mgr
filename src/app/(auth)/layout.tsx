@@ -1,4 +1,5 @@
 'use client';
+
 import { signIn, useSession } from 'next-auth/react';
 import Header from './_header/Header';
 import styles from './auth.module.scss';

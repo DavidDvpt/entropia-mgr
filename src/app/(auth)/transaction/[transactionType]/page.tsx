@@ -5,7 +5,8 @@ import { use } from 'react';
 interface ITransactionPageProps {
   transactionType: 'buy' | 'sell';
 }
-function BuyPage(props: { params: Promise<{ transactionType: string }> }) {
+
+function BuyPage(props: { params: Promise<ITransactionPageProps> }) {
   const { transactionType } = use(props.params);
 
   return <div>{transactionType === 'buy' ? 'BuyPage' : 'SellPage'}</div>;
