@@ -3,7 +3,7 @@
 import { axiosInstance } from '@/lib/axios/axios';
 import { genericArrayParser } from '@/shared/tools/parserTool';
 import { useQuery } from '@tanstack/react-query';
-import { itemCategoryParser } from './itemCategoryParser';
+import { itemCategoryParser } from '../itemCategoryParser';
 
 function useItemCategory() {
   return useQuery<AppItemCategories>({

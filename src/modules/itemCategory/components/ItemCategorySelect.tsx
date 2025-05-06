@@ -3,7 +3,7 @@
 import FormField from '@/shared/components/ui/formField/FormField';
 import Select from '@/shared/components/ui/select/Select';
 import { ChangeEvent } from 'react';
-import useItemCategory from '../useItemCategory';
+import useItemCategory from '../hooks/useItemCategory';
 
 interface IItemCategorySelectProps {
   className?: string;
