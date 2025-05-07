@@ -1,4 +1,4 @@
-import Navigation from '@/modules/navigation/components/Navigation';
+import Navigation from '@/feature/navigation/components/Navigation';
 import Brand from './Brand';
 import styles from './header.module.scss';
 import Profile from './profile/Profile';

@@ -1,7 +1,7 @@
 'use client';
 
 import Table from '@/shared/components/table/Table';
-import { useGetItemCategoriesQuery } from '../../itemCategoryApi';
+import useItemCategory from '../../hooks/useItemCategory';
 
 const header: HeaderCellsType = [{ key: 'name', label: 'Nom' }];
 interface IItemCategoryTableClientProps {
@@ -11,8 +11,7 @@ interface IItemCategoryTableClientProps {
 function ItemCategoryTableClient({
   initialDatas,
 }: IItemCategoryTableClientProps) {
-  const { data, isLoading, isError } = useGetItemCategoriesQuery({});
-  // const { data } = useItemCategory({ initDatas: initialDatas });
+  const { data } = useItemCategory({ initDatas: initialDatas });
 
   if (!data) return null;
 

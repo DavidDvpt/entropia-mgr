@@ -1,4 +1,4 @@
-import { getDbNavigation } from '@/modules/navigation/dbNavigation';
+import { getDbNavigation } from '@/feature/navigation/dbNavigation';
 import { NextResponse } from 'next/server';
 
 async function GET() {
