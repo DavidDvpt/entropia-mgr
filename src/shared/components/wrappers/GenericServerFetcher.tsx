@@ -4,15 +4,11 @@ interface Props<T> {
   parser?: (item: any) => Promise<T>;
 }
 
-async function GenericServerTableWrapper<T>({
-  fetchFn,
-  render,
-  parser,
-}: Props<T>) {
+async function GenericServerFetcher<T>({ fetchFn, render, parser }: Props<T>) {
   const raw = await fetchFn();
   const data = parser ? await Promise.all(raw.map(parser)) : raw;
 
   return <>{render(data)}</>;
 }
 
-export default GenericServerTableWrapper;
+export default GenericServerFetcher;

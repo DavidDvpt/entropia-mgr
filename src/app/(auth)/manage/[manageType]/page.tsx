@@ -1,7 +1,7 @@
 import ItemCategoryTableClient from '@/modules/itemCategory/components/itemCategoryTable/ItemCategoryTableClient';
 import { getDbItemCategories } from '@/modules/itemCategory/dbItemCategory';
 import { itemCategoryParser } from '@/modules/itemCategory/itemCategoryParser';
-import GenericServerTableWrapper from '@/shared/components/table/GenericServerTableWrapper';
+import GenericServerFetcher from '@/shared/components/wrappers/GenericServerFetcher';
 import { use } from 'react';
 
 function ManagePage(props: { params: Promise<IManagePageProps> }) {
@@ -9,7 +9,7 @@ function ManagePage(props: { params: Promise<IManagePageProps> }) {
 
   if (manageType === 'categories')
     return (
-      <GenericServerTableWrapper
+      <GenericServerFetcher
         fetchFn={getDbItemCategories}
         parser={itemCategoryParser}
         render={(data) => <ItemCategoryTableClient initialDatas={data} />}
