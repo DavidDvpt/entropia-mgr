@@ -1,11 +1,13 @@
 // lib/redux/store.ts
 import { configureStore } from '@reduxjs/toolkit';
+import apiMiddlewares from './apiMiddlewares';
+import reducers from './rootReducer';
 
 export const store = configureStore({
-  reducer: {
-    // Ajoute ici tes reducers quand tu en as
-  },
+  reducer: reducers,
   devTools: process.env.NODE_ENV !== 'production',
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(apiMiddlewares),
 });
 
 // Typage standard
