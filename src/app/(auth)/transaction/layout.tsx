@@ -1,8 +1,8 @@
 'use client';
 
+import { searchItemEngineCtxInitValue } from '@/feature/searchItemEngine/constants';
+import SearchItemEngine from '@/feature/searchItemEngine/SearchItemEngine';
 import queryClient from '@/lib/reactQuery/queryClient';
-import { searchItemEngineCtxInitValue } from '@/modules/searchItemEngine/constants';
-import SearchItemEngine from '@/modules/searchItemEngine/SearchItemEngine';
 import createGenericCtx from '@/shared/contexts/GenericContext';
 import { useEffect } from 'react';
 

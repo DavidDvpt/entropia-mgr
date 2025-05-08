@@ -1,5 +1,7 @@
 import { combineReducers } from '@reduxjs/toolkit';
-
-const reducers = combineReducers({});
+import modalSlice from '../../modules/modals/modalSlice';
+const reducers = combineReducers({
+  modal: modalSlice,
+});
 
 export default reducers;
