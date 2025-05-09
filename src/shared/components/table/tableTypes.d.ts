@@ -9,4 +9,6 @@ interface HeaderCellType<T> extends ITableActionCell {
   label: string;
   align?: 'left' | 'right';
 }
-type HeaderCellsType = HeaderCellType<T>[];
+type HeaderCellsType<T> = HeaderCellType<T>[];
+
+type TableDataDisplayType<T> = Record<keyof T, string>[];

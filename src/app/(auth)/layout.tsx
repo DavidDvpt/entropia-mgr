@@ -1,6 +1,6 @@
 'use client';
 
-import ModalContainer from '@/modules/modal/ModalContainer';
+import ModalContainer from '@/modules/modal/components/ModalContainer';
 import { signIn, useSession } from 'next-auth/react';
 import Header from './_header/Header';
 import styles from './auth.module.scss';

@@ -1,0 +1,9 @@
+@import '../../../styles/main';
+
+.genericBackgroundModal {
+  @include modal-background;
+}
+
+.genericModal {
+  @include modal-base;
+}

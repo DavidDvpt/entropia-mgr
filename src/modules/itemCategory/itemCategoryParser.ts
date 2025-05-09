@@ -14,11 +14,14 @@ async function itemCategoryParser(data: any): Promise<IAppItemCategory> {
   }
 }
 
-async function itemCategoryForTableParser(
-  data: AppItemCategories
-): Promise<Record<keyof IAppItemCategory, string>[]> {
+async function itemCategoryForTableParser<T>(
+  data: T[]
+): Promise<TableDataDisplayType<T>> {
   try {
-    const parsed = genericArrayParser(data, objectBaseToTableParser);
+    const parsed = (await genericArrayParser(
+      data,
+      objectBaseToTableParser
+    )) as TableDataDisplayType<T>;
 
     return parsed;
   } catch (error) {

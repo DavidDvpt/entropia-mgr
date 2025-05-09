@@ -1,12 +1,14 @@
 'use client';
 
+import { useAppDispatch } from '@/lib/redux/store';
+import { modalActions } from '@/modules/modal/modalSlice';
 import Table from '@/shared/components/table/Table';
 import { useEffect, useState } from 'react';
 import useItemCategory from '../../hooks/useItemCategory';
 import { itemCategoryForTableParser } from '../../itemCategoryParser';
 import styles from './itemCategoryTable.module.scss';
 
-const header: HeaderCellsType = [
+const header: HeaderCellsType<IAppItemCategory> = [
   { key: 'name', label: 'Nom' },
   { key: 'isActive', label: 'Actif' },
 ];
@@ -20,7 +22,7 @@ function ItemCategoryTable({ initialDatas }: IItemCategoryTableClientProps) {
     Record<keyof IAppItemCategory, string>[]
   >([]);
   const { data } = useItemCategory({ initDatas: initialDatas });
-
+  const dispatch = useAppDispatch();
   if (!data) return null;
 
   useEffect(() => {
@@ -32,11 +34,19 @@ function ItemCategoryTable({ initialDatas }: IItemCategoryTableClientProps) {
     }
   }, [data]);
 
+  const handleUpdate = (itemCategory: IAppItemCategory) =>
+    dispatch(
+      modalActions.setItemCategoryForm({ item: itemCategory, display: true })
+    );
+
   return (
     <Table
-      datas={parsedForTableState}
+      datas={data}
       header={header}
       className={styles.itemCategoryTable}
+      parserToTable={itemCategoryForTableParser}
+      onClick={handleUpdate}
+      name="itemCategory"
     />
   );
 }

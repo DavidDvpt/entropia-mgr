@@ -1,23 +1,41 @@
-import { Fragment } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import ActionCellButton from './ActionCellButton';
 import styles from './table.module.scss';
 interface ITbodyProps<T> extends ITableActionCell {
-  header: HeaderCellsType;
-  datas: T[];
+  name: string;
+  header: HeaderCellsType<T>;
+  datas: Promise<TableDataDisplayType<T>>;
+  onUpdate?: (index: number) => void;
 }
-function Tbody<T extends Record<string, any>>({
+function Tbody<T>({
   datas,
   header,
   actionCell,
+  onUpdate,
+  name,
 }: ITbodyProps<T>) {
-  const handleCkick = (line: T) => {};
+  const [resolvedData, setResolvedData] =
+    useState<TableDataDisplayType<T> | null>(null);
+
+  useEffect(() => {
+    let isMounted = true;
+    Promise.resolve(datas).then((d) => {
+      if (isMounted) setResolvedData(d);
+    });
+    return () => {
+      isMounted = false;
+    };
+  }, [datas]);
+  const handleCkick = (i: number) => {
+    onUpdate?.(i);
+  };
 
   return (
     <tbody>
       <tr>
-        {datas.map((m) => {
+        {resolvedData?.map((m, i) => {
           return (
-            <Fragment key={m.id}>
+            <Fragment key={name + i}>
               {header.map((hk) => {
                 return (
                   <td
@@ -31,7 +49,7 @@ function Tbody<T extends Record<string, any>>({
               {actionCell && (
                 <ActionCellButton
                   label="Modifier"
-                  onClick={() => handleCkick(m)}
+                  onClick={() => handleCkick(i)}
                 />
               )}
             </Fragment>
