@@ -13,6 +13,19 @@ async function objectBaseParser(data: any) {
     return Promise.reject(error);
   }
 }
+async function objectBaseToTableParser(data: IObjectBase) {
+  try {
+    const parsed = {
+      id: data.id,
+      name: data.name,
+      isActive: data.isActive ? 'Oui' : 'Non',
+    };
+
+    return parsed;
+  } catch (error) {
+    return Promise.reject(error);
+  }
+}
 async function genericArrayParser<T>(
   data: any[],
   singleParser: (data: any) => Promise<T>
@@ -27,4 +40,4 @@ async function genericArrayParser<T>(
   }
 }
 
-export { genericArrayParser, objectBaseParser };
+export { genericArrayParser, objectBaseParser, objectBaseToTableParser };

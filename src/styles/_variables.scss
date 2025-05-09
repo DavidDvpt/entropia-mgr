@@ -19,11 +19,16 @@ $shadowBlur: 8px;
 $shadowSpread: 2px;
 $shadowOffsetX: 0;
 $shadowOffsetY: 0;
+$transparent-shadow: $shadowOffsetX $shadowOffsetY $shadowBlur $shadowSpread
+  transparent;
 
 // Dropdown
 $dropdownHover: hsla(202, 56%, 38%, 1);
 $dropdownSubMenu: hsla(205, 99%, 26%, 1);
 $dropdownShadow: $shadowOffsetX 2px $shadowBlur 0 hsla(205, 98%, 20%, 1);
+
+// Table
+$headerBg: $indigo-dye-2;
 // FONTS
 
 $fontSizeUpper: 1.2rem;

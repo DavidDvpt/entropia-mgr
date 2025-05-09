@@ -1,4 +1,16 @@
 @import '../../../../styles/main';
 
 .itemCategoryTable {
+  width: 50%;
+
+  tbody {
+    tr {
+      td:nth-child(1) {
+        width: 50%;
+      }
+      td:nth-child(2) {
+        width: 30%;
+      }
+    }
+  }
 }

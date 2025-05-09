@@ -1,4 +1,4 @@
-import ItemCategoryTableClient from '@/modules/itemCategory/components/itemCategoryTable/ItemCategoryTableClient';
+import ItemCategoryTable from '@/modules/itemCategory/components/itemCategoryTable/ItemCategoryTable';
 import { getDbItemCategories } from '@/modules/itemCategory/dbItemCategory';
 import { itemCategoryParser } from '@/modules/itemCategory/itemCategoryParser';
 import GenericServerFetcher from '@/shared/components/wrappers/GenericServerFetcher';
@@ -12,7 +12,7 @@ function ManagePage(props: { params: Promise<IManagePageProps> }) {
       <GenericServerFetcher
         fetchFn={getDbItemCategories}
         parser={itemCategoryParser}
-        render={(data) => <ItemCategoryTableClient initialDatas={data} />}
+        render={(data) => <ItemCategoryTable initialDatas={data} />}
       />
     );
   if (manageType === 'types') return <div>manage itemType</div>;

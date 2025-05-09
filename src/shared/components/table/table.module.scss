@@ -1,4 +1,48 @@
 @import '../../../styles/main';
 
 .table {
+  margin: auto;
+  border-collapse: collapse;
+  border-spacing: 0;
+  overflow: hidden;
+  border-radius: $borderRadius;
+
+  thead {
+    background-color: $headerBg;
+    th {
+      &.actionCellWidth {
+        width: 20%;
+        max-width: 20%;
+      }
+    }
+  }
+  tbody {
+    td {
+      &.actionCellButton {
+        width: 20%;
+        min-width: 80px;
+
+        button {
+          &.cellButton {
+            height: 24px;
+            width: 95%;
+            padding: 0;
+          }
+        }
+      }
+    }
+  }
+  tfoot {
+  }
+
+  td,
+  th {
+    border-bottom: 1px solid var(--color-foreground);
+    padding: 5px;
+    text-align: left;
+
+    &.right {
+      text-align: right;
+    }
+  }
 }
