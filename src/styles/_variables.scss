@@ -22,6 +22,10 @@ $shadowOffsetY: 0;
 $transparent-shadow: $shadowOffsetX $shadowOffsetY $shadowBlur $shadowSpread
   transparent;
 
+//modal
+$modalShadowBlur: 4px;
+$modal-shadow: $shadowOffsetX $shadowOffsetY $modalShadowBlur $shadowSpread
+  $indigo-dye-3;
 // Dropdown
 $dropdownHover: hsla(202, 56%, 38%, 1);
 $dropdownSubMenu: hsla(205, 99%, 26%, 1);

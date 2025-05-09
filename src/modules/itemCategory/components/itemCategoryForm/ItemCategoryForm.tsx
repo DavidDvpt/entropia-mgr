@@ -9,7 +9,14 @@ interface IItemCategoryFormProps {
   defaultValues: Partial<IAppItemCategory> | null;
 }
 function ItemCategoryForm({ defaultValues }: IItemCategoryFormProps) {
-  const handleSublit = () => {};
+  const handleSublit = (values: Partial<IAppItemCategory>) => {
+    console.log(values);
+    if (values?.id) {
+      console.log('update');
+    } else {
+      console.log('create');
+    }
+  };
 
   return (
     <GenericForm
@@ -18,7 +25,7 @@ function ItemCategoryForm({ defaultValues }: IItemCategoryFormProps) {
       onSubmit={handleSublit}
       schema={itemCategoryFormSchema}
     >
-      <div className={styles.itemCategoryform}>
+      <div className={styles.itemCategoryForm}>
         <FormField name="name" label="Nom de catégorie">
           <Input />
         </FormField>

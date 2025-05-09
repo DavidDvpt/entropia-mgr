@@ -5,8 +5,11 @@ import ItemCategoryForm from './itemCategoryForm/ItemCategoryForm';
 
 function ItemCategoryFormModal() {
   const { itemCategoryFormModal } = useAppSelector(getModalState);
+  const title = itemCategoryFormModal.item
+    ? 'Modification de catégorie'
+    : 'Création de catégorie';
   return (
-    <GenericModalComponent>
+    <GenericModalComponent title={title}>
       <ItemCategoryForm defaultValues={itemCategoryFormModal.item} />
     </GenericModalComponent>
   );

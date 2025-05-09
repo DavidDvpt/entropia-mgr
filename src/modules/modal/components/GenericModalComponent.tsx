@@ -1,10 +1,20 @@
 import GenericBackgroundModal from './GenericBackgroundModal';
 import GenericModal from './GenericModal';
 
-function GenericModalComponent({ children }: IChildren) {
+interface IGenericModalComponentProps extends IChildren {
+  title?: string;
+}
+
+function GenericModalComponent({
+  title,
+  children,
+}: IGenericModalComponentProps) {
   return (
     <GenericBackgroundModal>
-      <GenericModal>{children}</GenericModal>
+      <GenericModal>
+        {title && <h1>{title}</h1>}
+        {children}
+      </GenericModal>
     </GenericBackgroundModal>
   );
 }

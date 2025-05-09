@@ -6,4 +6,15 @@
 
 .genericModal {
   @include modal-base;
+  background-color: var(--modal-color-bg);
+  border-radius: $borderRadius;
+  box-shadow: $modal-shadow;
+  min-width: 50%;
+  max-width: 600px;
+  min-height: 30%;
+  max-height: 90%;
+
+  h1 {
+    margin-bottom: 20px;
+  }
 }

@@ -15,17 +15,5 @@
   transform: translate(-50%, -50%);
   padding: 20px;
 
-  z-index: 1011;
-
-  .closeIconContainer {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-
-    width: 100%;
-    @include flex-end-center;
-    .closeIcon {
-      padding: 0;
-    }
-  }
+  z-index: 100;
 }
