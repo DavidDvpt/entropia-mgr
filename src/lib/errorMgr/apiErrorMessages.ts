@@ -32,6 +32,10 @@ const apiErrorMessages: ApiErrorMessagesType = {
       api: 'Unauthorized access',
       user: 'Accès non autorisé',
     },
+    [ErrorKeyEnum.nameRequired]: {
+      api: 'Name is required',
+      user: 'Le nom et requis',
+    },
     [ErrorKeyEnum.internalServerError]: {
       api: 'Server error',
       user: 'Erreur du serveur, veuillez réessayer plus tard',

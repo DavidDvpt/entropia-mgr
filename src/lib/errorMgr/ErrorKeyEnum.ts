@@ -7,6 +7,7 @@ enum ErrorKeyEnum {
   noCredentials = 'noCredentials',
   unauthorized = 'unauthorized',
   internalServerError = 'internalServerError',
+  nameRequired = 'nameRequired',
 }
 
 export default ErrorKeyEnum;
