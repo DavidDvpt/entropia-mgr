@@ -34,6 +34,8 @@ function GenericForm<TFormValues extends Record<string, any>>({
     defaultValues,
     resolver: schema ? zodResolver(schema) : undefined,
   });
+
+  console.log(defaultValues);
   useWatchFields({
     control: methods.control,
     errorState: externalError,

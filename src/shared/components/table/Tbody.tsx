@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import ActionCellButton from './ActionCellButton';
 import styles from './table.module.scss';
 interface ITbodyProps<T> extends ITableActionCell {
@@ -32,10 +32,10 @@ function Tbody<T>({
 
   return (
     <tbody>
-      <tr>
+      <>
         {resolvedData?.map((m, i) => {
           return (
-            <Fragment key={name + i}>
+            <tr key={name + i}>
               {header.map((hk) => {
                 return (
                   <td
@@ -52,10 +52,10 @@ function Tbody<T>({
                   onClick={() => handleCkick(i)}
                 />
               )}
-            </Fragment>
+            </tr>
           );
         })}
-      </tr>
+      </>
     </tbody>
   );
 }

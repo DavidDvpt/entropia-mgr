@@ -10,7 +10,7 @@ function ItemCategoryFormModal() {
     : 'Création de catégorie';
   return (
     <GenericModalComponent title={title}>
-      <ItemCategoryForm defaultValues={itemCategoryFormModal.item} />
+      <ItemCategoryForm defaultValues={itemCategoryFormModal.item} isModal />
     </GenericModalComponent>
   );
 }

@@ -21,9 +21,15 @@ function useItemCategoryMutation() {
   });
 
   const updateCategory = useMutation({
-    mutationFn: async (updatedCategory: IAppItemCategory) => {
+    mutationFn: async ({
+      id,
+      updatedCategory,
+    }: {
+      id: string;
+      updatedCategory: IAppItemCategory;
+    }) => {
       const { data } = await axiosInstance().put(
-        `/api/itemCategories/${updatedCategory.id}`,
+        `/api/itemCategories/${id}`,
         updatedCategory
       );
       return data;

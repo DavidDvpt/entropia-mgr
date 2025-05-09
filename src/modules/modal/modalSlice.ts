@@ -14,6 +14,9 @@ const modalSlice = createSlice({
     ) => {
       state.itemCategoryFormModal = action.payload;
     },
+    resetItemCategoryForm: (state) => {
+      state.itemCategoryFormModal = { display: false, item: null };
+    },
   },
 });
 
