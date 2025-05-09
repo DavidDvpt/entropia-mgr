@@ -1,4 +1,4 @@
-import { getModalState, modalsActions } from '@/modules/modals/modalSlice';
+import { getModalState, modalsActions } from '@/modules/modal/modalSlice';
 
 import { useAppDispatch, useAppSelector } from '@/lib/redux/hooks';
 
@@ -25,7 +25,7 @@ function ProfileModal() {
           modalType={GenericModalEnum.INFO}
           closeModal={handleClose}
           hasIcon={false}
-          title='Mise à jour Ped Card'
+          title="Mise à jour Ped Card"
         >
           <PedcardBalanceContainer />
         </GenericModal>

@@ -1,5 +1,6 @@
 'use client';
 
+import ModalContainer from '@/modules/modal/ModalContainer';
 import { signIn, useSession } from 'next-auth/react';
 import Header from './_header/Header';
 import styles from './auth.module.scss';
@@ -15,6 +16,7 @@ function layout({ children }: IChildren) {
     <main className={styles.auth}>
       <Header />
       <div className={styles.mainContent}>{children}</div>
+      <ModalContainer />
     </main>
   );
 }
