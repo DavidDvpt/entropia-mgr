@@ -1,5 +1,3 @@
-import { useAppDispatch } from '@/lib/redux/store';
-import { modalActions } from '@/modules/modal/modalSlice';
 import FormButtonContainer from '@/shared/components/form/formButtonContainer/FormButtonContainer';
 import GenericForm from '@/shared/components/form/GenericForm';
 import {
@@ -16,29 +14,20 @@ interface IItemCategoryFormProps {
   isModal?: boolean;
 }
 function ItemCategoryForm({ defaultValues, isModal }: IItemCategoryFormProps) {
-  const closeModal = () =>
-    isModal && dispatch(modalActions.resetItemCategoryForm());
-  const handleCancel = () => closeModal();
-  const handleSuccess = () => closeModal();
-  const { createFnc, updateFnc } = useItemCategoryMutation({
+  const { createFnc, updateFnc, closeModal } = useItemCategoryMutation({
     isModal,
   });
-  const dispatch = useAppDispatch();
 
   const error: any = createFnc.error ?? updateFnc.error ?? null;
 
-  const handleSublit = (values: Partial<IAppItemCategory>) => {
+  const handleSubmit = (values: Partial<IAppItemCategory>) => {
     if (defaultValues?.id) {
-      updateFnc.mutate(
-        { id: defaultValues.id, body: values as IAppItemCategory },
-        {
-          onSuccess: () => handleSuccess(),
-        }
-      );
-    } else {
-      createFnc.mutate(values, {
-        onSuccess: () => handleSuccess(),
+      updateFnc.mutate({
+        id: defaultValues.id,
+        body: values as IAppItemCategory,
       });
+    } else {
+      createFnc.mutate(values);
     }
   };
 
@@ -46,7 +35,7 @@ function ItemCategoryForm({ defaultValues, isModal }: IItemCategoryFormProps) {
     <GenericForm
       defaultValues={defaultValues ?? defaultObjectBaseValue}
       externalError={null}
-      onSubmit={handleSublit}
+      onSubmit={handleSubmit}
       schema={objectBaseFormSchema}
     >
       {error && (
@@ -57,7 +46,7 @@ function ItemCategoryForm({ defaultValues, isModal }: IItemCategoryFormProps) {
           <ObjectBaseForm />
 
           <FormButtonContainer
-            onCancel={handleCancel}
+            onCancel={closeModal}
             type={defaultValues?.id ? 'update' : 'create'}
           />
         </div>
