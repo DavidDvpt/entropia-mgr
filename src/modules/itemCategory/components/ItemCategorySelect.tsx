@@ -12,7 +12,7 @@ interface IItemCategorySelectProps {
 }
 
 function ItemCategorySelect(props: IItemCategorySelectProps) {
-  const { data, isError, isLoading } = useItemCategory({});
+  const { data } = useItemCategory({});
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const value = e.target.value;

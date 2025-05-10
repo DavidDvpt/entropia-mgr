@@ -21,7 +21,7 @@ function ItemCategoryTable({ initialDatas }: IItemCategoryTableClientProps) {
   const [parsedForTableState, setParsedForTableState] = useState<
     Record<keyof IAppItemCategory, string>[]
   >([]);
-  const { data } = useItemCategory({ initDatas: initialDatas });
+  const { data } = useItemCategory({ initialDatas });
   const dispatch = useAppDispatch();
   if (!data) return null;
 

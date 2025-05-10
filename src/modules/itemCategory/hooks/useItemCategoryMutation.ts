@@ -1,54 +1,23 @@
 'use client';
 
-import { axiosInstance } from '@/lib/axios/axios';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
+import useQueryMutation from '@/shared/hooks/useQueryMutation';
+import { useQueryClient } from '@tanstack/react-query';
 
-function useItemCategoryMutation() {
+interface IUseItemCategoryMutationProps {
+  isModal?: boolean;
+}
+function useItemCategoryMutation({ isModal }: IUseItemCategoryMutationProps) {
   const queryClient = useQueryClient();
 
-  const mutationSuccess = () =>
-    queryClient.invalidateQueries({ queryKey: ['itemCategories'] });
+  const onSuccess = () => {};
 
-  const createCategory = useMutation({
-    mutationFn: async (newCategory: Partial<Omit<IAppItemCategory, 'id'>>) => {
-      const { data } = await axiosInstance().post(
-        '/api/itemCategories',
-        newCategory
-      );
-      return data;
-    },
-    onSuccess: () => mutationSuccess(),
+  const result = useQueryMutation({
+    queryKey: ['itemCategories'],
+    url: '/api/itemCategories',
+    onSuccess,
   });
 
-  const updateCategory = useMutation({
-    mutationFn: async ({
-      id,
-      updatedCategory,
-    }: {
-      id: string;
-      updatedCategory: IAppItemCategory;
-    }) => {
-      const { data } = await axiosInstance().put(
-        `/api/itemCategorie/${id}`,
-        updatedCategory
-      );
-      return data;
-    },
-    onSuccess: () => mutationSuccess(),
-  });
-
-  const deleteCategory = useMutation({
-    mutationFn: async (id: string) => {
-      await axiosInstance().delete(`/api/itemCategories/${id}`);
-    },
-    onSuccess: () => () => mutationSuccess(),
-  });
-
-  return {
-    createCategory,
-    updateCategory,
-    deleteCategory,
-  };
+  return result;
 }
 
 export default useItemCategoryMutation;

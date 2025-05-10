@@ -16,26 +16,27 @@ interface IItemCategoryFormProps {
   isModal?: boolean;
 }
 function ItemCategoryForm({ defaultValues, isModal }: IItemCategoryFormProps) {
-  const { createCategory, updateCategory } = useItemCategoryMutation();
-  const dispatch = useAppDispatch();
-
-  const error: any = createCategory.error ?? updateCategory.error ?? null;
-
   const closeModal = () =>
     isModal && dispatch(modalActions.resetItemCategoryForm());
   const handleCancel = () => closeModal();
   const handleSuccess = () => closeModal();
+  const { createFnc, updateFnc } = useItemCategoryMutation({
+    isModal,
+  });
+  const dispatch = useAppDispatch();
+
+  const error: any = createFnc.error ?? updateFnc.error ?? null;
 
   const handleSublit = (values: Partial<IAppItemCategory>) => {
     if (defaultValues?.id) {
-      updateCategory.mutate(
-        { id: defaultValues.id, updatedCategory: values as IAppItemCategory },
+      updateFnc.mutate(
+        { id: defaultValues.id, body: values as IAppItemCategory },
         {
           onSuccess: () => handleSuccess(),
         }
       );
     } else {
-      createCategory.mutate(values, {
+      createFnc.mutate(values, {
         onSuccess: () => handleSuccess(),
       });
     }

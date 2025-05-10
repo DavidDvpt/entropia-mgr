@@ -1,8 +1,9 @@
-type ItemCategoryFormModalType = {
+type FormModalType = {
   item: IAppItemCategory | null;
   display: boolean;
 };
 
 type ModalReduxState = {
-  itemCategoryFormModal: ItemCategoryFormModalType;
+  itemCategoryFormModal: FormModalType;
+  itemTypeFormModal: FormModalType;
 };

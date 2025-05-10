@@ -4,17 +4,20 @@ import FormField from '@/shared/components/ui/formField/FormField';
 import Select from '@/shared/components/ui/select/Select';
 
 import { ChangeEvent } from 'react';
-import useItemType from '../useItemType';
+import useItemType from '../hooks/useItemType';
 
 interface IItemCategorySelectProps {
   className?: string;
   value?: string;
   itemCategoryId?: string;
   onChange?: (type: IAppItemType) => void;
+  waitForParams?: boolean;
 }
 function ItemTypeSelect(props: IItemCategorySelectProps) {
+  const { itemCategoryId } = props;
   const { data, isError, isLoading } = useItemType({
-    itemCategoryId: props.itemCategoryId,
+    params: { itemCategoryId },
+    waitForParams: true,
   });
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
