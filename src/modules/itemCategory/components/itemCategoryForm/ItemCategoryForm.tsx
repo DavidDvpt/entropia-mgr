@@ -20,7 +20,7 @@ function ItemCategoryForm({ defaultValues, isModal }: IItemCategoryFormProps) {
   const dispatch = useAppDispatch();
 
   const error: any = createCategory.error ?? updateCategory.error ?? null;
-  console.log(updateCategory.error);
+
   const closeModal = () =>
     isModal && dispatch(modalActions.resetItemCategoryForm());
   const handleCancel = () => closeModal();
@@ -49,7 +49,7 @@ function ItemCategoryForm({ defaultValues, isModal }: IItemCategoryFormProps) {
       schema={objectBaseFormSchema}
     >
       {error && (
-        <div>{error.response.status + '' + error.response.statusText}</div>
+        <div>{error.response.status + ' ' + error.response.statusText}</div>
       )}
       {!error && (
         <div className={styles.itemCategoryForm}>
