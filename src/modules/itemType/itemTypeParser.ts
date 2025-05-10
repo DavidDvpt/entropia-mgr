@@ -1,4 +1,8 @@
-import { objectBaseParser } from '@/shared/tools/parserTool';
+import {
+  genericArrayParser,
+  objectBaseParser,
+  objectBaseToTableParser,
+} from '@/shared/tools/parserTool';
 import { itemCategoryParser } from '../itemCategory/itemCategoryParser';
 
 async function itemTypeParser(data: any): Promise<IAppItemType> {
@@ -20,5 +24,29 @@ async function itemTypeParser(data: any): Promise<IAppItemType> {
     return Promise.reject(error);
   }
 }
+async function itemTypeForTableParser<T>(
+  data: T[]
+): Promise<TableDataDisplayType<T>> {
+  try {
+    const parsedLine = async (value: IAppItemType) => {
+      const ob = await objectBaseToTableParser(value);
+      const parsed = {
+        ...ob,
+        itemCategory: value.itemCategory?.name,
+      };
 
-export { itemTypeParser };
+      return parsed;
+    };
+
+    const parsed = (await genericArrayParser(
+      data,
+      parsedLine
+    )) as TableDataDisplayType<T>;
+
+    return parsed;
+  } catch (error) {
+    return Promise.reject(error);
+  }
+}
+
+export { itemTypeForTableParser, itemTypeParser };

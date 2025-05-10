@@ -1,4 +1,4 @@
-import { useAppDispatch } from '@/lib/redux/store';
+import useCssArray from '@/shared/hooks/useCssArray';
 import styles from './table.module.scss';
 import Tbody from './Tbody';
 import Tfoot from './Tfoot';
@@ -22,9 +22,7 @@ function Table<T extends Record<string, any>>({
   parserToTable,
   onClick,
 }: ITableProps<T>) {
-  const dispatch = useAppDispatch();
-  const css = [styles.table];
-  className && css.push(className);
+  const css = useCssArray({ cssArray: [styles.table, className] });
 
   const dataToDisplay = parserToTable(datas);
 
@@ -33,7 +31,7 @@ function Table<T extends Record<string, any>>({
   };
 
   return (
-    <table className={css.join(' ')}>
+    <table className={css}>
       <Thead cells={header} actionCell />
       <Tbody
         header={header}

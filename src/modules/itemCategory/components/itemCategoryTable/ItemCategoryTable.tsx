@@ -3,7 +3,6 @@
 import { useAppDispatch } from '@/lib/redux/store';
 import { modalActions } from '@/modules/modal/modalSlice';
 import Table from '@/shared/components/table/Table';
-import { useEffect, useState } from 'react';
 import useItemCategory from '../../hooks/useItemCategory';
 import { itemCategoryForTableParser } from '../../itemCategoryParser';
 import styles from './itemCategoryTable.module.scss';
@@ -18,21 +17,9 @@ interface IItemCategoryTableClientProps {
 }
 
 function ItemCategoryTable({ initialDatas }: IItemCategoryTableClientProps) {
-  const [parsedForTableState, setParsedForTableState] = useState<
-    Record<keyof IAppItemCategory, string>[]
-  >([]);
   const { data } = useItemCategory({ initialDatas });
   const dispatch = useAppDispatch();
   if (!data) return null;
-
-  useEffect(() => {
-    if (data) {
-      itemCategoryForTableParser(data).then(
-        (res) => setParsedForTableState(res),
-        (err) => setParsedForTableState([])
-      );
-    }
-  }, [data]);
 
   const handleUpdate = (itemCategory: IAppItemCategory) =>
     dispatch(

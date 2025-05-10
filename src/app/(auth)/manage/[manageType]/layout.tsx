@@ -37,6 +37,8 @@ function ManageLayout(props: IManageLayoutProps) {
       <div className={styles.buttonContainer}>
         <Button onClick={handleCreate} variant="primary">
           {manageType === 'categories' && 'Créer une nouvelle catégorie'}
+          {manageType === 'types' && 'Créer un nouveau type'}
+          {manageType === 'items' && 'Créer un nouvel objet'}
         </Button>
       </div>
     </div>

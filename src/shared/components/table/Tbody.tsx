@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useState } from 'react';
 import ActionCellButton from './ActionCellButton';
 import styles from './table.module.scss';
@@ -26,6 +28,7 @@ function Tbody<T>({
       isMounted = false;
     };
   }, [datas]);
+
   const handleCkick = (i: number) => {
     onUpdate?.(i);
   };
@@ -36,10 +39,10 @@ function Tbody<T>({
         {resolvedData?.map((m, i) => {
           return (
             <tr key={name + i}>
-              {header.map((hk) => {
+              {header.map((hk, j) => {
                 return (
                   <td
-                    key={m[hk.key]}
+                    key={m[hk.key] + j}
                     className={hk.key === 'right' ? styles.right : ''}
                   >
                     {m[hk.key]}

@@ -15,7 +15,7 @@ interface IItemCategorySelectProps {
 }
 function ItemTypeSelect(props: IItemCategorySelectProps) {
   const { itemCategoryId } = props;
-  const { data, isError, isLoading } = useItemType({
+  const { data } = useItemType({
     params: { itemCategoryId },
     waitForParams: true,
   });
