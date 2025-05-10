@@ -1,7 +1,7 @@
 import { useAppDispatch } from '@/lib/redux/store';
 import { modalActions } from '@/modules/modal/modalSlice';
+import FormButtonContainer from '@/shared/components/form/formButtonContainer/FormButtonContainer';
 import GenericForm from '@/shared/components/form/GenericForm';
-import Button from '@/shared/components/ui/button/Button';
 import FormField from '@/shared/components/ui/formField/FormField';
 import Input from '@/shared/components/ui/input/Input';
 import useItemCategoryMutation from '../../hooks/useItemCategoryMutation';
@@ -47,14 +47,10 @@ function ItemCategoryForm({ defaultValues, isModal }: IItemCategoryFormProps) {
           <Input />
         </FormField>
 
-        <div className={styles.btnContainer}>
-          <Button variant="error" onClick={handleCancel} type="reset">
-            Annuler
-          </Button>
-          <Button variant="primary" type="submit">
-            {defaultValues?.id ? 'Modifier' : 'Créer'}
-          </Button>
-        </div>
+        <FormButtonContainer
+          onCancel={handleCancel}
+          type={defaultValues?.id ? 'update' : 'create'}
+        />
       </div>
     </GenericForm>
   );

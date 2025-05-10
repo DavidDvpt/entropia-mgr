@@ -57,7 +57,7 @@ $warning-shadow: $shadowOffsetX $shadowOffsetY $shadowBlur $shadowSpread
   $warning-light;
 
 $error: hsla(353, 86%, 54%, 1);
-$error-fg: $black;
+$error-fg: $white;
 $error-light: hsla(353, 86%, 64%, 1);
 $error-dark: hsla(353, 86%, 44%, 1);
 $error-shadow: $shadowOffsetX $shadowOffsetY $shadowBlur $shadowSpread
