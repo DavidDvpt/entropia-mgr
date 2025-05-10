@@ -3,11 +3,7 @@ import { InputHTMLAttributes } from 'react';
 import { useFormContext } from 'react-hook-form';
 import styles from './checkbox.module.scss';
 
-interface ICheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
-  className?: string;
-  name: string;
-  id: string;
-}
+interface ICheckboxProps extends InputHTMLAttributes<HTMLInputElement> {}
 
 function Checkbox(props: ICheckboxProps) {
   const { register } = useFormContext();

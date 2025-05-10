@@ -45,7 +45,7 @@ function ItemCategoryForm({ defaultValues, isModal }: IItemCategoryFormProps) {
     >
       <div className={styles.itemCategoryForm}>
         <FormField name="name" label="Nom de catégorie">
-          <Input id={'' as unknown as never} name={'' as unknown as never} />
+          <Input />
         </FormField>
         <FormField
           name="isActive"
@@ -53,7 +53,7 @@ function ItemCategoryForm({ defaultValues, isModal }: IItemCategoryFormProps) {
           labelPosition="left"
           childAlign="left"
         >
-          <Checkbox id={'' as unknown as never} name={'' as unknown as never} />
+          <Checkbox />
         </FormField>
 
         <FormButtonContainer
