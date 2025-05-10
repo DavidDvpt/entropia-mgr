@@ -29,7 +29,7 @@ function useItemCategoryMutation() {
       updatedCategory: IAppItemCategory;
     }) => {
       const { data } = await axiosInstance().put(
-        `/api/itemCategories/${id}`,
+        `/api/itemCategorie/${id}`,
         updatedCategory
       );
       return data;

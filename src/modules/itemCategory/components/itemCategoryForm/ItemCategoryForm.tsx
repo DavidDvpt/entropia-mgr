@@ -2,11 +2,13 @@ import { useAppDispatch } from '@/lib/redux/store';
 import { modalActions } from '@/modules/modal/modalSlice';
 import FormButtonContainer from '@/shared/components/form/formButtonContainer/FormButtonContainer';
 import GenericForm from '@/shared/components/form/GenericForm';
-import Checkbox from '@/shared/components/ui/checkbox/Checkbox';
-import FormField from '@/shared/components/ui/formField/FormField';
-import Input from '@/shared/components/ui/input/Input';
+import {
+  defaultObjectBaseValue,
+  objectBaseFormSchema,
+} from '@/shared/components/form/ObjectBaseForm/constants';
+import ObjectBaseForm from '@/shared/components/form/ObjectBaseForm/ObjectBaseForm';
 import useItemCategoryMutation from '../../hooks/useItemCategoryMutation';
-import { defaultItemCategoryValue, itemCategoryFormSchema } from './constants';
+
 import styles from './itemCategoryForm.module.scss';
 
 interface IItemCategoryFormProps {
@@ -17,6 +19,8 @@ function ItemCategoryForm({ defaultValues, isModal }: IItemCategoryFormProps) {
   const { createCategory, updateCategory } = useItemCategoryMutation();
   const dispatch = useAppDispatch();
 
+  const error: any = createCategory.error ?? updateCategory.error ?? null;
+  console.log(updateCategory.error);
   const closeModal = () =>
     isModal && dispatch(modalActions.resetItemCategoryForm());
   const handleCancel = () => closeModal();
@@ -39,29 +43,24 @@ function ItemCategoryForm({ defaultValues, isModal }: IItemCategoryFormProps) {
 
   return (
     <GenericForm
-      defaultValues={defaultValues ?? defaultItemCategoryValue}
+      defaultValues={defaultValues ?? defaultObjectBaseValue}
       externalError={null}
       onSubmit={handleSublit}
-      schema={itemCategoryFormSchema}
+      schema={objectBaseFormSchema}
     >
-      <div className={styles.itemCategoryForm}>
-        <FormField name="name" label="Nom de catégorie">
-          <Input />
-        </FormField>
-        <FormField
-          name="isActive"
-          label="Actif"
-          labelPosition="left"
-          childAlign="left"
-        >
-          <Checkbox />
-        </FormField>
+      {error && (
+        <div>{error.response.status + '' + error.response.statusText}</div>
+      )}
+      {!error && (
+        <div className={styles.itemCategoryForm}>
+          <ObjectBaseForm />
 
-        <FormButtonContainer
-          onCancel={handleCancel}
-          type={defaultValues?.id ? 'update' : 'create'}
-        />
-      </div>
+          <FormButtonContainer
+            onCancel={handleCancel}
+            type={defaultValues?.id ? 'update' : 'create'}
+          />
+        </div>
+      )}
     </GenericForm>
   );
 }
