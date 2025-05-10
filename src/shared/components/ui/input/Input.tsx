@@ -1,13 +1,10 @@
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useState } from 'react';
+import { InputHTMLAttributes, useState } from 'react';
 import { useFormContext } from 'react-hook-form';
 import styles from './input.module.scss';
-interface IInputProps {
-  className?: string;
+interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
   type?: InputType;
-  name?: string;
-  id?: string;
   error?: boolean;
 }
 
@@ -40,7 +37,5 @@ function Input(props: IInputProps) {
     </div>
   );
 }
-
-Input.displayName = 'Input';
 
 export default Input;

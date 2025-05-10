@@ -8,7 +8,7 @@ type PositionType = 'top' | 'right' | 'left' | 'bottom';
 type InputType = 'text' | 'number' | 'password' | 'email';
 
 type AppUserRole = 'USER' | 'ADMIN';
-interface IFormeElementType {
+interface IFormElementType {
   name: string;
   id: string;
   error?: boolean;

@@ -2,6 +2,7 @@ import { useAppDispatch } from '@/lib/redux/store';
 import { modalActions } from '@/modules/modal/modalSlice';
 import FormButtonContainer from '@/shared/components/form/formButtonContainer/FormButtonContainer';
 import GenericForm from '@/shared/components/form/GenericForm';
+import Checkbox from '@/shared/components/ui/checkbox/Checkbox';
 import FormField from '@/shared/components/ui/formField/FormField';
 import Input from '@/shared/components/ui/input/Input';
 import useItemCategoryMutation from '../../hooks/useItemCategoryMutation';
@@ -44,7 +45,15 @@ function ItemCategoryForm({ defaultValues, isModal }: IItemCategoryFormProps) {
     >
       <div className={styles.itemCategoryForm}>
         <FormField name="name" label="Nom de catégorie">
-          <Input />
+          <Input id={'' as unknown as never} name={'' as unknown as never} />
+        </FormField>
+        <FormField
+          name="isActive"
+          label="Actif"
+          labelPosition="left"
+          childAlign="left"
+        >
+          <Checkbox id={'' as unknown as never} name={'' as unknown as never} />
         </FormField>
 
         <FormButtonContainer

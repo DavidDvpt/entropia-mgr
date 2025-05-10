@@ -1,9 +1,7 @@
 @import '../../../../styles/main';
 
 .formField {
-  display: flex;
-  justify-content: start;
-  align-items: center;
+  @include flex-start-center;
   margin-bottom: 16px;
 
   &.error {
@@ -36,6 +34,10 @@
 
   .childrenContainer {
     width: 100%;
+
+    &.alignLeft {
+      text-align: left;
+    }
     .errorText {
       color: var(--form-error-foreground);
       font-style: italic;
