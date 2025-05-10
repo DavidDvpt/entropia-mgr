@@ -16,11 +16,11 @@ function FormButtonContainer(props: IFormButtonContainerProps) {
   return (
     <div className={css.join(' ')}>
       {!props.noCancel && (
-        <Button variant="error" onClick={props.onCancel} type="reset">
+        <Button variant="error" onClick={props.onCancel}>
           Annuler
         </Button>
       )}
-      <Button variant="primary" type="submit" onClick={props.onValid}>
+      <Button variant="primary" onClick={props.onValid}>
         {props.type === 'update' && 'Modifier'}
         {props.type === 'create' && 'Créer'}
         {props.type === 'valid' && 'Valider'}

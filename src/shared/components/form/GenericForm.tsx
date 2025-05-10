@@ -35,12 +35,12 @@ function GenericForm<TFormValues extends Record<string, any>>({
     resolver: schema ? zodResolver(schema) : undefined,
   });
 
-  console.log(defaultValues);
   useWatchFields({
     control: methods.control,
     errorState: externalError,
     onFieldChange: () => resetExternalError?.(),
   });
+
   useEffect(() => {
     if (externalError?.length) {
       externalError.forEach((e) =>

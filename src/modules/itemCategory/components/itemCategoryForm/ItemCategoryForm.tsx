@@ -21,6 +21,7 @@ function ItemCategoryForm({ defaultValues, isModal }: IItemCategoryFormProps) {
     isModal && dispatch(modalActions.resetItemCategoryForm());
   const handleCancel = () => closeModal();
   const handleSuccess = () => closeModal();
+
   const handleSublit = (values: Partial<IAppItemCategory>) => {
     if (defaultValues?.id) {
       updateCategory.mutate(

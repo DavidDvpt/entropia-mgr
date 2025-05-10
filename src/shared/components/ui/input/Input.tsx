@@ -10,7 +10,7 @@ interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 function Input(props: IInputProps) {
   const { error = false } = props;
-  const { register } = useFormContext();
+  const { register, watch } = useFormContext();
   const [visible, setVisible] = useState(false);
 
   if (!props.name) return null;

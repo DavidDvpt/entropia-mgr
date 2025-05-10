@@ -8,6 +8,7 @@ const itemCategoryFormSchema = z.object({
   name: z
     .string()
     .nonempty(apiErrorMessages.common[ErrorKeyEnum.nameRequired]?.user),
+  isActive: z.boolean().optional(),
 });
 
 export { defaultItemCategoryValue, itemCategoryFormSchema };
