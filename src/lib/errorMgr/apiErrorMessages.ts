@@ -41,6 +41,12 @@ const apiErrorMessages: ApiErrorMessagesType = {
       user: 'Erreur du serveur, veuillez réessayer plus tard',
     },
   },
+  manage: {
+    [ErrorKeyEnum.itemCategoryIdRequired]: {
+      api: 'itemCategory id is required',
+      user: "l'id de la catégorie est requis",
+    },
+  },
 };
 
 function quickErrorAccess(

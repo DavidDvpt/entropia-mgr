@@ -7,6 +7,7 @@ type GenericErrorPropertyType = {
 type ApiErrorMessagesType = {
   common: GenericErrorPropertyType;
   login: GenericErrorPropertyType;
+  manage: GenericErrorPropertyType;
 };
 
 type ErrorStateType = { key: string; msg: string };
