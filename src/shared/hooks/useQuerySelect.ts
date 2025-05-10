@@ -19,12 +19,11 @@ function useQuerySelect<T>(props: IUseQuerySelectProps<T>) {
   const paramsExists = params
     ? Object.values(params).some((value) => value !== undefined)
     : undefined;
-  console.log(props.queryKey, params, paramsExists, waitForParams);
+
   return useQuery<T[]>({
     queryKey: props.queryKey,
     queryFn: async () => {
       if ((props.waitForParams && paramsExists) || !props.waitForParams) {
-        console.log('cocou');
         const { data } = await axiosInstance().get<any[]>(props.url, {
           params: props.params,
         });
