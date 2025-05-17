@@ -1,14 +1,14 @@
-@import '../../../styles/main';
+@use '../../../styles/main';
 
 .table {
   margin: auto;
   border-collapse: collapse;
   border-spacing: 0;
   overflow: hidden;
-  border-radius: $borderRadius;
+  border-radius: main.$borderRadius;
 
   thead {
-    background-color: $headerBg;
+    background-color: main.$headerBg;
     th {
       &.actionCellWidth {
         width: 20%;

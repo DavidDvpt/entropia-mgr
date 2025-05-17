@@ -1,11 +1,11 @@
-@import '../../../../styles/main';
+@use '../../../../styles/main';
 
 .itemCard {
-  @include flex-center-center;
+  @include main.flex-center-center;
 
   .imageContainer {
     width: 30px;
-    @include flex-center-center;
+    @include main.flex-center-center;
 
     img {
       height: 60px;

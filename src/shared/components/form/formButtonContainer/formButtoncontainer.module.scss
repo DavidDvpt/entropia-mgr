@@ -1,7 +1,7 @@
-@import '../../../../styles/main';
+@use '../../../../styles/main';
 
 .formButtonContainer {
-  @include flex-center-center;
+  @include main.flex-center-center;
   width: 100%;
 
   button {

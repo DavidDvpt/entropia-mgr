@@ -1,7 +1,7 @@
-@import '../../../../styles/main';
+@use '../../../../styles/main';
 
 .formField {
-  @include flex-start-center;
+  @include main.flex-start-center;
   margin-bottom: 16px;
 
   &.error {
@@ -50,7 +50,7 @@
     .errorText {
       color: var(--form-error-foreground);
       font-style: italic;
-      font-size: $fontSizeLower;
+      font-size: main.$fontSizeLower;
     }
   }
 }

@@ -1,9 +1,9 @@
-@import '../../../styles/main';
+@use '../../../styles/main';
 
 .header {
   @include flex-start-center;
 
-  height: $headerHeight;
+  height: main.$headerHeight;
   padding: 0 10px;
 
   > h1 {

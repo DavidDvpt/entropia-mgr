@@ -1,11 +1,11 @@
-@import '../../../styles/main';
+@use '../../../styles/main';
 
 .navigation {
   flex: 1;
-  height: $headerHeight;
+  height: main.$headerHeight;
 
   > ul {
-    @include flex-end-center;
+    @include main.flex-end-center;
   }
   // @include flex-column-start-start;
 
@@ -14,7 +14,7 @@
     height: 100%;
 
     .label {
-      @include flex-center-center;
+      @include main.flex-center-center;
       cursor: pointer;
       height: $headerHeight;
       padding: 5px;
@@ -24,13 +24,13 @@
       }
 
       &.subElement {
-        @include flex-column-start-start;
+        @include main.flex-column-start-start;
         height: unset;
       }
     }
 
     > ul {
-      background-color: $dropdownHover;
+      background-color: main.$dropdownHover;
       position: absolute;
       display: none;
     }
@@ -38,16 +38,16 @@
     &:hover {
       .label {
         &:not(.subElement) {
-          background-color: $dropdownHover;
+          background-color: main.$dropdownHover;
         }
 
         &.subElement:hover {
-          background-color: $dropdownSubMenu;
+          background-color: main.$dropdownSubMenu;
         }
       }
 
       > ul {
-        @include flex-column-start-start;
+        @include main.flex-column-start-start;
         box-shadow: $dropdownShadow;
       }
     }

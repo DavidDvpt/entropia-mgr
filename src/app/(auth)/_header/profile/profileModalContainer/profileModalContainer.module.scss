@@ -1,4 +1,4 @@
-@import '../../../../../scss/main';
+@use '../../../../../scss/main';
 
 .pedCardBalanceContainer {
   .currentValue {
@@ -15,6 +15,6 @@
 
   .buttonContainer {
     margin-top: 20px;
-    @include flex-center-center;
+    @include main.flex-center-center;
   }
 }

@@ -1,8 +1,8 @@
-@import '../../../../styles/main';
+@use '../../../../styles/main';
 
 .section {
-  background-color: $section-bg;
-  border-radius: $borderRadius;
+  background-color: main.$section-bg;
+  border-radius: main.$borderRadius;
   padding: 10px;
-  box-shadow: $section-shadow;
+  box-shadow: main.$section-shadow;
 }

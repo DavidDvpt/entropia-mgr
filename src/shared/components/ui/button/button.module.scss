@@ -1,56 +1,56 @@
-@import '../../../../styles/main';
+@use '../../../../styles/main';
 
 .button {
   padding: 8px 15px;
-  border-radius: $borderRadius;
+  border-radius: main.$borderRadius;
   height: 36px;
 
   cursor: pointer;
 
   &.primary {
-    background-color: $primary;
-    color: $primary-fg;
+    background-color: main.$primary;
+    color: main.$primary-fg;
   }
   &.warning {
-    background-color: $warning;
-    color: $warning-fg;
+    background-color: main.$warning;
+    color: main.$warning-fg;
   }
   &.error {
-    background-color: $error;
-    color: $error-fg;
+    background-color: main.$error;
+    color: main.$error-fg;
   }
   &.success {
-    background-color: $success;
-    color: $success-fg;
+    background-color: main.$success;
+    color: main.$success-fg;
   }
   &:hover {
     &.primary {
-      background-color: $primary-dark;
+      background-color: main.$primary-dark;
     }
     &.warning {
-      background-color: $warning-dark;
+      background-color: main.$warning-dark;
     }
     &.error {
-      background-color: $error-dark;
+      background-color: main.$error-dark;
     }
     &.success {
-      background-color: $success-dark;
+      background-color: main.$success-dark;
     }
   }
 
   &:active {
     font-weight: 600;
     &.primary {
-      box-shadow: $primary-shadow;
+      box-shadow: main.$primary-shadow;
     }
     &.warning {
-      box-shadow: $warning-shadow;
+      box-shadow: main.$warning-shadow;
     }
     &.error {
-      box-shadow: $error-shadow;
+      box-shadow: main.$error-shadow;
     }
     &.success {
-      box-shadow: $success-shadow;
+      box-shadow: main.$success-shadow;
     }
   }
 }

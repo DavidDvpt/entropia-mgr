@@ -1,14 +1,14 @@
-@import '../../../styles/main';
+@use '../../../styles/main';
 
 .genericBackgroundModal {
-  @include modal-background;
+  @include main.modal-background;
 }
 
 .genericModal {
-  @include modal-base;
+  @include main.modal-base;
   background-color: var(--modal-color-bg);
-  border-radius: $borderRadius;
-  box-shadow: $modal-shadow;
+  border-radius: main.$borderRadius;
+  box-shadow: main.$modal-shadow;
   min-width: 50%;
   max-width: 600px;
   min-height: 30%;

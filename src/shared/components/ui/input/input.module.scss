@@ -1,9 +1,9 @@
-@import '../../../../styles/main';
+@use '../../../../styles/main';
 
 .inputContainer {
   @include flex-start-center;
-  background-color: $white;
-  border-radius: $borderRadius;
+  background-color: main.$white;
+  border-radius: main.$borderRadius;
   padding: 5px;
 
   input {
@@ -19,7 +19,7 @@
   }
 
   &.error {
-    border: 1px solid $error;
+    border: 1px solid main.$error;
     padding: 4px;
     background-color: var(--form-error-foreground);
 

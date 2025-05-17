@@ -1,4 +1,4 @@
-@import '../../../styles/main';
+@use '../../../styles/main';
 
 .cardList {
   display: flex;
@@ -10,7 +10,7 @@
     }
     &.fullWidth {
       width: 100%;
-      @include flex-center-center;
+      @include main.flex-center-center;
     }
   }
 }

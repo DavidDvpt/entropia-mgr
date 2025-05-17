@@ -1,18 +1,18 @@
-@import '../../styles/main';
+@use '../../styles/main';
 
 .searchItemEngine {
   .itemDetail {
-    @include flex-center-center;
+    @include main.flex-center-center;
     height: 80px;
     width: 100%;
   }
   .cardDetail {
-    @include flex-between-center;
+    @include main.flex-between-center;
     height: 80px;
     width: 80%;
   }
   .selectContainer {
-    @include flex-around-center;
+    @include main.flex-around-center;
     width: 100%;
 
     .selects {
