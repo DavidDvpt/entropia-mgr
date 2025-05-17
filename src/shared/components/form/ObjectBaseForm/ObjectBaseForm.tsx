@@ -10,7 +10,7 @@ function ObjectBaseForm() {
       </FormField>
       <FormField
         name="isActive"
-        label="Actif"
+        label="Actif : "
         labelPosition="left"
         childAlign="left"
       >

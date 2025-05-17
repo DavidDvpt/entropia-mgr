@@ -20,6 +20,7 @@ function FormField(props: IFormFieldProps) {
   const { labelPosition = 'top', name } = props;
   const id = `field-${name}`;
   const error = form?.errors?.[name]?.message as string | undefined;
+
   const css = useCssArray({
     cssArray: [
       styles.formField,
@@ -32,6 +33,12 @@ function FormField(props: IFormFieldProps) {
     cssArray: [
       styles.childrenContainer,
       props.childAlign === 'left' ? styles.alignLeft : undefined,
+    ],
+  });
+  const cssLeftLabel = useCssArray({
+    cssArray: [
+      styles.label,
+      labelPosition === 'left' ? styles.labelLeft : undefined,
     ],
   });
 
@@ -47,7 +54,7 @@ function FormField(props: IFormFieldProps) {
   return (
     <div className={css}>
       {props.label && (
-        <label htmlFor={id} className={styles.label}>
+        <label htmlFor={id} className={cssLeftLabel}>
           {props.label}
         </label>
       )}

@@ -18,8 +18,8 @@ async function GET() {
 async function POST(req: Request) {
   try {
     const body = await req.json();
-    const newCategory = await createDbItemCategory(body);
-    return NextResponse.json(newCategory, { status: 201 });
+    const result = await createDbItemCategory(body);
+    return NextResponse.json(result, { status: 201 });
   } catch (error) {
     return NextResponse.json(
       { message: 'Erreur à la création' },

@@ -51,9 +51,9 @@ async function createDbItemCategory(body: Partial<IAppItemCategory>) {
 
 async function updateDbItemCategory(id: string, body: IAppItemCategory) {
   try {
-    if (!body.name) {
+    if (!body.id) {
       throw new Error(
-        apiErrorMessages.common?.[ErrorKeyEnum.nameRequired]?.api ?? 'unknown'
+        apiErrorMessages.common?.[ErrorKeyEnum.idIsRequired]?.api ?? 'unknown'
       );
     }
 

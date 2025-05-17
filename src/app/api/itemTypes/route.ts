@@ -1,4 +1,7 @@
-import { getDbItemTypes } from '@/modules/itemType/dbItemType';
+import {
+  createDbItemType,
+  getDbItemTypes,
+} from '@/modules/itemType/dbItemType';
 import { NextRequest, NextResponse } from 'next/server';
 
 async function GET(req: NextRequest) {
@@ -16,4 +19,18 @@ async function GET(req: NextRequest) {
   }
 }
 
-export { GET };
+async function POST(req: Request) {
+  try {
+    const body = await req.json();
+    const result = await createDbItemType(body);
+
+    return NextResponse.json(result, { status: 201 });
+  } catch (error) {
+    return NextResponse.json(
+      { message: 'Erreur à la création' },
+      { status: 500 }
+    );
+  }
+}
+
+export { GET, POST };

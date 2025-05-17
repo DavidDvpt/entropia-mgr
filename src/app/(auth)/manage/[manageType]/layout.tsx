@@ -23,6 +23,9 @@ function ManageLayout(props: IManageLayoutProps) {
           modalActions.setItemCategoryForm({ display: true, item: null })
         );
         break;
+      case 'types':
+        dispatch(modalActions.setItemTypeForm({ display: true, item: null }));
+        break;
       default:
         break;
     }

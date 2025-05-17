@@ -1,11 +1,21 @@
 'use client';
 
-import { FieldErrors, useFormContext } from 'react-hook-form';
+import {
+  FieldErrors,
+  FieldValues,
+  useFormContext,
+  UseFormRegister,
+  UseFormWatch,
+} from 'react-hook-form';
 
-function useSafeFormContext(): { errors: FieldErrors } | null {
+function useSafeFormContext(): {
+  errors: FieldErrors;
+  register: UseFormRegister<FieldValues>;
+  watch: UseFormWatch<FieldValues>;
+} | null {
   try {
-    const { formState } = useFormContext();
-    return { errors: formState.errors };
+    const { formState, register, watch } = useFormContext();
+    return { register, errors: formState.errors, watch };
   } catch {
     return null;
   }

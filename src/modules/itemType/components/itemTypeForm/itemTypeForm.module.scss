@@ -1,4 +1,10 @@
 @import '../../../../styles/main';
 
 .itemTypeForm {
+  width: 300px;
+  margin: auto;
+
+  select {
+    width: 200px;
+  }
 }

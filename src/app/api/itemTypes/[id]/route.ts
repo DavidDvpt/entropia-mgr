@@ -1,12 +1,12 @@
 import {
-  deleteDbItemCategory,
-  updateDbItemCategory,
-} from '@/modules/itemCategory/dbItemCategory';
+  deleteDbItemType,
+  updateDbItemType,
+} from '@/modules/itemType/dbItemType';
 import { NextRequest, NextResponse } from 'next/server';
 
 async function PUT(req: NextRequest, context: { params: { id: string } }) {
   try {
-    const { id } = await context.params;
+    const id = context.params.id;
 
     if (!id || typeof id !== 'string') {
       return NextResponse.json(
@@ -16,7 +16,7 @@ async function PUT(req: NextRequest, context: { params: { id: string } }) {
     }
     const body = await req.json();
 
-    const updated = await updateDbItemCategory(id, body);
+    const updated = await updateDbItemType(id, body);
     return NextResponse.json(updated, { status: 200 });
   } catch (error) {
     return NextResponse.json(
@@ -28,7 +28,7 @@ async function PUT(req: NextRequest, context: { params: { id: string } }) {
 
 async function DELETE(_: NextRequest, { params }: { params: { id: string } }) {
   try {
-    await deleteDbItemCategory(params.id);
+    await deleteDbItemType(params.id);
     return NextResponse.json({ message: 'Supprimé' }, { status: 204 });
   } catch (error) {
     return NextResponse.json(

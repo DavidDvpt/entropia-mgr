@@ -1,7 +1,9 @@
-import { useAppDispatch } from '@/lib/redux/store';
+import ItemCategorySelect from '@/modules/itemCategory/components/ItemCategorySelect';
 import GenericForm from '@/shared/components/form/GenericForm';
 import ObjectBaseForm from '@/shared/components/form/ObjectBaseForm/ObjectBaseForm';
 import FormButtonContainer from '@/shared/components/form/formButtonContainer/FormButtonContainer';
+import Checkbox from '@/shared/components/ui/checkbox/Checkbox';
+import FormField from '@/shared/components/ui/formField/FormField';
 import useItemTypeMutation from '../../hooks/useItemTypeMutation';
 import {
   defaultItemTypeFormInitialValues,
@@ -14,7 +16,6 @@ interface IItemTypeFormProps {
 }
 
 function ItemTypeForm({ defaultValues, isModal }: IItemTypeFormProps) {
-  const dispatch = useAppDispatch();
   const { createFnc, updateFnc, closeModal } = useItemTypeMutation({
     isModal: true,
   });
@@ -22,6 +23,7 @@ function ItemTypeForm({ defaultValues, isModal }: IItemTypeFormProps) {
   const error: any = createFnc.error ?? updateFnc.error ?? null;
 
   const handleSubmit = (values: Partial<IAppItemCategory>) => {
+    console.log(defaultValues?.id, values);
     if (defaultValues?.id) {
       updateFnc.mutate({
         id: defaultValues.id,
@@ -44,6 +46,20 @@ function ItemTypeForm({ defaultValues, isModal }: IItemTypeFormProps) {
       {!error && (
         <div className={styles.itemTypeForm}>
           <ObjectBaseForm />
+
+          <FormField
+            name="isStackable"
+            label="Empilable : "
+            labelPosition="left"
+            childAlign="left"
+          >
+            <Checkbox />
+          </FormField>
+
+          <ItemCategorySelect
+            label="Choix de catégorie"
+            name="itemCategoryId"
+          />
 
           <FormButtonContainer
             onCancel={closeModal}

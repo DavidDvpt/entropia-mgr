@@ -8,6 +8,8 @@ import useItemCategory from '../hooks/useItemCategory';
 interface IItemCategorySelectProps {
   className?: string;
   value?: string;
+  label?: string;
+  name?: string;
   onChange?: (cat: IAppItemCategory) => void;
 }
 
@@ -32,8 +34,8 @@ function ItemCategorySelect(props: IItemCategorySelectProps) {
           onChange={handleChange}
         />
       }
-      name="category"
-      label="Catégorie"
+      name={props.name ?? 'itemCategoryId'}
+      label={props.label ?? 'Catégorie'}
     />
   );
 }

@@ -9,6 +9,7 @@ enum ErrorKeyEnum {
   internalServerError = 'internalServerError',
   nameRequired = 'nameRequired',
   itemCategoryIdRequired = 'itemCategoryIdRequired',
+  idIsRequired = 'itemCategoryIdRequired',
 }
 
 export default ErrorKeyEnum;

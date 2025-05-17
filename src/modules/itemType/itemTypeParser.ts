@@ -33,6 +33,7 @@ async function itemTypeForTableParser<T>(
       const parsed = {
         ...ob,
         itemCategory: value.itemCategory?.name,
+        isStackable: value.isStackable,
       };
 
       return parsed;

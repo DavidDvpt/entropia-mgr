@@ -7,6 +7,7 @@
   &.error {
     margin-bottom: 0;
   }
+
   .label {
     margin-right: 10px;
   }
@@ -16,6 +17,14 @@
 
     .label {
       margin-bottom: 5px;
+    }
+  }
+  &.left {
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    .label {
+      width: 100px;
     }
   }
   &.right {

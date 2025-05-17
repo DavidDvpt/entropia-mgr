@@ -28,6 +28,10 @@ const apiErrorMessages: ApiErrorMessagesType = {
     },
   },
   common: {
+    [ErrorKeyEnum.idIsRequired]: {
+      api: 'id is required',
+      user: "L'id est requis",
+    },
     [ErrorKeyEnum.unauthorized]: {
       api: 'Unauthorized access',
       user: 'Accès non autorisé',
