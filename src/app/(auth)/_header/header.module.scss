@@ -1,7 +1,7 @@
 @use '../../../styles/main';
 
 .header {
-  @include flex-start-center;
+  @include main.flex-start-center;
 
   height: main.$headerHeight;
   padding: 0 10px;

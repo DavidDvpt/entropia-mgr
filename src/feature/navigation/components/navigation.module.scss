@@ -16,7 +16,7 @@
     .label {
       @include main.flex-center-center;
       cursor: pointer;
-      height: $headerHeight;
+      height: main.$headerHeight;
       padding: 5px;
 
       &:not(.subElement) {
@@ -48,7 +48,7 @@
 
       > ul {
         @include main.flex-column-start-start;
-        box-shadow: $dropdownShadow;
+        box-shadow: main.$dropdownShadow;
       }
     }
   }

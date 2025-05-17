@@ -1,7 +1,7 @@
 @use '../../../../styles/main';
 
 .inputContainer {
-  @include flex-start-center;
+  @include main.flex-start-center;
   background-color: main.$white;
   border-radius: main.$borderRadius;
   padding: 5px;
