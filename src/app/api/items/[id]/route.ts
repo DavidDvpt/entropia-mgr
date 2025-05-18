@@ -12,8 +12,8 @@ async function PUT(req: NextRequest, context: { params: { id: string } }) {
       );
     }
     const body = await req.json();
-
     const updated = await updateDbItem(id, body);
+
     return NextResponse.json(updated, { status: 200 });
   } catch (error) {
     return NextResponse.json(
