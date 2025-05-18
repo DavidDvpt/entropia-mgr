@@ -1,7 +1,10 @@
+import ItemTable from '@/modules/item/components/itemTable/ItemTable';
+import { getDbItems } from '@/modules/item/dbItem';
+import { itemParser } from '@/modules/item/itemParser';
 import ItemCategoryTable from '@/modules/itemCategory/components/itemCategoryTable/ItemCategoryTable';
 import { getDbItemCategories } from '@/modules/itemCategory/dbItemCategory';
 import { itemCategoryParser } from '@/modules/itemCategory/itemCategoryParser';
-import ItemTypeTable from '@/modules/itemType/components/itemCategoryTable/ItemTypeTable';
+import ItemTypeTable from '@/modules/itemType/components/itemTypeTable/ItemTypeTable';
 import { getDbItemTypes } from '@/modules/itemType/dbItemType';
 import { itemTypeParser } from '@/modules/itemType/itemTypeParser';
 import GenericServerFetcher from '@/shared/components/wrappers/GenericServerFetcher';
@@ -27,7 +30,14 @@ function ManagePage(props: { params: Promise<IManagePageProps> }) {
       />
     );
 
-  if (manageType === 'items') return <div>manage item</div>;
+  if (manageType === 'items')
+    return (
+      <GenericServerFetcher
+        fetchFn={() => getDbItems({})}
+        parser={itemParser}
+        render={(data) => <ItemTable initialDatas={data} />}
+      />
+    );
 
   return <div></div>;
 }

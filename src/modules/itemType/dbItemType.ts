@@ -1,5 +1,6 @@
 import { apiErrorMessages } from '@/lib/errorMgr/apiErrorMessages';
 import ErrorKeyEnum from '@/lib/errorMgr/ErrorKeyEnum';
+import { genericArrayParser } from '@/shared/tools/parserTool';
 import dbClient from '@orm/dbClient';
 import { itemTypeParser } from './itemTypeParser';
 
@@ -18,7 +19,8 @@ async function getDbItemTypes({ id, itemCategoryId }: IGetItemTypesProps) {
       orderBy: [{ name: 'asc' }],
     });
 
-    return result;
+    const parsed = await genericArrayParser(result, itemTypeParser);
+    return parsed as AppItemTypes;
   } catch (error) {
     return Promise.reject(error);
   }

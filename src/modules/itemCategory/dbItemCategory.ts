@@ -4,13 +4,15 @@ import { genericArrayParser } from '@/shared/tools/parserTool';
 import dbClient from '@orm/dbClient';
 import { itemCategoryParser } from './itemCategoryParser';
 
-async function getDbItemCategories() {
+async function getDbItemCategories(): Promise<AppItemCategories> {
   try {
     const result = await dbClient.itemCategory.findMany({
       orderBy: [{ name: 'asc' }],
     });
 
-    return result as AppItemCategories;
+    const parsed = await genericArrayParser(result, itemCategoryParser);
+
+    return parsed as AppItemCategories;
   } catch (error) {
     return Promise.reject(error);
   }

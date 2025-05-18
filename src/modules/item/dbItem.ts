@@ -1,24 +1,24 @@
 import { apiErrorMessages } from '@/lib/errorMgr/apiErrorMessages';
 import ErrorKeyEnum from '@/lib/errorMgr/ErrorKeyEnum';
+import { genericArrayParser } from '@/shared/tools/parserTool';
 import dbClient from '@orm/dbClient';
 import { itemParser } from './itemParser';
 
 interface IGetItemsProps {
-  id?: string;
-  itemTypeId?: string;
+  params?: Partial<IAppItem>;
 }
 
-async function getDbItems({ id, itemTypeId }: IGetItemsProps) {
+async function getDbItems({ params }: IGetItemsProps) {
   try {
     const result = await dbClient.item.findMany({
-      where: { itemTypeId, id },
+      where: { ...params },
       include: { itemType: true },
       orderBy: [{ name: 'asc' }],
     });
-    console.log(result);
-    return result;
+
+    const parsed = await genericArrayParser(result, itemParser);
+    return parsed as AppItems;
   } catch (error) {
-    console.log(error);
     return Promise.reject(error);
   }
 }

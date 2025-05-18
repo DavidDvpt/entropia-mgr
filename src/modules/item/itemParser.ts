@@ -1,4 +1,9 @@
-import { objectBaseParser } from '@/shared/tools/parserTool';
+import {
+  booleanToString,
+  genericArrayParser,
+  objectBaseParser,
+  objectBaseToTableParser,
+} from '@/shared/tools/parserTool';
 import { itemTypeParser } from '../itemType/itemTypeParser';
 
 async function itemParser(data: any): Promise<IAppItem> {
@@ -22,5 +27,31 @@ async function itemParser(data: any): Promise<IAppItem> {
     return Promise.reject(error);
   }
 }
+async function itemForTableParser<T>(
+  data: T[]
+): Promise<TableDataDisplayType<T>> {
+  try {
+    const parsedLine = async (value: IAppItem) => {
+      const ob = await objectBaseToTableParser(value);
+      const parsed = {
+        ...ob,
+        itemType: value.itemType?.name,
+        isLimited: booleanToString(value.isLimited),
+        value: value.value.toFixed(3),
+        imgUrlId: value.imgUrlId,
+      };
 
-export { itemParser };
+      return parsed;
+    };
+
+    const parsed = (await genericArrayParser(
+      data,
+      parsedLine
+    )) as TableDataDisplayType<T>;
+
+    return parsed;
+  } catch (error) {
+    return Promise.reject(error);
+  }
+}
+export { itemForTableParser, itemParser };
