@@ -1,4 +1,5 @@
 import {
+  booleanToString,
   genericArrayParser,
   objectBaseParser,
   objectBaseToTableParser,
@@ -33,7 +34,7 @@ async function itemTypeForTableParser<T>(
       const parsed = {
         ...ob,
         itemCategory: value.itemCategory?.name,
-        isStackable: value.isStackable,
+        isStackable: booleanToString(value.isStackable),
       };
 
       return parsed;
@@ -43,7 +44,7 @@ async function itemTypeForTableParser<T>(
       data,
       parsedLine
     )) as TableDataDisplayType<T>;
-
+    console.log(parsed);
     return parsed;
   } catch (error) {
     return Promise.reject(error);

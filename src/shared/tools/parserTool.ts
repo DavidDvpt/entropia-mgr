@@ -18,7 +18,7 @@ async function objectBaseToTableParser(data: IObjectBase) {
     const parsed = {
       id: data.id,
       name: data.name,
-      isActive: data.isActive ? 'Oui' : 'Non',
+      isActive: booleanToString(data.isActive),
     };
 
     return parsed;
@@ -39,5 +39,13 @@ async function genericArrayParser<T>(
     return Promise.reject(error);
   }
 }
+function booleanToString(value?: boolean | null): string {
+  return value ? 'Oui' : 'Non';
+}
 
-export { genericArrayParser, objectBaseParser, objectBaseToTableParser };
+export {
+  booleanToString,
+  genericArrayParser,
+  objectBaseParser,
+  objectBaseToTableParser,
+};

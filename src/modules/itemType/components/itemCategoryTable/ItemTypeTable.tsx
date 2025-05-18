@@ -2,7 +2,7 @@
 
 import { useAppDispatch } from '@/lib/redux/store';
 import { modalActions } from '@/modules/modal/modalSlice';
-import Table from '@/shared/components/table/Table';
+import Table from '@/shared/components/ui/table/Table';
 import useItemType from '../../hooks/useItemType';
 import { itemTypeForTableParser } from '../../itemTypeParser';
 import styles from './itemTypeTable.module.scss';
@@ -10,6 +10,7 @@ import styles from './itemTypeTable.module.scss';
 const header: HeaderCellsType<IAppItemType> = [
   { key: 'name', label: 'Nom' },
   { key: 'isActive', label: 'Actif' },
+  { key: 'isStackable', label: 'Empilable' },
   { key: 'itemCategory', label: 'Catégorie' },
 ];
 

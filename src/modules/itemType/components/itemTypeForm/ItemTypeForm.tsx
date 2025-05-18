@@ -23,7 +23,6 @@ function ItemTypeForm({ defaultValues, isModal }: IItemTypeFormProps) {
   const error: any = createFnc.error ?? updateFnc.error ?? null;
 
   const handleSubmit = (values: Partial<IAppItemCategory>) => {
-    console.log(defaultValues?.id, values);
     if (defaultValues?.id) {
       updateFnc.mutate({
         id: defaultValues.id,

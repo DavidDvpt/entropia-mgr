@@ -1,5 +1,5 @@
 import { HTMLAttributes } from 'react';
-import Button from '../ui/button/Button';
+import Button from '../button/Button';
 import styles from './table.module.scss';
 interface IActionCellButton extends HTMLAttributes<HTMLButtonElement> {
   label: React.ReactNode;

@@ -2,7 +2,7 @@
 
 import { useAppDispatch } from '@/lib/redux/store';
 import { modalActions } from '@/modules/modal/modalSlice';
-import Table from '@/shared/components/table/Table';
+import Table from '@/shared/components/ui/table/Table';
 import useItemCategory from '../../hooks/useItemCategory';
 import { itemCategoryForTableParser } from '../../itemCategoryParser';
 import styles from './itemCategoryTable.module.scss';

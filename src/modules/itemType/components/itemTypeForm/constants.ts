@@ -16,6 +16,7 @@ const itemTypeformSchema = objectBaseFormSchema.extend({
     .nonempty(
       apiErrorMessages.common[ErrorKeyEnum.itemCategoryIdRequired]?.user
     ),
+  isStackable: z.boolean(),
 });
 
 export { defaultItemTypeFormInitialValues, itemTypeformSchema };

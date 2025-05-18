@@ -35,10 +35,12 @@ async function createDbItemType(body: Partial<IAppItemType>) {
           'unknown'
       );
 
-    const result = await dbClient.itemCategory.create({
+    const result = await dbClient.itemType.create({
       data: {
         name: body.name,
         isActive: body.isActive,
+        isStackable: body.isStackable,
+        itemCategoryId: body.itemCategoryId,
       },
     });
 
