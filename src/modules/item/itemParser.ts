@@ -14,11 +14,11 @@ async function itemParser(data: any): Promise<IAppItem> {
       isLimited: data.isLimited,
       value: data.value,
       itemType: itemType,
+      itemTypeId: data.itemTypeId,
     };
 
     return parsed;
   } catch (error) {
-    console.log(error);
     return Promise.reject(error);
   }
 }

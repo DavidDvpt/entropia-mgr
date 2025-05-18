@@ -24,12 +24,12 @@ const apiErrorMessages: ApiErrorMessagesType = {
     },
     [ErrorKeyEnum.noCredentials]: {
       api: 'Email and password are required',
-      user: "l'email et le mot de passe sont requis",
+      user: "L'email et le mot de passe sont requis",
     },
   },
   common: {
     [ErrorKeyEnum.idIsRequired]: {
-      api: 'id is required',
+      api: 'Id is required',
       user: "L'id est requis",
     },
     [ErrorKeyEnum.unauthorized]: {
@@ -47,8 +47,16 @@ const apiErrorMessages: ApiErrorMessagesType = {
   },
   manage: {
     [ErrorKeyEnum.itemCategoryIdRequired]: {
-      api: 'itemCategory id is required',
-      user: "l'id de la catégorie est requis",
+      api: 'ItemCategory id is required',
+      user: "L'id de la catégorie est requis",
+    },
+    [ErrorKeyEnum.itemTypeIdRequired]: {
+      api: 'ItemType id is required',
+      user: "L'id du type est requis",
+    },
+    [ErrorKeyEnum.valueRequired]: {
+      api: 'value is required',
+      user: 'La valeur est requise',
     },
   },
 };

@@ -9,6 +9,8 @@ enum ErrorKeyEnum {
   internalServerError = 'internalServerError',
   nameRequired = 'nameRequired',
   itemCategoryIdRequired = 'itemCategoryIdRequired',
+  itemTypeIdRequired = 'itemTypeIdRequired',
+  valueRequired = 'ValueRequired',
   idIsRequired = 'itemCategoryIdRequired',
 }
 
