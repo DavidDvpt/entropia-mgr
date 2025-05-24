@@ -1,4 +1,25 @@
 @use '../../../../styles/main';
 
 .itemTable {
+  width: 50%;
+
+  tbody {
+    tr {
+      td:nth-child(1) {
+        width: 30%;
+      }
+      td:nth-child(2) {
+        width: 20%;
+      }
+      td:nth-child(3) {
+        width: 10%;
+      }
+      td:nth-child(4) {
+        width: 10%;
+      }
+      td:nth-child(5) {
+        width: 10%;
+      }
+    }
+  }
 }

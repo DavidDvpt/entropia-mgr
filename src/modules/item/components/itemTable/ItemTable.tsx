@@ -26,7 +26,7 @@ function ItemTable({ initialDatas }: IItemTableClientProps) {
     <Table
       datas={data}
       header={header}
-      className={styles.itemTypeTable}
+      className={styles.itemTable}
       parserToTable={itemForTableParser}
       onClick={handleUpdate}
       name="itemType"
