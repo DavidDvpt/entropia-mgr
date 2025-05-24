@@ -30,6 +30,7 @@ function ItemTable({ initialDatas }: IItemTableClientProps) {
       parserToTable={itemForTableParser}
       onClick={handleUpdate}
       name="itemType"
+      enableSearch
     />
   );
 }

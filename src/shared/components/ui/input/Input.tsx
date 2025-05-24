@@ -1,7 +1,7 @@
 import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { InputHTMLAttributes, useState } from 'react';
-import { useFormContext } from 'react-hook-form';
+import useSafeFormContext from '../../form/hookForm/useSafeFormContext';
 import styles from './input.module.scss';
 interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
   type?: InputType;
@@ -9,9 +9,12 @@ interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 function Input(props: IInputProps) {
-  const { error = false } = props;
-  const { register, watch } = useFormContext();
+  const { error = false, value, onChange } = props;
+  const form = useSafeFormContext();
   const [visible, setVisible] = useState(false);
+
+  const register = form?.register?.(props.name as string);
+  const isControlledByForm = !!register;
 
   if (!props.name) return null;
 
@@ -31,7 +34,14 @@ function Input(props: IInputProps) {
       <input
         id={props.id}
         type={visible ? 'text' : props.type}
-        {...register(props.name)}
+        {...(isControlledByForm
+          ? {
+              ...register,
+            }
+          : {
+              value,
+              onChange,
+            })}
       />
       {props.type === 'password' && <Eye />}
     </div>
