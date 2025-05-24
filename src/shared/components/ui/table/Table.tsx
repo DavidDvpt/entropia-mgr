@@ -1,80 +1,49 @@
-import useCssArray from '@/shared/hooks/useCssArray';
-import FormField from '../formField/FormField';
-import Input from '../input/Input';
-import styles from './table.module.scss';
 import Tbody from './Tbody';
 import Tfoot from './Tfoot';
 import Thead from './Thead';
-import useSearch from './useSearch';
-
+import styles from './table.module.scss';
 interface ITableProps<T> {
   name: string;
   header: HeaderCellsType<T>;
-  datas: T[];
+  datas?: T[];
+  parsedDatas?: TableDataDisplayType<T>;
   footer?: any;
   className?: string;
-  enableSearch?: boolean;
-  keySearch?: keyof T;
-  parserToTable: (datas: T[]) => Promise<TableDataDisplayType<T>>;
-  onClick: (value: T) => void;
+  parserToTable?: (datas: T[]) => Promise<TableDataDisplayType<T>>;
+  onUpdate: (value: number) => void;
+  patternSearch?: string;
 }
 
 function Table<T extends Record<string, any>>({
   datas,
+  parsedDatas,
   header,
   footer,
   className,
   name,
-  enableSearch,
   parserToTable,
-  onClick,
-  keySearch = 'name',
+  onUpdate,
 }: ITableProps<T>) {
-  const { handleChangePattern, searchPattern } = useSearch();
+  const dataToDisplay =
+    datas && parserToTable
+      ? (parserToTable(datas) ?? [])
+      : Promise.resolve(parsedDatas ?? []);
 
-  const css = useCssArray({ cssArray: [styles.tableContainer, className] });
-
-  const filtered = datas.filter((f) =>
-    f[keySearch].toLowerCase().includes(searchPattern.toLowerCase())
-  );
-  const dataToDisplay = parserToTable(filtered);
-
-  const handleUpdate = (index: number) => {
-    onClick(datas[index]);
-  };
+  const css = [styles.table];
+  className && css.push(className);
 
   return (
-    <div className={css}>
-      {enableSearch && (
-        <div className={styles.searchContainer}>
-          <FormField
-            name="search"
-            label="Recherche :"
-            labelPosition="left"
-            children={
-              <Input
-                type="text"
-                className={styles.fields}
-                value={searchPattern}
-                onChange={handleChangePattern}
-              />
-            }
-          />
-        </div>
-      )}
-
-      <table className={styles.table}>
-        <Thead cells={header} actionCell />
-        <Tbody
-          header={header}
-          datas={dataToDisplay}
-          actionCell
-          name={name}
-          onUpdate={handleUpdate}
-        />
-        {footer && <Tfoot />}
-      </table>
-    </div>
+    <table className={css.join(' ')}>
+      <Thead cells={header} actionCell />
+      <Tbody
+        header={header}
+        datas={dataToDisplay}
+        actionCell
+        name={name}
+        onUpdate={onUpdate}
+      />
+      {footer && <Tfoot />}
+    </table>
   );
 }
 

@@ -25,8 +25,10 @@ function ItemTypeTable({ initialDatas }: IItemTypeTableClientProps) {
 
   if (!data) return null;
 
-  const handleUpdate = (itemType: IAppItemCategory) =>
-    dispatch(modalActions.setItemTypeForm({ item: itemType, display: true }));
+  const handleUpdate = (index: number) => {
+    const it = data[index];
+    dispatch(modalActions.setItemTypeForm({ item: it, display: true }));
+  };
 
   return (
     <Table
@@ -34,7 +36,7 @@ function ItemTypeTable({ initialDatas }: IItemTypeTableClientProps) {
       header={header}
       className={styles.itemTypeTable}
       parserToTable={itemTypeForTableParser}
-      onClick={handleUpdate}
+      onUpdate={handleUpdate}
       name="itemType"
     />
   );

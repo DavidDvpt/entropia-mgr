@@ -21,10 +21,10 @@ function ItemCategoryTable({ initialDatas }: IItemCategoryTableClientProps) {
   const dispatch = useAppDispatch();
   if (!data) return null;
 
-  const handleUpdate = (itemCategory: IAppItemCategory) =>
-    dispatch(
-      modalActions.setItemCategoryForm({ item: itemCategory, display: true })
-    );
+  const handleUpdate = (index: number) => {
+    const ic = data[index];
+    dispatch(modalActions.setItemCategoryForm({ item: ic, display: true }));
+  };
 
   return (
     <Table
@@ -32,7 +32,7 @@ function ItemCategoryTable({ initialDatas }: IItemCategoryTableClientProps) {
       header={header}
       className={styles.itemCategoryTable}
       parserToTable={itemCategoryForTableParser}
-      onClick={handleUpdate}
+      onUpdate={handleUpdate}
       name="itemCategory"
     />
   );

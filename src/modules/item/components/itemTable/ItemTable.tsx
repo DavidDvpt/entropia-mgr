@@ -1,6 +1,6 @@
 'use client';
 
-import Table from '@/shared/components/ui/table/Table';
+import TableExtended from '@/shared/components/ui/table/TableExtended';
 import { itemForTableParser } from '../../itemParser';
 import useItem from '../../useItem';
 import styles from './itemTable.module.scss';
@@ -23,7 +23,7 @@ function ItemTable({ initialDatas }: IItemTableClientProps) {
 
   const handleUpdate = (toUpdate: IAppItem) => {};
   return (
-    <Table
+    <TableExtended
       datas={data}
       header={header}
       className={styles.itemTable}
@@ -31,6 +31,7 @@ function ItemTable({ initialDatas }: IItemTableClientProps) {
       onClick={handleUpdate}
       name="itemType"
       enableSearch
+      enablePagination
     />
   );
 }

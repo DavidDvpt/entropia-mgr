@@ -44,7 +44,7 @@ async function itemTypeForTableParser<T>(
       data,
       parsedLine
     )) as TableDataDisplayType<T>;
-    console.log(parsed);
+
     return parsed;
   } catch (error) {
     return Promise.reject(error);
