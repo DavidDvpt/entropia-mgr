@@ -23,13 +23,15 @@ function usePagination() {
   } = params;
 
   const updateParams = (ic: number, ipp: number) => {
+    console.log(ic, ipp);
     const tp = Math.ceil(ic / ipp);
     const oof = currentPage > tp;
     const curPage = oof ? tp : currentPage;
     const iStart = oof ? (tp - 1) * itemPerPage : indexStart;
     const iEnd = oof ? tp * itemPerPage : indexEnd;
+
     const updated = {
-      totalPage,
+      totalPage: tp,
       itemPerPage: ipp,
       itemCount: ic,
       currentPage: curPage,
@@ -49,8 +51,10 @@ function usePagination() {
 
   const handleItemPerPageChange = (value: number) =>
     setParams(updateParams(itemCount, value));
-  const handleItemCountChange = (count: number) =>
+  const handleItemCountChange = (count: number) => {
+    console.log(count);
     setParams(updateParams(count, itemPerPage));
+  };
 
   return {
     ...params,

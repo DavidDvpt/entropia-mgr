@@ -47,6 +47,10 @@ function TableExtended<T extends Record<string, any>>({
   };
 
   useEffect(() => {
+    pagination.handleItemCountChange(datas?.length ?? 0);
+  }, [datas]);
+
+  useEffect(() => {
     const f = datas
       .filter((f) =>
         f[keySearch].toLowerCase().includes(searchPattern.toLowerCase())

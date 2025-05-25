@@ -15,7 +15,7 @@ function Pagination({ className, params, onPageChange }: IPaginationProps) {
     <div className={css.join(' ')}>
       <PaginationBtnContainer
         cPage={params.currentPage}
-        totalPages={params.totalPage}
+        tPages={params.totalPage}
         onPageChange={onPageChange}
       />
     </div>
