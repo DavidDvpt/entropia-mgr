@@ -1,4 +1,19 @@
 @use '../../../styles/main';
 
 .pagination {
+  padding: 10px 0;
+  .paginationBtnContainer {
+    width: 100%;
+    @include main.flex-center-center;
+
+    .paginationBtn {
+      @include main.flex-center-center;
+      width: 24px;
+      height: 24px;
+      margin: 0 2px;
+      padding: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  }
 }

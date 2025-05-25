@@ -4,7 +4,7 @@ interface IPaginationBtnProps {
   value: number;
   disabled?: boolean;
   selected?: boolean;
-  onClick: (value: number) => void;
+  onPageChange: (value: number) => void;
   className?: string;
 }
 function PaginationBtn({
@@ -13,7 +13,7 @@ function PaginationBtn({
   disabled,
   className,
   selected,
-  onClick,
+  onPageChange,
 }: IPaginationBtnProps) {
   const css = [styles.paginationBtn];
   className && css.push(className);
@@ -22,7 +22,7 @@ function PaginationBtn({
   return (
     <button
       disabled={disabled}
-      onClick={() => onClick(value)}
+      onClick={() => onPageChange(value)}
       className={css.join(' ')}
     >
       {display ?? value}

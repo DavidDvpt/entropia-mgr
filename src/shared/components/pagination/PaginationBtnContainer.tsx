@@ -1,5 +1,5 @@
 import PaginationBtn from './PaginationBtn';
-
+import styles from './pagination.module.scss';
 interface IPaginationBtnContainerProps {
   onPageChange: (page: number) => void;
   cPage: number;
@@ -11,10 +11,10 @@ function PaginationBtnContainer({
   cPage,
   tPages,
 }: IPaginationBtnContainerProps) {
-  const ffDisabled = tPages <= 5 || cPage - 2 > 1;
+  const ffDisabled = tPages <= 5 || cPage - 2 < 1;
   const fDisabled = cPage === 1;
   const nDisabled = cPage + 1 === tPages;
-  const nnDisabled = tPages <= 5 || cPage + 2 < tPages;
+  const nnDisabled = tPages <= 5 || cPage + 2 > tPages;
 
   let buttons: number[] = [];
 
@@ -37,23 +37,23 @@ function PaginationBtnContainer({
   }
 
   return (
-    <div>
+    <div className={styles.paginationBtnContainer}>
       <PaginationBtn
         display="<<"
         value={1}
-        onClick={onPageChange}
+        onPageChange={onPageChange}
         disabled={ffDisabled}
       />
       <PaginationBtn
         display="<"
         value={1}
-        onClick={onPageChange}
+        onPageChange={onPageChange}
         disabled={fDisabled}
       />
       {buttons.map((m) => (
         <PaginationBtn
           key={m}
-          onClick={onPageChange}
+          onPageChange={onPageChange}
           value={m}
           selected={cPage === m}
         />
@@ -61,13 +61,13 @@ function PaginationBtnContainer({
       <PaginationBtn
         display=">"
         value={1}
-        onClick={onPageChange}
+        onPageChange={onPageChange}
         disabled={nDisabled}
       />
       <PaginationBtn
         display=">>"
         value={tPages}
-        onClick={onPageChange}
+        onPageChange={onPageChange}
         disabled={nnDisabled}
       />
     </div>
