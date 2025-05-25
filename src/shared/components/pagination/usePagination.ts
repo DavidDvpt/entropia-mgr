@@ -1,14 +1,5 @@
 import { useState } from 'react';
 
-interface IPaginationParams {
-  totalPage: number;
-  itemCount: number;
-  itemPerPage: number;
-  currentPage: number;
-  indexStart: number;
-  indexEnd: number;
-}
-
 const paginationParamsDefault: IPaginationParams = {
   currentPage: 1,
   totalPage: 1,

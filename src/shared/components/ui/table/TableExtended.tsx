@@ -36,7 +36,8 @@ function TableExtended<T extends Record<string, any>>({
 }: ITableExtendedProps<T>) {
   const [filtered, setFiltered] = useState<TableDataDisplayType<T>>([]);
   const { handleChangePattern, searchPattern } = useSearch();
-  const { indexEnd, indexStart } = usePagination();
+  const pagination = usePagination();
+  const { indexEnd, indexStart } = pagination;
   const css = useCssArray({ cssArray: [styles.tableContainer, className] });
 
   const handleUpdate = (index: number) => {
@@ -89,7 +90,10 @@ function TableExtended<T extends Record<string, any>>({
       />
 
       {enablePagination && (
-        <Pagination itemCount={filtered.length} currentPage={1} />
+        <Pagination
+          params={pagination}
+          onPageChange={pagination.handleCurrentPageChange}
+        />
       )}
     </div>
   );
