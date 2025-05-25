@@ -13,21 +13,14 @@ function usePagination() {
   const [params, setParams] = useState<IPaginationParams>(
     paginationParamsDefault
   );
-  const {
-    currentPage,
-    totalPage,
-    itemPerPage,
-    itemCount,
-    indexStart,
-    indexEnd,
-  } = params;
+  const { currentPage, totalPage, itemPerPage, itemCount } = params;
 
-  const updateParams = (ic: number, ipp: number) => {
+  const updateParams = (ic: number, ipp: number, cp: number) => {
     const tp = Math.ceil(ic / ipp);
-    const oof = currentPage > tp;
-    const curPage = oof ? tp : currentPage;
-    const iStart = oof ? (tp - 1) * itemPerPage : indexStart;
-    const iEnd = oof ? tp * itemPerPage : indexEnd;
+    const oof = cp > tp;
+    const curPage = oof ? tp : cp;
+    const iStart = oof ? (tp - 1) * itemPerPage : (curPage - 1) * itemPerPage;
+    const iEnd = oof ? tp * itemPerPage : curPage * itemPerPage;
 
     const updated = {
       totalPage: tp,
@@ -44,14 +37,18 @@ function usePagination() {
   const handleCurrentPageChange = (page: number) => {
     if (totalPage !== 0) {
       if (page > totalPage) setParams({ ...params, currentPage: itemCount });
-      else if (page < 1) setParams({ ...params, currentPage: 1 });
+      else if (page < 1) {
+        setParams({ ...params, currentPage: 1 });
+      } else {
+        setParams(updateParams(itemCount, itemPerPage, page));
+      }
     }
   };
 
   const handleItemPerPageChange = (value: number) =>
-    setParams(updateParams(itemCount, value));
+    setParams(updateParams(itemCount, value, currentPage));
   const handleItemCountChange = (count: number) => {
-    setParams(updateParams(count, itemPerPage));
+    setParams(updateParams(count, itemPerPage, currentPage));
   };
 
   return {

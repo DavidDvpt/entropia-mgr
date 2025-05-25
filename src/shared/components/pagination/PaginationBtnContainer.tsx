@@ -13,7 +13,7 @@ function PaginationBtnContainer({
 }: IPaginationBtnContainerProps) {
   const ffDisabled = tPages <= 5 || cPage - 2 < 1;
   const fDisabled = cPage === 1;
-  const nDisabled = cPage + 1 === tPages;
+  const nDisabled = cPage + 1 >= tPages;
   const nnDisabled = tPages <= 5 || cPage + 2 > tPages;
 
   let buttons: number[] = [];

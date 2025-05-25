@@ -51,19 +51,23 @@ function TableExtended<T extends Record<string, any>>({
   }, [datas]);
 
   useEffect(() => {
-    const f = datas
-      .filter((f) =>
-        f[keySearch].toLowerCase().includes(searchPattern.toLowerCase())
-      )
-      .filter((ff, i) => i >= indexStart && i < indexEnd);
+    const f = datas.filter((f) =>
+      f[keySearch].toLowerCase().includes(searchPattern.toLowerCase())
+    );
 
+    // parse datas for table
     parserToTable(f).then(
       (res) => {
         setFiltered(res);
       },
       (err) => {}
     );
-  }, [searchPattern, indexEnd, indexStart]);
+
+    // update pagination with new totalItems
+    pagination.handleItemCountChange(f.length);
+  }, [searchPattern]);
+
+  const final = filtered.filter((ff, i) => i >= indexStart && i < indexEnd);
 
   return (
     <div className={css}>
@@ -86,7 +90,7 @@ function TableExtended<T extends Record<string, any>>({
       )}
 
       <Table
-        parsedDatas={filtered}
+        parsedDatas={final}
         header={header}
         className={tableClassName}
         onUpdate={handleUpdate}
