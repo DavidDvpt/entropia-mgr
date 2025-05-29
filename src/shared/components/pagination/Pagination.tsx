@@ -1,5 +1,6 @@
 import styles from './pagination.module.scss';
 import PaginationBtnContainer from './PaginationBtnContainer';
+import PaginationItemPerPage from './PaginationItemPerPage';
 
 interface IPaginationProps {
   params: IPaginationParams;
@@ -13,6 +14,7 @@ function Pagination({ className, params, onPageChange }: IPaginationProps) {
 
   return (
     <div className={css.join(' ')}>
+      <PaginationItemPerPage {...params} />
       <PaginationBtnContainer
         cPage={params.currentPage}
         tPages={params.totalPage}
