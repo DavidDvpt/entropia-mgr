@@ -1,3 +1,4 @@
+import Button from '../ui/button/Button';
 import styles from './pagination.module.scss';
 interface IPaginationBtnProps {
   display?: string;
@@ -20,13 +21,15 @@ function PaginationBtn({
   selected && css.push(styles.selected);
 
   return (
-    <button
+    <Button
+      variant="primary"
       disabled={disabled}
       onClick={() => onPageChange(value)}
       className={css.join(' ')}
+      rounded
     >
       {display ?? value}
-    </button>
+    </Button>
   );
 }
 

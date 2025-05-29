@@ -39,14 +39,13 @@ function PaginationBtnContainer({
   return (
     <div className={styles.paginationBtnContainer}>
       <PaginationBtn
-        display="<<"
         value={1}
         onPageChange={onPageChange}
         disabled={ffDisabled}
       />
       <PaginationBtn
         display="<"
-        value={1}
+        value={cPage - 1}
         onPageChange={onPageChange}
         disabled={fDisabled}
       />
@@ -60,12 +59,11 @@ function PaginationBtnContainer({
       ))}
       <PaginationBtn
         display=">"
-        value={1}
+        value={cPage + 1}
         onPageChange={onPageChange}
         disabled={nDisabled}
       />
       <PaginationBtn
-        display=">>"
         value={tPages}
         onPageChange={onPageChange}
         disabled={nnDisabled}

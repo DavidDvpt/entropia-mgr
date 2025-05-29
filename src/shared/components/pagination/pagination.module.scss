@@ -12,8 +12,14 @@
       height: 24px;
       margin: 0 2px;
       padding: 10px;
-      border-radius: 50%;
       cursor: pointer;
+
+      &.selected {
+        color: var(--color-foreground);
+        font-weight: 700;
+        width: 30px;
+        height: 30px;
+      }
     }
   }
 }
