@@ -5,6 +5,13 @@
 
   .itemPerPageContainer {
     @include main.flex-between-center;
+
+    .selectPosition {
+      width: unset;
+    }
+    .select {
+      width: 60px;
+    }
   }
 
   .paginationBtnContainer {

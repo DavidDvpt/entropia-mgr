@@ -31,10 +31,14 @@ function Select({
             ...register,
             defaultValue: value,
           }
-        : {
-            value,
-            onChange,
-          })}
+        : onChange
+          ? {
+              value,
+              onChange,
+            }
+          : {
+              defaultValue: value,
+            })}
     >
       {noValueDisplay && (
         <option value="" disabled>

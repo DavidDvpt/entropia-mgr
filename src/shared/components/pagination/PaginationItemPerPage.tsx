@@ -14,6 +14,7 @@ function PaginationItemPerPage({ itemPerPage, totalPage }: IPaginationParams) {
         name="itemPerPage"
         label="Item par Page :"
         labelPosition="left"
+        childContainerClassName={styles.selectPosition}
       >
         <Select
           options={selectOptions}

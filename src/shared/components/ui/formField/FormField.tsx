@@ -11,6 +11,7 @@ interface IFormFieldProps {
   name: string;
   children: React.ReactElement<Partial<IFormElementType>>;
   className?: string;
+  childContainerClassName?: string;
   labelPosition?: PositionType;
   childAlign?: 'center' | 'left';
 }
@@ -33,6 +34,7 @@ function FormField(props: IFormFieldProps) {
     cssArray: [
       styles.childrenContainer,
       props.childAlign === 'left' ? styles.alignLeft : undefined,
+      props.childContainerClassName ?? undefined,
     ],
   });
   const cssLeftLabel = useCssArray({
