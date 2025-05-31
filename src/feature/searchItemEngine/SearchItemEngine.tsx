@@ -43,23 +43,26 @@ function SearchItemEngine({ className }: ISearchItemEnginePrps) {
     <Section className={css.join(' ')}>
       <h1>Choix d'un item</h1>
 
-      <div className={styles.selectContainer}>
+      <div className={styles.itemContainer}>
         <ItemCategorySelect
           onChange={(e) => handleChange('itemCategory', e)}
           value={ctxState.itemCategory?.id}
-          className={styles.selects}
+          className={styles.selectContainer}
+          selectProps={{ className: styles.selectComponent }}
         />
         <ItemTypeSelect
           onChange={(e) => handleChange('itemType', e)}
           itemCategoryId={ctxState.itemCategory?.id}
           value={ctxState.itemType?.id}
-          className={styles.selects}
+          className={styles.selectContainer}
+          selectProps={{ className: styles.selectComponent }}
         />
         <ItemSelect
           onChange={(e) => handleChange('item', e)}
           itemTypeId={ctxState.itemType?.id}
           value={ctxState.item?.id}
-          className={styles.selects}
+          className={styles.selectContainer}
+          selectProps={{ className: styles.selectComponent }}
         />
       </div>
 

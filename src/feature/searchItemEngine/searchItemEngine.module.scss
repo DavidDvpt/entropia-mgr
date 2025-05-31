@@ -11,14 +11,15 @@
     height: 80px;
     width: 80%;
   }
-  .selectContainer {
+
+  .itemContainer {
     @include main.flex-around-center;
     width: 100%;
 
-    .selects {
+    .selectContainer {
       width: 30%;
-      select {
-        width: 100%;
+      .selectComponent {
+        width: 80%;
       }
     }
   }

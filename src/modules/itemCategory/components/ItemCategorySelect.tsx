@@ -2,11 +2,12 @@
 
 import FormField from '@/shared/components/ui/formField/FormField';
 import Select from '@/shared/components/ui/select/Select';
-import { ChangeEvent } from 'react';
+import { ChangeEvent, SelectHTMLAttributes } from 'react';
 import useItemCategory from '../hooks/useItemCategory';
 
 interface IItemCategorySelectProps {
   className?: string;
+  selectProps?: SelectHTMLAttributes<HTMLSelectElement>;
   value?: string;
   label?: string;
   name?: string;
@@ -28,6 +29,7 @@ function ItemCategorySelect(props: IItemCategorySelectProps) {
       className={props.className}
       children={
         <Select
+          {...props.selectProps}
           options={data ?? []}
           noValueDisplay="Catégories"
           value={props.value ?? ''}

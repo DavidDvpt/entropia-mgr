@@ -3,7 +3,7 @@
 import FormField from '@/shared/components/ui/formField/FormField';
 import Select from '@/shared/components/ui/select/Select';
 
-import { ChangeEvent } from 'react';
+import { ChangeEvent, SelectHTMLAttributes } from 'react';
 import useItem from '../useItem';
 
 interface IItemSelectProps {
@@ -11,10 +11,11 @@ interface IItemSelectProps {
   value?: string;
   itemTypeId?: string;
   onChange?: (type: IAppItem) => void;
+  selectProps?: SelectHTMLAttributes<HTMLSelectElement>;
 }
 function ItemSelect(props: IItemSelectProps) {
   const { data, isError, isLoading } = useItem({
-    itemTypeId: props.itemTypeId,
+    params: { itemTypeId: props.itemTypeId },
   });
 
   const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
@@ -29,6 +30,7 @@ function ItemSelect(props: IItemSelectProps) {
       className={props.className}
       children={
         <Select
+          {...props.selectProps}
           options={data}
           noValueDisplay="Items"
           value={props.value ?? ''}
