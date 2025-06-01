@@ -5,20 +5,26 @@ import PaginationItemPerPage from './PaginationItemPerPage';
 interface IPaginationProps {
   params: IPaginationParams;
   className?: string;
-  onPageChange: (page: number) => void;
+  onChange: (params: IPaginationParams) => void;
 }
 
-function Pagination({ className, params, onPageChange }: IPaginationProps) {
+function Pagination({ className, params, onChange }: IPaginationProps) {
   const css = [styles.pagination];
   className && css.push(className);
 
+  const handleChange = (type: keyof IPaginationParams, value: number) => {
+    onChange({ ...params, [type]: value });
+  };
   return (
     <div className={css.join(' ')}>
-      <PaginationItemPerPage {...params} />
+      <PaginationItemPerPage
+        {...params}
+        onItemPerPageChange={(value) => handleChange('itemPerPage', value)}
+      />
       <PaginationBtnContainer
         cPage={params.currentPage}
         tPages={params.totalPage}
-        onPageChange={onPageChange}
+        onPageChange={(page) => handleChange('currentPage', page)}
       />
     </div>
   );

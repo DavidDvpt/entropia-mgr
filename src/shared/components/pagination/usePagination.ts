@@ -15,12 +15,12 @@ function usePagination() {
   );
   const { currentPage, totalPage, itemPerPage, itemCount } = params;
 
-  const updateParams = (ic: number, ipp: number, cp: number) => {
+  const updateParams = (ic: number, ipp: number, curP: number) => {
     const tp = Math.ceil(ic / ipp);
-    const oof = cp > tp;
-    const curPage = oof ? tp : cp;
-    const iStart = oof ? (tp - 1) * itemPerPage : (curPage - 1) * itemPerPage;
-    const iEnd = oof ? tp * itemPerPage : curPage * itemPerPage;
+    const oof = curP > tp;
+    const curPage = oof ? tp : curP;
+    const iStart = oof ? (tp - 1) * ipp : (curPage - 1) * ipp;
+    const iEnd = oof ? tp * ipp : curPage * ipp;
 
     const updated = {
       totalPage: tp,
@@ -45,17 +45,19 @@ function usePagination() {
     }
   };
 
-  const handleItemPerPageChange = (value: number) =>
-    setParams(updateParams(itemCount, value, currentPage));
-  const handleItemCountChange = (count: number) => {
-    setParams(updateParams(count, itemPerPage, currentPage));
+  const handePaginationValueChange = (newValue: IPaginationParams) => {
+    if (newValue.currentPage !== params.currentPage)
+      handleCurrentPageChange(newValue.currentPage);
+    else if (newValue.itemPerPage !== params.itemPerPage)
+      setParams(updateParams(itemCount, newValue.itemPerPage, currentPage));
+    else if (newValue.itemCount !== params.itemCount)
+      setParams(updateParams(newValue.itemCount, itemPerPage, currentPage));
   };
 
   return {
+    fullParams: params,
     ...params,
-    handleCurrentPageChange,
-    handleItemPerPageChange,
-    handleItemCountChange,
+    handePaginationValueChange,
   };
 }
 

@@ -47,7 +47,10 @@ function TableExtended<T extends Record<string, any>>({
   };
 
   useEffect(() => {
-    pagination.handleItemCountChange(datas?.length ?? 0);
+    pagination.handePaginationValueChange({
+      ...pagination.fullParams,
+      itemCount: datas?.length ?? 0,
+    });
   }, [datas]);
 
   useEffect(() => {
@@ -64,7 +67,10 @@ function TableExtended<T extends Record<string, any>>({
     );
 
     // update pagination with new totalItems
-    pagination.handleItemCountChange(f.length);
+    pagination.handePaginationValueChange({
+      ...pagination.fullParams,
+      itemCount: datas?.length ?? 0,
+    });
   }, [searchPattern]);
 
   const final = filtered.filter((ff, i) => i >= indexStart && i < indexEnd);
@@ -100,7 +106,7 @@ function TableExtended<T extends Record<string, any>>({
       {enablePagination && (
         <Pagination
           params={pagination}
-          onPageChange={pagination.handleCurrentPageChange}
+          onChange={pagination.handePaginationValueChange}
         />
       )}
     </div>
