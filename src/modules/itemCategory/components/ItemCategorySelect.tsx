@@ -37,7 +37,7 @@ function ItemCategorySelect(props: IItemCategorySelectProps) {
         />
       }
       name={props.name ?? 'itemCategoryId'}
-      label={props.label ?? 'Catégorie'}
+      label={props.label ?? 'Catégorie :'}
     />
   );
 }

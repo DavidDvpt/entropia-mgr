@@ -37,6 +37,7 @@ function FormField(props: IFormFieldProps) {
       props.childContainerClassName ?? undefined,
     ],
   });
+
   const cssLeftLabel = useCssArray({
     cssArray: [
       styles.label,

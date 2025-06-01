@@ -38,7 +38,7 @@ function ItemSelect(props: IItemSelectProps) {
         />
       }
       name="type"
-      label="Type :"
+      label="Item :"
     />
   );
 }
